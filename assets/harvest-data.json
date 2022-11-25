@@ -58,5 +58,15 @@
     "zone": "Amakna",
     "step": 1,
     "type": "monster"
+  },
+  {
+    "id": 7,
+    "name": "Arakna Enferma",
+    "image": "/assets/img/arakna_enferma.webp",
+    "level": "11 - 15",
+    "subzone": "Subterráneos de Astrub",
+    "zone": "AStrub",
+    "step": 1,
+    "type": "monster"
   }
 ]
