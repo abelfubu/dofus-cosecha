@@ -4,12 +4,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
-import { APP_BASE_HREF } from '@angular/common';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
-  providers: [{ provide: APP_BASE_HREF, useValue: '/dofus-cosecha' }],
+  providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
