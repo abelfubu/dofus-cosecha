@@ -98,5 +98,25 @@
     "zone": "Bonta",
     "step": 1,
     "type": "monster"
+  },
+  {
+    "id": 11,
+    "name": "Pío Verde",
+    "image": "./assets/img/pio_verde.webp",
+    "level": "11 - 15",
+    "subzone": "Bahía de Sufokia",
+    "zone": "Sufokia",
+    "step": 1,
+    "type": "monster"
+  },
+  {
+    "id": 12,
+    "name": "Pío Violeta",
+    "image": "./assets/img/pio_violeta.webp",
+    "level": "11 - 15",
+    "subzone": "Bahía de Sufokia",
+    "zone": "Sufokia",
+    "step": 1,
+    "type": "monster"
   }
 ]
