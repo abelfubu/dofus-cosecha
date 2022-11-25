@@ -10,8 +10,10 @@ import { LocalStorageService } from 'src/app/shared/services/local-storage.servi
 export type UserHarvest = Pick<Harvest, 'id' | 'captured' | 'amount'>;
 
 export interface HarvestFilters {
-  showCompleted: boolean;
+  showCaptured: boolean;
+  showRepeatedOnly: boolean;
   search: string | null;
+  steps: boolean[];
 }
 
 export interface HarvestData {
@@ -23,7 +25,12 @@ export interface HarvestData {
 const DEFAULT_STATE: HarvestData = {
   originalData: [],
   harvest: [],
-  filters: { showCompleted: true, search: null },
+  filters: {
+    showRepeatedOnly: false,
+    showCaptured: true,
+    search: null,
+    steps: [...new Array(34)].map(() => true),
+  },
 };
 
 interface GetDataResponse {
@@ -31,7 +38,9 @@ interface GetDataResponse {
   userData: Record<number, Harvest>;
 }
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class HarvestStore extends ComponentStore<HarvestData> {
   private readonly DOFUS_HARVEST_KEY = 'dof.harv';
 
@@ -43,6 +52,7 @@ export class HarvestStore extends ComponentStore<HarvestData> {
   }
 
   readonly harvest$ = this.select(({ harvest }) => harvest);
+  readonly steps$ = this.select(({ filters }) => filters.steps);
 
   readonly getData = this.effect((trigger$) =>
     trigger$.pipe(
@@ -80,23 +90,50 @@ export class HarvestStore extends ComponentStore<HarvestData> {
     }
   );
 
-  readonly search = this.updater((state, search: string | null) => ({
-    ...state,
-    filters: { ...state.filters, search },
-    harvest: this.applyFilters(state.originalData, {
-      ...state.filters,
-      search,
-    }),
-  }));
+  readonly search = this.updater((state, search: string | null) => {
+    const filters = { ...state.filters, search };
 
-  readonly completed = this.updater((state, showCompleted: boolean | null) => ({
-    ...state,
-    filters: { ...state.filters, showCompleted: !!showCompleted },
-    harvest: this.applyFilters(state.originalData, {
-      ...state.filters,
-      showCompleted: !!showCompleted,
-    }),
-  }));
+    return {
+      ...state,
+      filters,
+      harvest: this.applyFilters(state.originalData, filters),
+    };
+  });
+
+  readonly completed = this.updater((state, showCaptured: boolean | null) => {
+    const filters = { ...state.filters, showCaptured: !!showCaptured };
+
+    return {
+      ...state,
+      filters,
+      harvest: this.applyFilters(state.originalData, filters),
+    };
+  });
+
+  readonly repeated = this.updater(
+    (state, showRepeatedOnly: boolean | null) => {
+      const filters = {
+        ...state.filters,
+        showRepeatedOnly: !!showRepeatedOnly,
+      };
+
+      return {
+        ...state,
+        filters,
+        harvest: this.applyFilters(state.originalData, filters),
+      };
+    }
+  );
+
+  readonly steps = this.updater((state, steps: Record<number, boolean>) => {
+    const filters = { ...state.filters, steps: Object.values(steps) };
+
+    return {
+      ...state,
+      filters,
+      harvest: this.applyFilters(state.originalData, filters),
+    };
+  });
 
   readonly update = this.updater((state, item: UserHarvest) => {
     const storage = this.localStorageService.update<Partial<Harvest>>(
@@ -117,7 +154,15 @@ export class HarvestStore extends ComponentStore<HarvestData> {
 
   private applyFilters(source: Harvest[], filters: HarvestFilters): Harvest[] {
     return source.reduce<Harvest[]>((acc, item) => {
-      if (!filters.showCompleted && item.captured) {
+      if (!filters.showCaptured && item.captured) {
+        return acc;
+      }
+
+      if (filters.showRepeatedOnly && !item.amount) {
+        return acc;
+      }
+
+      if (!filters.steps[item.step - 1]) {
         return acc;
       }
 
@@ -134,7 +179,6 @@ export class HarvestStore extends ComponentStore<HarvestData> {
       }
 
       acc.push(item);
-
       return acc;
     }, []);
   }

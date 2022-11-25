@@ -3,7 +3,7 @@ import { Component, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 
 import { Harvest } from '../../models/harvest';
-import { HarvestFiltersComponent } from '../harvest-filters/harvest-filters.component';
+import { HarvestStepModalComponent } from '../harvest-filters/harvest-step-modal/harvest-step-modal.component';
 import { HarvestItemComponent } from './harvest-item/harvest-item.component';
 
 @Component({
@@ -19,6 +19,6 @@ export class HarvestTableComponent {
   constructor(private readonly matDialog: MatDialog) {}
 
   openFilter(filter: string) {
-    this.matDialog.open(HarvestFiltersComponent);
+    this.matDialog.open(HarvestStepModalComponent);
   }
 }

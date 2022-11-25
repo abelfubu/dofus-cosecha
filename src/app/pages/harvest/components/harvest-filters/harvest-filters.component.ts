@@ -14,6 +14,7 @@ export class HarvestFiltersComponent {
   form = this.formBuilder.group({
     search: [],
     completed: [true],
+    repeated: [false],
   });
 
   @Output() changed = this.form.controls.search.valueChanges.pipe(
@@ -27,5 +28,6 @@ export class HarvestFiltersComponent {
 
   ngOnInit(): void {
     this.harvestStore.completed(this.form.controls.completed.valueChanges);
+    this.harvestStore.repeated(this.form.controls.repeated.valueChanges);
   }
 }

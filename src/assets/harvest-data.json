@@ -118,5 +118,45 @@
     "zone": "Sufokia",
     "step": 1,
     "type": "monster"
+  },
+  {
+    "id": 13,
+    "name": "Llamita Aire",
+    "image": "./assets/img/llamita_aire.webp",
+    "level": "34 - 42",
+    "subzone": "Llanura de los Escarahojas",
+    "zone": "Amakna",
+    "step": 1,
+    "type": "monster"
+  },
+  {
+    "id": 14,
+    "name": "Llamita Agua",
+    "image": "./assets/img/llamita_agua.webp",
+    "level": "34 - 42",
+    "subzone": "Llanura de los Escarahojas",
+    "zone": "Amakna",
+    "step": 1,
+    "type": "monster"
+  },
+  {
+    "id": 15,
+    "name": "Llamita Fuego",
+    "image": "./assets/img/llamita_fuego.webp",
+    "level": "34 - 42",
+    "subzone": "Llanura de los Escarahojas",
+    "zone": "Amakna",
+    "step": 1,
+    "type": "monster"
+  },
+  {
+    "id": 16,
+    "name": "Llamita Tierra",
+    "image": "./assets/img/llamita_tierra.webp",
+    "level": "34 - 42",
+    "subzone": "Llanura de los Escarahojas",
+    "zone": "Amakna",
+    "step": 1,
+    "type": "monster"
   }
 ]
