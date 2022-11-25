@@ -11,6 +11,6 @@ export class HarvestDataService {
   constructor(private readonly http: HttpClient) {}
 
   get(): Observable<Harvest[]> {
-    return this.http.get<Harvest[]>('/assets/harvest-data.json');
+    return this.http.get<Harvest[]>('./assets/harvest-data.json');
   }
 }
