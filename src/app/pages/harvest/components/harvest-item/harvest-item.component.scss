@@ -1,3 +1,5 @@
+@use "colors" as colors;
+
 :host {
   display: grid;
   grid-template-columns: repeat(8, 1fr);
@@ -7,7 +9,10 @@
     border: none;
     box-shadow: none;
     font-size: 1rem;
-    width: 8rem;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    width: 2rem;
   }
 
   .pointer {
@@ -15,11 +20,12 @@
   }
 
   .green {
-    background-color: #96be96;
+    background-color: rgba(colors.$light, 70%);
   }
 
   .red {
-    background-color: #be9696;
+    color: #fff;
+    background-color: rgba(colors.$red, 30%);
   }
 
   &:nth-child(odd) {
@@ -36,5 +42,34 @@
     display: grid;
     place-content: center;
     text-align: center;
+  }
+
+  button {
+    background-color: transparent;
+    color: transparent;
+    height: 1.5rem;
+    width: 1.5rem;
+    border-radius: 50%;
+    border: none;
+    margin: 0.5rem 0;
+    transition: box-shadow ease 200ms;
+  }
+
+  &:hover {
+    button[disabled] {
+      color: colors.$light-blue;
+    }
+
+    button:not([disabled]) {
+      color: colors.$dark-blue;
+
+      &:hover {
+        box-shadow: 0 0 0 1px colors.$light-blue;
+      }
+
+      &:active {
+        box-shadow: 0 0 0 1px colors.$medium-blue;
+      }
+    }
   }
 }

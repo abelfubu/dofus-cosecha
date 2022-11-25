@@ -1,6 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { Component, Input } from '@angular/core';
 import { HarvestStore } from '../../harvest.store';
 import { Harvest } from '../../models/harvest';
 
@@ -11,20 +10,16 @@ import { Harvest } from '../../models/harvest';
   standalone: true,
   imports: [CommonModule],
 })
-export class HarvestItemComponent implements OnInit {
+export class HarvestItemComponent {
   @Input() item!: Harvest;
-
-  amount = new FormControl(0);
 
   constructor(private readonly harvestStore: HarvestStore) {}
 
-  ngOnInit(): void {
-    this.amount.valueChanges.subscribe((value) => {
-      this.harvestStore.amount({ ...this.item, amount: value ?? 0 });
-    });
+  onCapturedChange({ id, captured, amount }: Harvest): void {
+    this.harvestStore.update({ id, captured: !captured, amount: amount ?? 0 });
   }
 
-  onCapturedChange(item: Harvest): void {
-    this.harvestStore.capture(item);
+  onAmountChange({ id, captured }: Harvest, amount: number): void {
+    this.harvestStore.update({ id, captured, amount });
   }
 }

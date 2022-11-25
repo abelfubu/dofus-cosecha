@@ -1,4 +1,18 @@
 :host {
   display: block;
   padding: 2rem 0;
+
+  .search {
+    padding: 0.3rem 0.7rem;
+    border-radius: 0.3rem;
+    border: none;
+    box-shadow: 0 0 0 1px grey;
+    outline: none;
+    font-size: 7rem;
+    width: 100%;
+
+    &:focus {
+      box-shadow: 0 0 0 2px grey;
+    }
+  }
 }

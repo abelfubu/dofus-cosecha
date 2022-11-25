@@ -12,4 +12,11 @@ export class LocalStorageService {
     const found = localStorage.getItem(key);
     return found ? JSON.parse(found).value : null;
   }
+
+  update<T>(key: string, id: number, value: T): T {
+    const found = this.get<Record<number, T>>(key) ?? {};
+    found[id] = { ...found[id], ...value };
+    this.set(key, found);
+    return found[id];
+  }
 }

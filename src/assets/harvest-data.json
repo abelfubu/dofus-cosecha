@@ -65,7 +65,37 @@
     "image": "./assets/img/arakna_enferma.webp",
     "level": "11 - 15",
     "subzone": "Subterráneos de Astrub",
-    "zone": "AStrub",
+    "zone": "Astrub",
+    "step": 1,
+    "type": "monster"
+  },
+  {
+    "id": 8,
+    "name": "Pío Azul",
+    "image": "./assets/img/pio_azul.webp",
+    "level": "11 - 15",
+    "subzone": "Bahía de Sufokia",
+    "zone": "Sufokia",
+    "step": 1,
+    "type": "monster"
+  },
+  {
+    "id": 9,
+    "name": "Pío Amarillo",
+    "image": "./assets/img/pio_amarillo.webp",
+    "level": "11 - 15",
+    "subzone": "Bahía de Sufokia",
+    "zone": "Sufokia",
+    "step": 1,
+    "type": "monster"
+  },
+  {
+    "id": 10,
+    "name": "Pío Rojo",
+    "image": "./assets/img/pio_rojo.webp",
+    "level": "11 - 15",
+    "subzone": "Fortificación de Bonta",
+    "zone": "Bonta",
     "step": 1,
     "type": "monster"
   }

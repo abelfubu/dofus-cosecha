@@ -25,5 +25,11 @@
 </div>
 
 <div class="cell">
-	<input type="number" min="0">
+	<button (click)="onAmountChange(item, item.amount ? item.amount + 1 : 1)">
+		<span class="material-symbols-outlined"> arrow_drop_up </span>
+	</button>
+	<p>{{item.amount ?? '0'}}</p>
+	<button [disabled]="!item.amount" (click)="onAmountChange(item, item.amount! - 1)">
+		<span class="material-symbols-outlined"> arrow_drop_down </span>
+	</button>
 </div>

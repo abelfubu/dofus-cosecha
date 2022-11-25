@@ -7,6 +7,8 @@ import { HarvestDataService } from './services/harvest-data.service';
 import { Harvest } from './models/harvest';
 import { LocalStorageService } from 'src/app/shared/services/local-storage.service';
 
+export type UserHarvest = Pick<Harvest, 'id' | 'captured' | 'amount'>;
+
 export interface HarvestData {
   originalData: Harvest[];
   harvest: Harvest[];
@@ -83,27 +85,21 @@ export class HarvestStore extends ComponentStore<HarvestData> {
       : state.originalData,
   }));
 
-  readonly capture = this.updater((state, item: Harvest) => {
-    const storage =
-      this.localStorageService.get<Record<number, Partial<Harvest>>>(
-        this.DOFUS_HARVEST_KEY
-      ) ?? {};
-
-    storage[item.id] = { captured: !item.captured, amount: item?.amount ?? 0 };
-
-    this.localStorageService.set(this.DOFUS_HARVEST_KEY, storage);
+  readonly update = this.updater((state, item: UserHarvest) => {
+    const storage = this.localStorageService.update<Partial<Harvest>>(
+      this.DOFUS_HARVEST_KEY,
+      item.id,
+      item
+      // { captured: !!item.captured, amount: item.amount }
+    );
 
     const callback = (i: Harvest) =>
-      i.id === item.id ? { ...item, ...storage[item.id] } : i;
+      i.id === item.id ? { ...i, ...storage } : i;
 
     return {
       originalData: state.originalData.map(callback),
       harvest: state.harvest.map(callback),
     };
-  });
-
-  readonly amount = this.updater((state, item: Harvest) => {
-    return { ...state };
   });
 
   private normalize(value: string): string {
