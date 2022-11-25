@@ -22,7 +22,7 @@
   {
     "id": 3,
     "name": "Arakna",
-    "image": "/assets/img/arakna.webp",
+    "image": "./assets/img/arakna.webp",
     "level": "16 - 20",
     "subzone": "Pandala, Bosque Maléfico, Pueblo de la Isla de Pandala",
     "zone": "Varias",
@@ -32,7 +32,7 @@
   {
     "id": 4,
     "name": "Jalatín Blanco",
-    "image": "/assets/img/jalatin_blanco.webp",
+    "image": "./assets/img/jalatin_blanco.webp",
     "level": "22 - 30",
     "subzone": "Rincón de los Jalatós, Tainela",
     "zone": "Amakna",
@@ -42,7 +42,7 @@
   {
     "id": 5,
     "name": "Jalatín Negro",
-    "image": "/assets/img/jalatin_negro.webp",
+    "image": "./assets/img/jalatin_negro.webp",
     "level": "22 - 30",
     "subzone": "Rincón de los Jalatós, Tainela",
     "zone": "Amakna",
@@ -52,7 +52,7 @@
   {
     "id": 6,
     "name": "Tofu Maléfico",
-    "image": "/assets/img/tofu_malefico.webp",
+    "image": "./assets/img/tofu_malefico.webp",
     "level": "32 - 40",
     "subzone": "Bosque Maléfico",
     "zone": "Amakna",
@@ -62,7 +62,7 @@
   {
     "id": 7,
     "name": "Arakna Enferma",
-    "image": "/assets/img/arakna_enferma.webp",
+    "image": "./assets/img/arakna_enferma.webp",
     "level": "11 - 15",
     "subzone": "Subterráneos de Astrub",
     "zone": "AStrub",
