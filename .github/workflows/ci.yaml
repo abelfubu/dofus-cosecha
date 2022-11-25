@@ -25,10 +25,10 @@ jobs:
           CI: true
       - name: Build Project
         if: github.event_name == 'push'
-        run: yarn run build
+        run: yarn run build --prod --base-href "https://abelfubu.github.io/dofus-cosecha/" --outputPath=dist
         timeout-minutes: 3
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist/dofus-cosecha
+          publish_dir: ./dist
