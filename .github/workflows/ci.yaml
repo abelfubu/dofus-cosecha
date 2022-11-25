@@ -25,7 +25,7 @@ jobs:
           CI: true
       - name: Build Project
         if: github.event_name == 'push'
-        run: yarn run build --base-href "https://abelfubu.github.io/dofus-cosecha/" --output-path=dist
+        run: yarn run build
         timeout-minutes: 3
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
