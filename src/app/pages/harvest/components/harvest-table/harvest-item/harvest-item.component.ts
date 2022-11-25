@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
-import { HarvestStore } from '../../harvest.store';
-import { Harvest } from '../../models/harvest';
+import { HarvestStore } from '../../../harvest.store';
+import { Harvest } from '../../../models/harvest';
 
 @Component({
   selector: 'app-harvest-item',

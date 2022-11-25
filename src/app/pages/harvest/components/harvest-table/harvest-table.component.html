@@ -1,6 +1,6 @@
-<div style="display: grid; grid-template-columns: repeat(8, 1fr); text-align: center;">
+<div style="display: grid; grid-template-columns: repeat(8, 1fr); text-align: center; padding: 1rem 0;">
 	<div *ngFor="let title of ['', 'Nombre', 'Nivel', 'Subzona', 'Zona', 'Etapa', 'Capturado', 'Repetido']">
-		<h5>{{title}}</h5>
+		<h5 (click)="openFilter(title)">{{title}}</h5>
 	</div>
 </div>
 <ng-container *ngIf="data?.length">

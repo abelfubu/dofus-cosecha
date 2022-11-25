@@ -1,6 +1,23 @@
+@use "colors" as colors;
+
 :host {
   display: block;
   padding: 2rem 0;
+
+  .search-box {
+    display: flex;
+    justify-self: center;
+  }
+
+  .controls-box {
+    padding: 2rem 0;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+
+    label {
+      margin-left: 0.5rem;
+    }
+  }
 
   .search {
     padding: 0.3rem 0.7rem;
@@ -8,8 +25,8 @@
     border: none;
     box-shadow: 0 0 0 1px grey;
     outline: none;
-    font-size: 7rem;
-    width: 100%;
+    width: 500px;
+    margin: 0 auto;
 
     &:focus {
       box-shadow: 0 0 0 2px grey;

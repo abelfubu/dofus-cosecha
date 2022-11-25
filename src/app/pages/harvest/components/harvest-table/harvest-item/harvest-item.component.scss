@@ -28,6 +28,10 @@
     background-color: rgba(colors.$red, 30%);
   }
 
+  .warn {
+    background-color: rgba(colors.$warn, 30%);
+  }
+
   &:nth-child(odd) {
     background-color: #0001;
   }

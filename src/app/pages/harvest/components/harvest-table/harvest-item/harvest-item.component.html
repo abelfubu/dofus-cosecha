@@ -24,7 +24,7 @@
 	<p>{{ item.captured ? 'Si' : 'No' }}</p>
 </div>
 
-<div class="cell">
+<div [class.warn]="!!item.amount" class="cell">
 	<button (click)="onAmountChange(item, item.amount ? item.amount + 1 : 1)">
 		<span class="material-symbols-outlined"> arrow_drop_up </span>
 	</button>

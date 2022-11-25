@@ -9,14 +9,21 @@ import { LocalStorageService } from 'src/app/shared/services/local-storage.servi
 
 export type UserHarvest = Pick<Harvest, 'id' | 'captured' | 'amount'>;
 
+export interface HarvestFilters {
+  showCompleted: boolean;
+  search: string | null;
+}
+
 export interface HarvestData {
   originalData: Harvest[];
   harvest: Harvest[];
+  filters: HarvestFilters;
 }
 
 const DEFAULT_STATE: HarvestData = {
   originalData: [],
   harvest: [],
+  filters: { showCompleted: true, search: null },
 };
 
 interface GetDataResponse {
@@ -75,14 +82,20 @@ export class HarvestStore extends ComponentStore<HarvestData> {
 
   readonly search = this.updater((state, search: string | null) => ({
     ...state,
-    harvest: search
-      ? state.originalData.filter((item) =>
-          Object.values(item)
-            .filter((value) => typeof value === 'string')
-            .map((value) => this.normalize(value))
-            .some((value) => value.includes(this.normalize(search)))
-        )
-      : state.originalData,
+    filters: { ...state.filters, search },
+    harvest: this.applyFilters(state.originalData, {
+      ...state.filters,
+      search,
+    }),
+  }));
+
+  readonly completed = this.updater((state, showCompleted: boolean | null) => ({
+    ...state,
+    filters: { ...state.filters, showCompleted: !!showCompleted },
+    harvest: this.applyFilters(state.originalData, {
+      ...state.filters,
+      showCompleted: !!showCompleted,
+    }),
   }));
 
   readonly update = this.updater((state, item: UserHarvest) => {
@@ -90,17 +103,41 @@ export class HarvestStore extends ComponentStore<HarvestData> {
       this.DOFUS_HARVEST_KEY,
       item.id,
       item
-      // { captured: !!item.captured, amount: item.amount }
     );
 
     const callback = (i: Harvest) =>
       i.id === item.id ? { ...i, ...storage } : i;
 
     return {
+      ...state,
       originalData: state.originalData.map(callback),
-      harvest: state.harvest.map(callback),
+      harvest: this.applyFilters(state.harvest.map(callback), state.filters),
     };
   });
+
+  private applyFilters(source: Harvest[], filters: HarvestFilters): Harvest[] {
+    return source.reduce<Harvest[]>((acc, item) => {
+      if (!filters.showCompleted && item.captured) {
+        return acc;
+      }
+
+      if (
+        filters.search &&
+        !Object.values(item)
+          .filter((value) => typeof value === 'string')
+          .map((value) => this.normalize(value))
+          .some((value) =>
+            value.includes(this.normalize(String(filters.search)))
+          )
+      ) {
+        return acc;
+      }
+
+      acc.push(item);
+
+      return acc;
+    }, []);
+  }
 
   private normalize(value: string): string {
     return value
