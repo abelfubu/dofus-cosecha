@@ -1,0 +1,8 @@
+<div style="display: grid; grid-template-columns: repeat(8, 1fr); text-align: center;">
+	<div *ngFor="let title of ['', 'Nombre', 'Nivel', 'Subzona', 'Zona', 'Etapa', 'Capturado', 'Repetido']">
+		<h5>{{title}}</h5>
+	</div>
+</div>
+<ng-container *ngIf="data?.length">
+	<app-harvest-item *ngFor="let item of data" [item]="item"></app-harvest-item>
+</ng-container>

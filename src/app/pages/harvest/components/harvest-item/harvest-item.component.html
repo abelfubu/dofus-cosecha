@@ -1,0 +1,29 @@
+<img [src]="item.image" [alt]="item.name">
+
+<div class="cell">
+	<p>{{item.name}}</p>
+</div>
+
+<div class="cell">
+	<p>{{item.level}}</p>
+</div>
+
+<div class="cell">
+	<p>{{item.subzone}}</p>
+</div>
+
+<div class="cell">
+	<p>{{item.zone}}</p>
+</div>
+
+<div class="cell">
+	<p>{{item.step}}</p>
+</div>
+
+<div [ngClass]="item.captured ? 'green' : 'red'" class="cell pointer" (click)="onCapturedChange(item)">
+	<p>{{ item.captured ? 'Si' : 'No' }}</p>
+</div>
+
+<div class="cell">
+	<input type="number" min="0">
+</div>
