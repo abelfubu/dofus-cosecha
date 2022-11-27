@@ -358,5 +358,15 @@
     "zone": "Archipiélago Wabbit",
     "step": 2,
     "type": "monster"
+  },
+  {
+    "id": 200,
+    "name": "Blop Coco Real",
+    "image": "./assets/img/blop_coco_real.webp",
+    "level": "60",
+    "subzone": "Lago de Cania",
+    "zone": "Llanuras de Cania",
+    "step": 17,
+    "type": "boss"
   }
 ]
