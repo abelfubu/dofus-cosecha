@@ -454,8 +454,8 @@
     "name": "Crowrajo",
     "image": "./assets/img/crowrajo.webp",
     "level": "25 - 45",
-    "subzone": "Tierras desoladas de Sidimonte",
-    "zone": "Landas de Sidimonte",
+    "subzone": "Tierras desoladas de Sidimote",
+    "zone": "Landas de Sidimote",
     "step": 3,
     "type": "monster"
   },
@@ -604,8 +604,8 @@
     "name": "Colmillo Blando",
     "image": "./assets/img/colmillo_blando.webp",
     "level": "62 - 70",
-    "subzone": "Tierras desoladas de Sidimonte",
-    "zone": "Landas de Sidimonte",
+    "subzone": "Tierras desoladas de Sidimote",
+    "zone": "Landas de Sidimote",
     "step": 4,
     "type": "monster"
   },
@@ -1174,8 +1174,8 @@
     "name": "Scorbuto",
     "image": "./assets/img/scorbuto.webp",
     "level": "62 - 70",
-    "subzone": "Tierras desoladas de Sidimonte",
-    "zone": "Landas de Sidimonte",
+    "subzone": "Tierras desoladas de Sidimote",
+    "zone": "Landas de Sidimote",
     "step": 6,
     "type": "monster"
   },
@@ -1735,7 +1735,7 @@
     "image": "./assets/img/mata.webp",
     "level": "62 - 70",
     "subzone": "Laboratorio de Brumen Tinctorias",
-    "zone": "Landas de Sidimonte",
+    "zone": "Landas de Sidimote",
     "step": 9,
     "type": "monster"
   },
@@ -1997,6 +1997,996 @@
     "subzone": "Arca de Otomai",
     "zone": "Isla de Otomai",
     "step": 11,
+    "type": "monster"
+  },
+  {
+    "id": 201,
+    "name": "Crujidor Pulío",
+    "image": "./assets/img/crujidor_pulio.webp",
+    "level": "96 - 108",
+    "subzone": "Llanuras herbosas",
+    "zone": "Isla de Otomai",
+    "step": 11,
+    "type": "monster"
+  },
+  {
+    "id": 202,
+    "name": "Culebrón",
+    "image": "./assets/img/culebron.webp",
+    "level": "52 - 60",
+    "subzone": "Campos de Cania",
+    "zone": "Llanuras de Cania",
+    "step": 11,
+    "type": "monster"
+  },
+  {
+    "id": 203,
+    "name": "Don Dórgano",
+    "image": "./assets/img/don_dorgano.webp",
+    "level": "90 - 114",
+    "subzone": "El laberinto del Dragocerdo",
+    "zone": "Laberinto del Dragocerdo",
+    "step": 11,
+    "type": "monster"
+  },
+  {
+    "id": 204,
+    "name": "Fantasma Corazado",
+    "image": "./assets/img/fantasma_corazado.webp",
+    "level": "42 - 50",
+    "subzone": "Afueras de Brakmar",
+    "zone": "Brakmar",
+    "step": 11,
+    "type": "monster"
+  },
+  {
+    "id": 205,
+    "name": "Fantasma de Aperitubo",
+    "image": "./assets/img/fantasma_de_aperitubo.webp",
+    "level": "42 - 50",
+    "subzone": "Afueras de Brakmar",
+    "zone": "Brakmar",
+    "step": 11,
+    "type": "monster"
+  },
+  {
+    "id": 206,
+    "name": "Fantasma Nimado",
+    "image": "./assets/img/fantasma_nimado.webp",
+    "level": "42 - 50",
+    "subzone": "Afueras de Brakmar",
+    "zone": "Brakmar",
+    "step": 11,
+    "type": "monster"
+  },
+  {
+    "id": 207,
+    "name": "Fantasma Sesino",
+    "image": "./assets/img/fantasma_sesino.webp",
+    "level": "42 - 50",
+    "subzone": "Afueras de Brakmar",
+    "zone": "Brakmar",
+    "step": 11,
+    "type": "monster"
+  },
+  {
+    "id": 208,
+    "name": "Ratón Verde",
+    "image": "./assets/img/raton_verde.webp",
+    "level": "56 - 68",
+    "subzone": "Campos de Cania",
+    "zone": "Llanuras de Cania",
+    "step": 11,
+    "type": "monster"
+  },
+  {
+    "id": 209,
+    "name": "Jefe Cocodrail",
+    "image": "./assets/img/jefe_cocodrail.webp",
+    "level": "61 - 77",
+    "subzone": "Pantanos nauseabundos",
+    "zone": "Montaña de los Koalaks",
+    "step": 11,
+    "type": "monster"
+  },
+  {
+    "id": 210,
+    "name": "Kanugro",
+    "image": "./assets/img/kanugro.webp",
+    "level": "62 - 70",
+    "subzone": "Caminos rocosos",
+    "zone": "Llanuras de Cania",
+    "step": 11,
+    "type": "monster"
+  },
+  {
+    "id": 211,
+    "name": "Kido",
+    "image": "./assets/img/kido.webp",
+    "level": "95 - 107",
+    "subzone": "Llanuras herbosas",
+    "zone": "Isla de Otomai",
+    "step": 11,
+    "type": "monster"
+  },
+  {
+    "id": 212,
+    "name": "Kilibris",
+    "image": "./assets/img/kilibris.webp",
+    "level": "98 - 110",
+    "subzone": "Llanuras herbosas",
+    "zone": "Isla de Otomai",
+    "step": 11,
+    "type": "monster"
+  },
+  {
+    "id": 213,
+    "name": "Larva Campestre",
+    "image": "./assets/img/larva_campestre.webp",
+    "level": "56 - 64",
+    "subzone": "Campos de Cania",
+    "zone": "Llanuras de Cania",
+    "step": 11,
+    "type": "monster"
+  },
+  {
+    "id": 214,
+    "name": "Marguerrita",
+    "image": "./assets/img/marguerrita.webp",
+    "level": "125 - 137",
+    "subzone": "Oscura jungla",
+    "zone": "Isla de Otomai",
+    "step": 11,
+    "type": "monster"
+  },
+  {
+    "id": 215,
+    "name": "Mediulubo",
+    "image": "./assets/img/mediulubo.webp",
+    "level": "92 - 100",
+    "subzone": "Altos de los Aullidos",
+    "zone": "Landas de Sidimote",
+    "step": 11,
+    "type": "monster"
+  },
+  {
+    "id": 216,
+    "name": "Mufafah",
+    "image": "./assets/img/mufafah.webp",
+    "level": "94 - 106",
+    "subzone": "Llanuras herbosas",
+    "zone": "Isla de Otomai",
+    "step": 11,
+    "type": "monster"
+  },
+  {
+    "id": 217,
+    "name": "Nierba",
+    "image": "./assets/img/nierba.webp",
+    "level": "126 - 138",
+    "subzone": "Oscura jungla",
+    "zone": "Isla de Otomai",
+    "step": 11,
+    "type": "monster"
+  },
+  {
+    "id": 218,
+    "name": "Kurookin",
+    "image": "./assets/img/kurookin.webp",
+    "level": "132 - 140",
+    "subzone": "Airedala",
+    "zone": "Isla de Pandala",
+    "step": 11,
+    "type": "monster"
+  },
+  {
+    "id": 219,
+    "name": "Tufo de las Llanuras",
+    "image": "./assets/img/tufo_de_las_llanuras.webp",
+    "level": "97 - 109",
+    "subzone": "Llanuras herbosas",
+    "zone": "Isla de Otomai",
+    "step": 11,
+    "type": "monster"
+  },
+  {
+    "id": 220,
+    "name": "Zumbobo",
+    "image": "./assets/img/zumbobo.webp",
+    "level": "51 - 59",
+    "subzone": "Campos de Cania",
+    "zone": "Llanuras de Cania",
+    "step": 12,
+    "type": "monster"
+  },
+  {
+    "id": 221,
+    "name": "Fuxfaigter",
+    "image": "./assets/img/fuxfaigter.webp",
+    "level": "64 - 72",
+    "subzone": "Caminos rocosos",
+    "zone": "Llanuras de Cania",
+    "step": 12,
+    "type": "monster"
+  },
+  {
+    "id": 222,
+    "name": "Tigredón",
+    "image": "./assets/img/tigredon.webp",
+    "level": "62 - 70",
+    "subzone": "Dientes de piedra",
+    "zone": "Pueblo de los Kanigs",
+    "step": 12,
+    "type": "monster"
+  },
+  {
+    "id": 223,
+    "name": "Dragosa",
+    "image": "./assets/img/dragosa.webp",
+    "level": "112 - 120",
+    "subzone": "Santuario de los dragohuevos",
+    "zone": "Amakna",
+    "step": 12,
+    "type": "monster"
+  },
+  {
+    "id": 224,
+    "name": "Guerrero Koalak",
+    "image": "./assets/img/guerrero_koalak.webp",
+    "level": "100 - 112",
+    "subzone": "Valle de la Muertekemata",
+    "zone": "Montaña de los Koalaks",
+    "step": 12,
+    "type": "monster"
+  },
+  {
+    "id": 225,
+    "name": "Kukumi",
+    "image": "./assets/img/kukumi.webp",
+    "level": "122 - 132",
+    "subzone": "Akwadala",
+    "zone": "Isla de Pandala",
+    "step": 12,
+    "type": "monster"
+  },
+  {
+    "id": 226,
+    "name": "Huerfelino",
+    "image": "./assets/img/huerfelino.webp",
+    "level": "75",
+    "subzone": "Dientes de piedra",
+    "zone": "Pueblo de los Kanigs",
+    "step": 12,
+    "type": "monster"
+  },
+  {
+    "id": 227,
+    "name": "Warko Marrón",
+    "image": "./assets/img/warko_marron.webp",
+    "level": "74 - 82",
+    "subzone": "Cañon salvaje",
+    "zone": "Montaña de los Koalaks",
+    "step": 12,
+    "type": "monster"
+  },
+  {
+    "id": 228,
+    "name": "Kojonuki",
+    "image": "./assets/img/kojonuki.webp",
+    "level": "122 - 130",
+    "subzone": "Tierradala",
+    "zone": "Isla de Pandala",
+    "step": 12,
+    "type": "monster"
+  },
+  {
+    "id": 229,
+    "name": "Abráknido Oscuro",
+    "image": "./assets/img/abraknido_oscuro.webp",
+    "level": "78 - 90",
+    "subzone": "Bosque oscuro",
+    "zone": "Bosque de los Abráknidos",
+    "step": 12,
+    "type": "monster"
+  },
+  {
+    "id": 230,
+    "name": "Alhiena",
+    "image": "./assets/img/alhiena.webp",
+    "level": "100",
+    "subzone": "Dientes de piedra",
+    "zone": "Pueblo de los Kanigs",
+    "step": 12,
+    "type": "monster"
+  },
+  {
+    "id": 231,
+    "name": "Koalak Sepulturero",
+    "image": "./assets/img/koalak_sepulturero.webp",
+    "level": "100 - 112",
+    "subzone": "Cementerio Primitivo",
+    "zone": "Montaña de los Koalaks",
+    "step": 12,
+    "type": "monster"
+  },
+  {
+    "id": 232,
+    "name": "Koalak Forestal",
+    "image": "./assets/img/koalak_forestal.webp",
+    "level": "80 - 88",
+    "subzone": "Bosque de los kaliptos",
+    "zone": "Montaña de los Koalaks",
+    "step": 12,
+    "type": "monster"
+  },
+  {
+    "id": 233,
+    "name": "Piralak",
+    "image": "./assets/img/piralak.webp",
+    "level": "80 - 88",
+    "subzone": "Lagos encantados",
+    "zone": "Montaña de los Koalaks",
+    "step": 12,
+    "type": "monster"
+  },
+  {
+    "id": 234,
+    "name": "Pekewalak",
+    "image": "./assets/img/pekewalak.webp",
+    "level": "80 - 88",
+    "subzone": "Lagos encantados",
+    "zone": "Montaña de los Koalaks",
+    "step": 12,
+    "type": "monster"
+  },
+  {
+    "id": 235,
+    "name": "Zampávoro",
+    "image": "./assets/img/zampavoro.webp",
+    "level": "92 - 100",
+    "subzone": "Jungla Prohibida",
+    "zone": "Isla de Moon",
+    "step": 12,
+    "type": "monster"
+  },
+  {
+    "id": 236,
+    "name": "Abrakno Oscuro",
+    "image": "./assets/img/abrakno_oscuro.webp",
+    "level": "80 - 92",
+    "subzone": "Bosque oscuro",
+    "zone": "Bosque de los Abráknidos",
+    "step": 12,
+    "type": "monster"
+  },
+  {
+    "id": 237,
+    "name": "Dragopavo dorado salvaje",
+    "image": "./assets/img/dragopavo_dorado_salvaje.webp",
+    "level": "55 - 67",
+    "subzone": "Territorio de los dragopavos salvajes",
+    "zone": "Montaña de los Koalaks",
+    "step": 12,
+    "type": "monster"
+  },
+  {
+    "id": 238,
+    "name": "Koalak Cabalgador",
+    "image": "./assets/img/koalak_cabalgador.webp",
+    "level": "102 - 114",
+    "subzone": "Cementerio Primitivo",
+    "zone": "Montaña de los Koalaks",
+    "step": 12,
+    "type": "monster"
+  },
+  {
+    "id": 239,
+    "name": "Mopet",
+    "image": "./assets/img/mopet.webp",
+    "level": "143 - 155",
+    "subzone": "Tronco del árbol Hakam",
+    "zone": "Isla de Otomai",
+    "step": 12,
+    "type": "monster"
+  },
+  {
+    "id": 240,
+    "name": "Ranúfar",
+    "image": "./assets/img/ranufar.webp",
+    "level": "102 - 110",
+    "subzone": "Plantala",
+    "zone": "Isla de Pandala",
+    "step": 13,
+    "type": "monster"
+  },
+  {
+    "id": 241,
+    "name": "Chavala Zoth",
+    "image": "./assets/img/chavala_zoth.webp",
+    "level": "117 - 129",
+    "subzone": "Pueblo de la Canopea",
+    "zone": "Isla de Otomai",
+    "step": 13,
+    "type": "monster"
+  },
+  {
+    "id": 242,
+    "name": "Komanbwork",
+    "image": "./assets/img/komanbwork.webp",
+    "level": "82 - 90",
+    "subzone": "Picos de Cania",
+    "zone": "Llanuras de Cania",
+    "step": 13,
+    "type": "monster"
+  },
+  {
+    "id": 243,
+    "name": "Diente Pe-león",
+    "image": "./assets/img/diente_pe-leon.webp",
+    "level": "128 - 140",
+    "subzone": "Oscura jungla",
+    "zone": "Isla de Otomai",
+    "step": 13,
+    "type": "monster"
+  },
+  {
+    "id": 244,
+    "name": "Discípulo Zoth",
+    "image": "./assets/img/discipulo_zoth.webp",
+    "level": "114 - 126",
+    "subzone": "Pueblo de la Canopea",
+    "zone": "Isla de Otomai",
+    "step": 13,
+    "type": "monster"
+  },
+  {
+    "id": 245,
+    "name": "Dragandrop",
+    "image": "./assets/img/dragandrop.webp",
+    "level": "112 - 120",
+    "subzone": "Santuario de los dragohuevos",
+    "zone": "Amakna",
+    "step": 13,
+    "type": "monster"
+  },
+  {
+    "id": 246,
+    "name": "Dragnarok",
+    "image": "./assets/img/dragnarok.webp",
+    "level": "112 - 120",
+    "subzone": "Santuario de los dragohuevos",
+    "zone": "Amakna",
+    "step": 13,
+    "type": "monster"
+  },
+  {
+    "id": 247,
+    "name": "Eztrambwork",
+    "image": "./assets/img/eztrambwork.webp",
+    "level": "82 - 90",
+    "subzone": "Picos de Cania",
+    "zone": "Llanuras de Cania",
+    "step": 13,
+    "type": "monster"
+  },
+  {
+    "id": 248,
+    "name": "Esquejika",
+    "image": "./assets/img/esquejika.webp",
+    "level": "127 - 139",
+    "subzone": "Oscura jungla",
+    "zone": "Isla de Otomai",
+    "step": 13,
+    "type": "monster"
+  },
+  {
+    "id": 249,
+    "name": "Floribundo",
+    "image": "./assets/img/floribundo.webp",
+    "level": "129 - 141",
+    "subzone": "Oscura jungla",
+    "zone": "Isla de Otomai",
+    "step": 13,
+    "type": "monster"
+  },
+  {
+    "id": 250,
+    "name": "Guerrero Zoth",
+    "image": "./assets/img/guerrero_zoth.webp",
+    "level": "120 - 132",
+    "subzone": "Pueblo de la Canopea",
+    "zone": "Isla de Otomai",
+    "step": 13,
+    "type": "monster"
+  },
+  {
+    "id": 251,
+    "name": "Koalak Salvaje",
+    "image": "./assets/img/koalak_salvaje.webp",
+    "level": "104 - 116",
+    "subzone": "Valle de la Muertekemata",
+    "zone": "Montaña de los Koalaks",
+    "step": 13,
+    "type": "monster"
+  },
+  {
+    "id": 252,
+    "name": "Guerrero Sanguíneo",
+    "image": "./assets/img/koalak_sanguineo.webp",
+    "level": "102 - 114",
+    "subzone": "Valle de la Muertekemata",
+    "zone": "Montaña de los Koalaks",
+    "step": 13,
+    "type": "monster"
+  },
+  {
+    "id": 253,
+    "name": "Lodostropajo",
+    "image": "./assets/img/lodostropajo.webp",
+    "level": "95 - 107",
+    "subzone": "Turbera sin fondo",
+    "zone": "Isla de Otomai",
+    "step": 13,
+    "type": "monster"
+  },
+  {
+    "id": 254,
+    "name": "Mamá Koalak",
+    "image": "./assets/img/mama_koalak.webp",
+    "level": "90 - 98",
+    "subzone": "Cañon salvaje",
+    "zone": "Montaña de los Koalaks",
+    "step": 13,
+    "type": "monster"
+  },
+  {
+    "id": 255,
+    "name": "Medibwork",
+    "image": "./assets/img/medibwork.webp",
+    "level": "82 - 90",
+    "subzone": "Picos de Cania",
+    "zone": "Llanuras de Cania",
+    "step": 13,
+    "type": "monster"
+  },
+  {
+    "id": 256,
+    "name": "Megabwork",
+    "image": "./assets/img/megabwork.webp",
+    "level": "82 - 90",
+    "subzone": "Picos de Cania",
+    "zone": "Llanuras de Cania",
+    "step": 13,
+    "type": "monster"
+  },
+  {
+    "id": 257,
+    "name": "Momioa Koalak",
+    "image": "./assets/img/momia_koalak.webp",
+    "level": "106 - 118",
+    "subzone": "Cementerio Primitivo",
+    "zone": "Montaña de los Koalaks",
+    "step": 13,
+    "type": "monster"
+  },
+  {
+    "id": 258,
+    "name": "Tufo Oscuro",
+    "image": "./assets/img/tufo_oscuro.webp",
+    "level": "130 - 142",
+    "subzone": "Oscura jungla",
+    "zone": "Isla de Otomai",
+    "step": 13,
+    "type": "monster"
+  },
+  {
+    "id": 259,
+    "name": "Warko Violeta",
+    "image": "./assets/img/warko_violeta.webp",
+    "level": "106 - 118",
+    "subzone": "Valle de la Muertekemata",
+    "zone": "Montaña de los Koalaks",
+    "step": 13,
+    "type": "monster"
+  },
+  {
+    "id": 260,
+    "name": "Abrajidor Oscuro",
+    "image": "./assets/img/abrajidor_oscuro.webp",
+    "level": "131 - 143",
+    "subzone": "Oscura jungla",
+    "zone": "Isla de Otomai",
+    "step": 14,
+    "type": "monster"
+  },
+  {
+    "id": 261,
+    "name": "Barrostropajo",
+    "image": "./assets/img/barrostropajo.webp",
+    "level": "100 - 112",
+    "subzone": "Turbera sin fondo",
+    "zone": "Isla de Otomai",
+    "step": 14,
+    "type": "monster"
+  },
+  {
+    "id": 262,
+    "name": "Cofre Equipado",
+    "image": "./assets/img/cofre_equipado.webp",
+    "level": "57 - 65",
+    "subzone": "Sierra de Cania",
+    "zone": "Llanuras de Cania",
+    "step": 14,
+    "type": "monster"
+  },
+  {
+    "id": 263,
+    "name": "Dragoss Arcilloso",
+    "image": "./assets/img/dragoss_arcilloso.webp",
+    "level": "92 - 100",
+    "subzone": "Pueblo de los dragohuevos",
+    "zone": "Amakna",
+    "step": 14,
+    "type": "monster"
+  },
+  {
+    "id": 264,
+    "name": "Dragoss Calizo",
+    "image": "./assets/img/dragoss_calizo.webp",
+    "level": "92 - 100",
+    "subzone": "Pueblo de los dragohuevos",
+    "zone": "Amakna",
+    "step": 14,
+    "type": "monster"
+  },
+  {
+    "id": 265,
+    "name": "Dragoss Carbonoso",
+    "image": "./assets/img/dragoss_carbonoso.webp",
+    "level": "92 - 100",
+    "subzone": "Pueblo de los dragohuevos",
+    "zone": "Amakna",
+    "step": 14,
+    "type": "monster"
+  },
+  {
+    "id": 266,
+    "name": "Dragoss Pizarroso",
+    "image": "./assets/img/dragoss_pizarroso.webp",
+    "level": "92 - 100",
+    "subzone": "Pueblo de los dragohuevos",
+    "zone": "Amakna",
+    "step": 14,
+    "type": "monster"
+  },
+  {
+    "id": 267,
+    "name": "Drakoalak",
+    "image": "./assets/img/drakoalak.webp",
+    "level": "90 - 98",
+    "subzone": "Cañon salvaje",
+    "zone": "Montaña de los Koalaks",
+    "step": 14,
+    "type": "monster"
+  },
+  {
+    "id": 268,
+    "name": "Rojiva",
+    "image": "./assets/img/rojiva.webp",
+    "level": "132 - 140",
+    "subzone": "Fuegodala",
+    "zone": "Isla de Pandala",
+    "step": 14,
+    "type": "monster"
+  },
+  {
+    "id": 269,
+    "name": "Maestro Koalak",
+    "image": "./assets/img/maestro_koalak.webp",
+    "level": "108 - 120",
+    "subzone": "Cementerio Primitivo",
+    "zone": "Montaña de los Koalaks",
+    "step": 14,
+    "type": "monster"
+  },
+  {
+    "id": 270,
+    "name": "Mamanuki",
+    "image": "./assets/img/mamanuki.webp",
+    "level": "122 - 130",
+    "subzone": "Tierradala",
+    "zone": "Isla de Pandala",
+    "step": 14,
+    "type": "monster"
+  },
+  {
+    "id": 271,
+    "name": "Pohoyo",
+    "image": "./assets/img/pohoyo.webp",
+    "level": "142 - 158",
+    "subzone": "Tronco del árbol Hakam",
+    "zone": "Isla de Otomai",
+    "step": 14,
+    "type": "monster"
+  },
+  {
+    "id": 272,
+    "name": "Robionicle",
+    "image": "./assets/img/robionicle.webp",
+    "level": "55 - 63",
+    "subzone": "Sierra de Cania",
+    "zone": "Llanuras de Cania",
+    "step": 14,
+    "type": "monster"
+  },
+  {
+    "id": 273,
+    "name": "Kanublú",
+    "image": "./assets/img/kanublu.webp",
+    "level": "151 - 159",
+    "subzone": "Dientes de piedra",
+    "zone": "Llanuras de Cania",
+    "step": 14,
+    "type": "monster"
+  },
+  {
+    "id": 274,
+    "name": "Roboto Mangual",
+    "image": "./assets/img/robot_mangual.webp",
+    "level": "53 - 61",
+    "subzone": "Sierra de Cania",
+    "zone": "Llanuras de Cania",
+    "step": 14,
+    "type": "monster"
+  },
+  {
+    "id": 275,
+    "name": "Siegalak",
+    "image": "./assets/img/siegalak.webp",
+    "level": "108 - 120",
+    "subzone": "Valle de la Muertekemata",
+    "zone": "Montaña de los Koalaks",
+    "step": 14,
+    "type": "monster"
+  },
+  {
+    "id": 276,
+    "name": "Bumbardero",
+    "image": "./assets/img/bumbardero.webp",
+    "level": "132 - 140",
+    "subzone": "Fuegodala",
+    "zone": "Isla de Pandala",
+    "step": 14,
+    "type": "monster"
+  },
+  {
+    "id": 277,
+    "name": "Trooloko",
+    "image": "./assets/img/trooloko.webp",
+    "level": "112 - 120",
+    "subzone": "Bosque de Litneg",
+    "zone": "Llanuras de Cania",
+    "step": 14,
+    "type": "monster"
+  },
+  {
+    "id": 278,
+    "name": "Abrajidor Claro",
+    "image": "./assets/img/abrajidor_claro.webp",
+    "level": "150 - 162",
+    "subzone": "Tronco del árbol Hakam",
+    "zone": "Isla de Otomai",
+    "step": 15,
+    "type": "monster"
+  },
+  {
+    "id": 279,
+    "name": "Champáknido",
+    "image": "./assets/img/champaknido.webp",
+    "level": "172 - 180",
+    "subzone": "Territorio de los Fongos",
+    "zone": "Landas de Sidimote",
+    "step": 15,
+    "type": "monster"
+  },
+  {
+    "id": 280,
+    "name": "Champbis",
+    "image": "./assets/img/champbis.webp",
+    "level": "172 - 180",
+    "subzone": "Caverna de los fongos",
+    "zone": "Landas de Sidimote",
+    "step": 15,
+    "type": "monster"
+  },
+  {
+    "id": 281,
+    "name": "Champidonte",
+    "image": "./assets/img/champidonte.webp",
+    "level": "172 - 180",
+    "subzone": "Caverna de los fongos",
+    "zone": "Landas de Sidimote",
+    "step": 15,
+    "type": "monster"
+  },
+  {
+    "id": 282,
+    "name": "Onabu-Geisha",
+    "image": "./assets/img/onabu-geisha.webp",
+    "level": "152 - 160",
+    "subzone": "Cementerio de Grobe",
+    "zone": "Isla de Grobe",
+    "step": 15,
+    "type": "monster"
+  },
+  {
+    "id": 283,
+    "name": "Jiangshi-Nobi",
+    "image": "./assets/img/jiangshi-nobi.webp",
+    "level": "152 - 160",
+    "subzone": "Cementerio de Grobe",
+    "zone": "Isla de Grobe",
+    "step": 15,
+    "type": "monster"
+  },
+  {
+    "id": 284,
+    "name": "Majaro",
+    "image": "./assets/img/majaro.webp",
+    "level": "162 - 170",
+    "subzone": "Monte de las tumbas",
+    "zone": "Isla de Grobe",
+    "step": 15,
+    "type": "monster"
+  },
+  {
+    "id": 285,
+    "name": "Bakazako",
+    "image": "./assets/img/bakazako.webp",
+    "level": "162 - 170",
+    "subzone": "Monte de las tumbas",
+    "zone": "Isla de Grobe",
+    "step": 15,
+    "type": "monster"
+  },
+  {
+    "id": 286,
+    "name": "Tsukinoichi",
+    "image": "./assets/img/tsukinoichi.webp",
+    "level": "152 - 160",
+    "subzone": "Cementerio de Grobe",
+    "zone": "Isla de Grobe",
+    "step": 15,
+    "type": "monster"
+  },
+  {
+    "id": 287,
+    "name": "Tamburái",
+    "image": "./assets/img/tamburai.webp",
+    "level": "152 - 160",
+    "subzone": "Cementerio de Grobe",
+    "zone": "Isla de Grobe",
+    "step": 15,
+    "type": "monster"
+  },
+  {
+    "id": 288,
+    "name": "Kasrakol",
+    "image": "./assets/img/kasrakol.webp",
+    "level": "146 - 162",
+    "subzone": "Tronco del árbol Hakam",
+    "zone": "Isla de Otomai",
+    "step": 15,
+    "type": "monster"
+  },
+  {
+    "id": 289,
+    "name": "Maestro Zoth",
+    "image": "./assets/img/maestro_zoth.webp",
+    "level": "126 - 138",
+    "subzone": "Pueblo de la Canopea",
+    "zone": "Isla de Otomai",
+    "step": 15,
+    "type": "monster"
+  },
+  {
+    "id": 290,
+    "name": "Petafux",
+    "image": "./assets/img/petafux.webp",
+    "level": "132 - 140",
+    "subzone": "Fuegodala",
+    "zone": "Isla de Pandala",
+    "step": 15,
+    "type": "monster"
+  },
+  {
+    "id": 291,
+    "name": "Rey Stropajo",
+    "image": "./assets/img/rey_stropajo.webp",
+    "level": "192 - 200",
+    "subzone": "Turbera sin fondo",
+    "zone": "Isla de Otomai",
+    "step": 15,
+    "type": "monster"
+  },
+  {
+    "id": 292,
+    "name": "Sargento Zoth",
+    "image": "./assets/img/sargento_zoth.webp",
+    "level": "123 - 135",
+    "subzone": "Pueblo de la Canopea",
+    "zone": "Isla de Otomai",
+    "step": 15,
+    "type": "monster"
+  },
+  {
+    "id": 293,
+    "name": "Seta Peleona",
+    "image": "./assets/img/seta_peleona.webp",
+    "level": "172 - 180",
+    "subzone": "Caverna de los fongos",
+    "zone": "Landas de Sidimote",
+    "step": 15,
+    "type": "monster"
+  },
+  {
+    "id": 294,
+    "name": "Setador",
+    "image": "./assets/img/setador.webp",
+    "level": "172 - 180",
+    "subzone": "Caverna de los fongos",
+    "zone": "Landas de Sidimote",
+    "step": 15,
+    "type": "monster"
+  },
+  {
+    "id": 295,
+    "name": "Trompseta",
+    "image": "./assets/img/trompseta.webp",
+    "level": "172 - 180",
+    "subzone": "Territorio de los Fongos",
+    "zone": "Landas de Sidimote",
+    "step": 15,
+    "type": "monster"
+  },
+  {
+    "id": 296,
+    "name": "Tufo Aéreo",
+    "image": "./assets/img/tufo_aereo.webp",
+    "level": "144 - 160",
+    "subzone": "Tronco del árbol Hakam",
+    "zone": "Isla de Otomai",
+    "step": 15,
+    "type": "monster"
+  },
+  {
+    "id": 297,
+    "name": "Gorolichang",
+    "image": "./assets/img/gorolichang.webp",
+    "level": "132 - 140",
+    "subzone": "Airedala",
+    "zone": "Isla de Pandala",
+    "step": 15,
+    "type": "monster"
+  },
+  {
+    "id": 298,
+    "name": "Kaonashi",
+    "image": "./assets/img/kaonashi.webp",
+    "level": "152 - 160",
+    "subzone": "Monte de las tumbas",
+    "zone": "Isla de Grobe",
+    "step": 16,
+    "type": "monster"
+  },
+  {
+    "id": 299,
+    "name": "Tsume-bozu",
+    "image": "./assets/img/tsume-bozu.webp",
+    "level": "162 - 170",
+    "subzone": "Monte de las tumbas",
+    "zone": "Isla de Grobe",
+    "step": 16,
     "type": "monster"
   },
   {
