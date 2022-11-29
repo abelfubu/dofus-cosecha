@@ -1832,7 +1832,7 @@
   {
     "id": 184,
     "name": "Dragohuevo Arcilloso",
-    "image": "./assets/img/dragohuevo_archilloso.webp",
+    "image": "./assets/img/dragohuevo_arcilloso.webp",
     "level": "62 - 70",
     "subzone": "Península de los dragohuevos",
     "zone": "Amakna",
@@ -1992,7 +1992,7 @@
   {
     "id": 200,
     "name": "Barbrusa",
-    "image": "./assets/img/Barbrusa.webp",
+    "image": "./assets/img/barbrusa.webp",
     "level": "58 - 70",
     "subzone": "Arca de Otomai",
     "zone": "Isla de Otomai",
@@ -2511,7 +2511,7 @@
   },
   {
     "id": 252,
-    "name": "Guerrero Sanguíneo",
+    "name": "Koalak Sanguíneo",
     "image": "./assets/img/koalak_sanguineo.webp",
     "level": "102 - 114",
     "subzone": "Valle de la Muertekemata",
@@ -2561,7 +2561,7 @@
   },
   {
     "id": 257,
-    "name": "Momioa Koalak",
+    "name": "Momia Koalak",
     "image": "./assets/img/momia_koalak.webp",
     "level": "106 - 118",
     "subzone": "Cementerio Primitivo",
@@ -2731,7 +2731,7 @@
   },
   {
     "id": 274,
-    "name": "Roboto Mangual",
+    "name": "Robot Mangual",
     "image": "./assets/img/robot_mangual.webp",
     "level": "53 - 61",
     "subzone": "Sierra de Cania",
