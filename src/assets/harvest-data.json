@@ -2041,16 +2041,6 @@
   },
   {
     "id": 304,
-    "name": "Blop Guinda Real",
-    "image": "./assets/img/blop_guinda_real.webp",
-    "level": "60",
-    "subzone": "Lago de Cania",
-    "zone": "Llanuras de Cania",
-    "step": 17,
-    "type": "boss"
-  },
-  {
-    "id": 305,
     "name": "Bworka",
     "image": "./assets/img/bworka.webp",
     "level": "50",
@@ -2060,7 +2050,7 @@
     "type": "boss"
   },
   {
-    "id": 306,
+    "id": 305,
     "name": "Deminobola",
     "image": "./assets/img/deminobola.webp",
     "level": "108 - 120",
@@ -2070,7 +2060,7 @@
     "type": "boss"
   },
   {
-    "id": 307,
+    "id": 306,
     "name": "Dragocerdo",
     "image": "./assets/img/dragocerdo.webp",
     "level": "100",
@@ -2080,7 +2070,7 @@
     "type": "boss"
   },
   {
-    "id": 308,
+    "id": 307,
     "name": "Escarajefe Dorado",
     "image": "./assets/img/escarajefe_dorado.webp",
     "level": "40",
@@ -2090,7 +2080,7 @@
     "type": "boss"
   },
   {
-    "id": 309,
+    "id": 308,
     "name": "Gelatina Real Azul",
     "image": "./assets/img/gelatina_real_azul.webp",
     "level": "60",
@@ -2100,7 +2090,7 @@
     "type": "boss"
   },
   {
-    "id": 310,
+    "id": 309,
     "name": "Gelatina Real de Menta",
     "image": "./assets/img/gelatina_real_de_menta.webp",
     "level": "60",
@@ -2110,7 +2100,7 @@
     "type": "boss"
   },
   {
-    "id": 311,
+    "id": 310,
     "name": "Girasol Hambriento",
     "image": "./assets/img/girasol_hambriento.webp",
     "level": "20",
@@ -2120,7 +2110,7 @@
     "type": "boss"
   },
   {
-    "id": 312,
+    "id": 311,
     "name": "Jalató Real",
     "image": "./assets/img/jalato_real.webp",
     "level": "30",
@@ -2130,7 +2120,7 @@
     "type": "boss"
   },
   {
-    "id": 313,
+    "id": 312,
     "name": "Minotauroro",
     "image": "./assets/img/minotauroro.webp",
     "level": "120",
@@ -2140,7 +2130,7 @@
     "type": "boss"
   },
   {
-    "id": 314,
+    "id": 313,
     "name": "Mob Lasponja",
     "image": "./assets/img/mob_lasponja.webp",
     "level": "20",
@@ -2150,7 +2140,7 @@
     "type": "boss"
   },
   {
-    "id": 315,
+    "id": 314,
     "name": "Mominotauro",
     "image": "./assets/img/mominotauro.webp",
     "level": "108 - 120",
@@ -2160,7 +2150,7 @@
     "type": "boss"
   },
   {
-    "id": 316,
+    "id": 315,
     "name": "Rata Blanca",
     "image": "./assets/img/rata_blanca.webp",
     "level": "110 - 150",
@@ -2170,7 +2160,7 @@
     "type": "boss"
   },
   {
-    "id": 317,
+    "id": 316,
     "name": "Rata Negra",
     "image": "./assets/img/rata_negra.webp",
     "level": "110 - 150",
@@ -2180,7 +2170,7 @@
     "type": "boss"
   },
   {
-    "id": 318,
+    "id": 317,
     "name": "Shin Larva",
     "image": "./assets/img/shin_larva.webp",
     "level": "50",
@@ -2190,7 +2180,7 @@
     "type": "boss"
   },
   {
-    "id": 319,
+    "id": 318,
     "name": "Tofu Real",
     "image": "./assets/img/tofu_real.webp",
     "level": "120",
@@ -2200,7 +2190,7 @@
     "type": "boss"
   },
   {
-    "id": 320,
+    "id": 319,
     "name": "Wabbit GM",
     "image": "./assets/img/Wabbit_gm.webp",
     "level": "110 - 150",
@@ -2210,323 +2200,313 @@
     "type": "boss"
   },
   {
-    "id": 321,
+    "id": 320,
     "name": "Abráknido Ancestral",
     "image": "./assets/img/abraknido_ancestral.webp",
     "level": "90",
     "subzone": "Bosque Oscuro",
     "zone": "Bosque de los Abráknidos",
-    "step": 17,
+    "step": 18,
     "type": "boss"
   },
   {
-    "id": 322,
+    "id": 321,
     "name": "Blop Multicolor Real",
     "image": "./assets/img/blop_multicolor_real.webp",
     "level": "120",
     "subzone": "Lago de Cania",
     "zone": "Llanuras de Cania",
-    "step": 17,
+    "step": 18,
     "type": "boss"
   },
   {
-    "id": 323,
+    "id": 322,
     "name": "Coralador Magistral",
     "image": "./assets/img/coralador_magistral.webp",
     "level": "50",
     "subzone": "Playa Coral",
     "zone": "Isla de Otomai",
-    "step": 17,
+    "step": 18,
     "type": "boss"
   },
   {
-    "id": 324,
+    "id": 323,
     "name": "Crujidor Legendario",
     "image": "./assets/img/crujidor_legendario.webp",
     "level": "70",
     "subzone": "La montaña de los crujidores",
     "zone": "Amakna",
-    "step": 17,
+    "step": 18,
     "type": "boss"
   },
   {
-    "id": 325,
+    "id": 324,
     "name": "Gelatina Real de Fresa",
     "image": "./assets/img/gelatina_real_de_fresa.webp",
     "level": "60",
     "subzone": "Gelaxta Dimensión",
     "zone": "Amakna",
-    "step": 17,
+    "step": 18,
     "type": "boss"
   },
   {
-    "id": 326,
+    "id": 325,
     "name": "Guardiana de alcantarilla",
     "image": "./assets/img/guardiana_de_alcantarilla.webp",
     "level": "145 - 165",
     "subzone": "Alcantarillas",
     "zone": "Varios",
-    "step": 17,
+    "step": 18,
     "type": "boss"
   },
   {
-    "id": 327,
+    "id": 326,
     "name": "Gurlo el Terrible",
     "image": "./assets/img/gurlo_el_terrible.webp",
     "level": "70",
     "subzone": "Tubera sin Fondo",
     "zone": "Isla de Otomai",
-    "step": 17,
+    "step": 18,
     "type": "boss"
   },
   {
-    "id": 328,
+    "id": 327,
     "name": "Hanshi",
     "image": "./assets/img/hanshi.webp",
     "level": "140",
     "subzone": "Airelada",
     "zone": "Pandala",
-    "step": 17,
+    "step": 18,
     "type": "boss"
   },
   {
-    "id": 329,
+    "id": 328,
     "name": "Hell Mina",
     "image": "./assets/img/hell_mina.webp",
     "level": "140",
     "subzone": "Bosque maléfico",
     "zone": "Amakna",
-    "step": 17,
+    "step": 18,
     "type": "boss"
   },
   {
-    "id": 330,
+    "id": 329,
     "name": "Maestro Cuerbok",
     "image": "./assets/img/maestro_cuerbok.webp",
     "level": "110 - 220",
     "subzone": "Morada de Cuerbok",
     "zone": "Llanuras de Cania",
-    "step": 17,
+    "step": 18,
     "type": "boss"
   },
   {
-    "id": 331,
+    "id": 330,
     "name": "Maxilubo",
     "image": "./assets/img/maxilubo.webp",
     "level": "100",
     "subzone": "Altos de los Aullidos",
     "zone": "Landas de Sidimote",
-    "step": 17,
+    "step": 18,
     "type": "boss"
   },
   {
-    "id": 332,
+    "id": 331,
     "name": "Moon",
     "image": "./assets/img/moon.webp",
     "level": "100",
     "subzone": "Jungla Prohibida",
     "zone": "Isla de Moon",
-    "step": 17,
+    "step": 18,
     "type": "boss"
   },
   {
     "id": 332,
-    "name": "Moon",
-    "image": "./assets/img/moon.webp",
-    "level": "100",
-    "subzone": "Jungla Prohibida",
-    "zone": "Isla de Moon",
-    "step": 17,
-    "type": "boss"
-  },
-  {
-    "id": 333,
     "name": "Skonk",
     "image": "./assets/img/skonk.webp",
     "level": "120",
     "subzone": "Valle de la Muertekemata",
     "zone": "Montaña de los Koalaks",
-    "step": 17,
+    "step": 18,
     "type": "boss"
   },
   {
-    "id": 334,
+    "id": 333,
     "name": "Tanukui San",
     "image": "./assets/img/tanukui_San.webp",
     "level": "130",
     "subzone": "Tierralada",
     "zone": "Pandala",
-    "step": 17,
+    "step": 18,
     "type": "boss"
   },
   {
-    "id": 335,
+    "id": 334,
     "name": "Trankitronko",
     "image": "./assets/img/trankitronko.webp",
     "level": "100",
     "subzone": "Cañon Savaje",
     "zone": "Montaña de los Koalaks",
-    "step": 17,
+    "step": 18,
     "type": "boss"
   },
   {
-    "id": 336,
+    "id": 335,
     "name": "Tynril Absorto",
     "image": "./assets/img/tynril_absorto.webp",
     "level": "140 - 280",
     "subzone": "Jungla Oscura",
     "zone": "Isla de Otomai",
-    "step": 17,
+    "step": 18,
     "type": "boss"
   },
   {
-    "id": 337,
+    "id": 336,
     "name": "Tynril Atónito",
     "image": "./assets/img/tynril_atónito.webp",
     "level": "140 - 280",
     "subzone": "Jungla Oscura",
     "zone": "Isla de Otomai",
-    "step": 17,
+    "step": 18,
     "type": "boss"
   },
   {
-    "id": 338,
+    "id": 337,
     "name": "Tynril Estupefacto",
     "image": "./assets/img/tynril_estupefacto.webp",
     "level": "140 - 280",
     "subzone": "Jungla Oscura",
     "zone": "Isla de Otomai",
-    "step": 17,
+    "step": 18,
     "type": "boss"
   },
   {
-    "id": 339,
+    "id": 338,
     "name": "Tynril Pérfido",
     "image": "./assets/img/tynril_perfido.webp",
     "level": "140 - 280",
     "subzone": "Jungla Oscura",
     "zone": "Isla de Otomai",
-    "step": 17,
+    "step": 18,
     "type": "boss"
   },
   {
-    "id": 340,
+    "id": 339,
     "name": "Wey Wabbit",
     "image": "./assets/img/wey_wabbit.webp",
     "level": "60",
     "subzone": "Islote la Cowona",
     "zone": "Archipiélago Wabbit",
-    "step": 17,
+    "step": 18,
     "type": "boss"
   },
   {
-    "id": 341,
+    "id": 340,
     "name": "Bworker",
     "image": "./assets/img/bworker.webp",
     "level": "180",
     "subzone": "Gisgul",
     "zone": "Landas de Sidimote",
-    "step": 17,
+    "step": 19,
     "type": "boss"
   },
   {
-    "id": 342,
+    "id": 341,
     "name": "Cocabulia",
     "image": "./assets/img/cocabulia.webp",
     "level": "120",
     "subzone": "Península de los Dragohuevos",
     "zone": "Amakna",
-    "step": 17,
+    "step": 19,
     "type": "boss"
   },
   {
-    "id": 343,
+    "id": 342,
     "name": "Funámbola",
     "image": "./assets/img/funámbola.webp",
     "level": "130 - 140",
     "subzone": "Fuegodala",
     "zone": "Pandala",
-    "step": 17,
+    "step": 19,
     "type": "boss"
   },
   {
-    "id": 344,
+    "id": 343,
     "name": "Gelatina Real de Limón",
     "image": "./assets/img/gelatina_real_de_limon.webp",
     "level": "60",
     "subzone": "Gelaxta Dimensión",
     "zone": "Amakna",
-    "step": 17,
+    "step": 19,
     "type": "boss"
   },
   {
-    "id": 345,
+    "id": 344,
     "name": "Kimbo",
     "image": "./assets/img/kimbo.webp",
     "level": "160",
     "subzone": "Las ramas del árbol Hakam",
     "zone": "Isla de Otomai",
-    "step": 17,
+    "step": 19,
     "type": "boss"
   },
   {
-    "id": 346,
-    "name": "Monotot",
+    "id": 345,
+    "name": "Minotot",
     "image": "./assets/img/minotot.webp",
     "level": "160",
     "subzone": "Isla del Minotauroro",
     "zone": "Isla del Minotauroro",
-    "step": 17,
+    "step": 19,
     "type": "boss"
   },
   {
-    "id": 347,
+    "id": 346,
     "name": "Roble Blando",
     "image": "./assets/img/roble_blando.webp",
     "level": "140",
     "subzone": "Bosque Oscuro",
     "zone": "Bosque de los Abráknidos",
-    "step": 17,
+    "step": 19,
     "type": "boss"
   },
   {
-    "id": 348,
+    "id": 347,
     "name": "Sfinter Cell",
     "image": "./assets/img/bworker.webp",
     "level": "150",
     "subzone": "Castillo de Amakna",
     "zone": "Amakna",
-    "step": 17,
+    "step": 19,
     "type": "boss"
   },
   {
-    "id": 349,
+    "id": 348,
     "name": "Silf el Rasgabola Mayor",
     "image": "./assets/img/silf_el_rasgabola_mayor.webp",
     "level": "110",
     "subzone": "lanuras Herbosas",
     "zone": "Isla de Otomai",
-    "step": 17,
+    "step": 19,
     "type": "boss"
   },
   {
-    "id": 350,
+    "id": 349,
     "name": "Thor Pestruz",
     "image": "./assets/img/thor_pestruz.webp",
     "level": "150",
     "subzone": "Circo de Cania",
     "zone": "Llanuras de Cania",
-    "step": 17,
+    "step": 19,
     "type": "boss"
   },
   {
-    "id": 351,
+    "id": 350,
     "name": "Ugah",
     "image": "./assets/img/ugah.webp",
     "level": "180",
     "subzone": "Territorio de los Fongos",
     "zone": "Landas de Sidimote",
-    "step": 17,
+    "step": 19,
     "type": "boss"
   }
 ]
