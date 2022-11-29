@@ -1621,10 +1621,10 @@
   },
   {
     "id": 163,
-    "name": "Cerdo Serrano",
-    "image": "./assets/img/cerdo_serrano.webp",
-    "level": "80 - 92",
-    "subzone": "Territorio de los porcos",
+    "name": "Draguirritado",
+    "image": "./assets/img/draguirritado.webp",
+    "level": "112 - 120",
+    "subzone": "Santuario de los dragohuevos",
     "zone": "Amakna",
     "step": 9,
     "type": "monster"
@@ -3498,5 +3498,15 @@
     "zone": "Landas de Sidimote",
     "step": 19,
     "type": "boss"
+  },
+  {
+    "id": 351,
+    "name": "Ugah",
+    "image": "./assets/img/ugah.webp",
+    "level": "180",
+    "subzone": "Territorio de los Fongos",
+    "zone": "Landas de Sidimote",
+    "step": 19,
+    "type": "archi"
   }
 ]
