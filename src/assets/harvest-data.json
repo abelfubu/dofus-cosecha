@@ -2192,7 +2192,7 @@
   {
     "id": 319,
     "name": "Wabbit GM",
-    "image": "./assets/img/Wabbit_gm.webp",
+    "image": "./assets/img/wabbit_gm.webp",
     "level": "110 - 150",
     "subzone": "Subterráneos de los Wabbits",
     "zone": "Archipiélago Wabbit",
@@ -2332,7 +2332,7 @@
   {
     "id": 333,
     "name": "Tanukui San",
-    "image": "./assets/img/tanukui_San.webp",
+    "image": "./assets/img/tanukui_san.webp",
     "level": "130",
     "subzone": "Tierralada",
     "zone": "Pandala",
@@ -2362,7 +2362,7 @@
   {
     "id": 336,
     "name": "Tynril Atónito",
-    "image": "./assets/img/tynril_atónito.webp",
+    "image": "./assets/img/tynril_atonito.webp",
     "level": "140 - 280",
     "subzone": "Jungla Oscura",
     "zone": "Isla de Otomai",
@@ -2422,7 +2422,7 @@
   {
     "id": 342,
     "name": "Funámbola",
-    "image": "./assets/img/funámbola.webp",
+    "image": "./assets/img/funambola.webp",
     "level": "130 - 140",
     "subzone": "Fuegodala",
     "zone": "Pandala",
