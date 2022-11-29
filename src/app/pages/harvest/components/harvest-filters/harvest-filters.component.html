@@ -15,3 +15,7 @@
 		</div>
 	</div>
 </form>
+
+<div style="display: grid; grid-template-columns: repeat(4, 1fr); grid-gap: 3rem; max-width: 900px; margin: 0 auto">
+	<app-chart *ngFor="let item of data$ | async" [data]="item"></app-chart>
+</div>
