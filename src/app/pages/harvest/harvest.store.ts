@@ -4,8 +4,9 @@ import { switchMap } from 'rxjs/operators';
 
 import { HarvestDataService } from './services/harvest-data.service';
 
-import { Harvest } from './models/harvest';
+import { Harvest, HarvestType } from './models/harvest';
 import { LocalStorageService } from 'src/app/shared/services/local-storage.service';
+import { ChartSlice } from 'src/app/shared/chart/chart.model';
 
 export type UserHarvest = Pick<Harvest, 'id' | 'captured' | 'amount'>;
 
@@ -17,12 +18,14 @@ export interface HarvestFilters {
 }
 
 export interface HarvestData {
+  statistics: ChartSlice[][];
   originalData: Harvest[];
   harvest: Harvest[];
   filters: HarvestFilters;
 }
 
 const DEFAULT_STATE: HarvestData = {
+  statistics: [],
   originalData: [],
   harvest: [],
   filters: {
@@ -53,6 +56,7 @@ export class HarvestStore extends ComponentStore<HarvestData> {
 
   readonly harvest$ = this.select(({ harvest }) => harvest);
   readonly steps$ = this.select(({ filters }) => filters.steps);
+  readonly statistics$ = this.select(({ statistics }) => statistics);
 
   readonly getData = this.effect((trigger$) =>
     trigger$.pipe(
@@ -84,6 +88,7 @@ export class HarvestStore extends ComponentStore<HarvestData> {
 
       return {
         ...state,
+        statistics: this.calculateStatistics(mappedData),
         originalData: mappedData,
         harvest: mappedData,
       };
@@ -145,9 +150,12 @@ export class HarvestStore extends ComponentStore<HarvestData> {
     const callback = (i: Harvest) =>
       i.id === item.id ? { ...i, ...storage } : i;
 
+    const originalData = state.originalData.map(callback);
+
     return {
       ...state,
-      originalData: state.originalData.map(callback),
+      originalData,
+      statistics: this.calculateStatistics(originalData),
       harvest: this.applyFilters(state.harvest.map(callback), state.filters),
     };
   });
@@ -181,6 +189,87 @@ export class HarvestStore extends ComponentStore<HarvestData> {
       acc.push(item);
       return acc;
     }, []);
+  }
+
+  private calculateStatistics(data: Harvest[]): ChartSlice[][] {
+    const [monsters, bosses, archis] = [
+      { type: HarvestType.MONSTER, amount: 299 },
+      { type: HarvestType.BOSS, amount: 50 },
+      { type: HarvestType.ARCHI, amount: 288 },
+    ].map(({ type, amount }) => {
+      return this.calculatePercentage(
+        data.filter((item) => item.captured && item.type === type).length,
+        amount
+      );
+    });
+
+    const total = this.calculatePercentage(
+      data.filter((item) => item.captured).length,
+      data.length
+    );
+
+    return [
+      [
+        {
+          id: 1,
+          label: 'Monstruos',
+          color: 'red',
+          percent: monsters,
+        },
+        {
+          id: 2,
+          label: '',
+          color: 'salmon',
+          percent: 100 - monsters,
+        },
+      ],
+      [
+        {
+          id: 1,
+          label: 'Jefes',
+          color: 'blue',
+          percent: bosses,
+        },
+        {
+          id: 2,
+          label: '',
+          color: 'lightblue',
+          percent: 100 - bosses,
+        },
+      ],
+      [
+        {
+          id: 1,
+          label: 'Archis',
+          color: 'green',
+          percent: archis,
+        },
+        {
+          id: 2,
+          label: 'Archis',
+          color: 'lightgreen',
+          percent: 100 - archis,
+        },
+      ],
+      [
+        {
+          id: 1,
+          label: 'Total',
+          color: 'yellow',
+          percent: total,
+        },
+        {
+          id: 4,
+          label: 'Total',
+          color: 'lightyellow',
+          percent: 100 - total,
+        },
+      ],
+    ];
+  }
+
+  private calculatePercentage(current: number, total: number): number {
+    return Number(((current / total) * 100).toFixed(2)) || 0;
   }
 
   private normalize(value: string): string {
