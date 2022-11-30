@@ -15,12 +15,11 @@ import { ChartPipe } from './chart.pipe';
   standalone: true,
   imports: [CommonModule, ChartPipe],
   template: `
-    <svg [attr.viewBox]="'0 0 ' + viewBox + ' ' + viewBox" *ngIf="data">
+    <svg [attr.viewBox]="viewBoxAttr" *ngIf="data">
       <path
         *ngFor="
           let slice of data | chartPipe: radius:viewBox:borderSize;
-          trackBy: trackByFn;
-          let index = index
+          trackBy: trackByFn
         "
         [attr.fill]="slice.color"
         [attr.d]="slice.commands"
@@ -30,16 +29,19 @@ import { ChartPipe } from './chart.pipe';
         <title>{{ slice.label }}</title>
       </path>
     </svg>
-    <p style="position: relative; top: -50%; text-align: center">
-      {{ data[0].label }} {{ data[0].percent }}%
-    </p>
+    <div class="label">
+      <p>{{ data[0].label }}</p>
+      <h1>{{ data[0].percent }}%</h1>
+    </div>
   `,
 })
 export class ChartComponent implements OnInit {
   @Input() radius = 50;
   @Input() viewBox = 100;
-  @Input() borderSize = 15;
+  @Input() borderSize = 12;
   @Input() data: ChartSlice[] = [];
+
+  viewBoxAttr!: string;
 
   ngOnInit() {
     const sum = this.data?.reduce((accu, slice) => accu + slice.percent, 0);
@@ -48,6 +50,8 @@ export class ChartComponent implements OnInit {
         `The sum of all slices of the donut chart must equal to 100%. Found: ${sum}.`
       );
     }
+
+    this.viewBoxAttr = `0 0 ${this.viewBox} ${this.viewBox}`;
   }
 
   trackByFn(_index: number, slice: ChartSlice) {

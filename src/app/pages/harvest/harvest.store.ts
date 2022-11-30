@@ -194,8 +194,8 @@ export class HarvestStore extends ComponentStore<HarvestData> {
   private calculateStatistics(data: Harvest[]): ChartSlice[][] {
     const [monsters, bosses, archis] = [
       { type: HarvestType.MONSTER, amount: 299 },
-      { type: HarvestType.BOSS, amount: 50 },
-      { type: HarvestType.ARCHI, amount: 288 },
+      { type: HarvestType.BOSS, amount: 51 },
+      { type: HarvestType.ARCHI, amount: 286 },
     ].map(({ type, amount }) => {
       return this.calculatePercentage(
         data.filter((item) => item.captured && item.type === type).length,
@@ -218,7 +218,7 @@ export class HarvestStore extends ComponentStore<HarvestData> {
         },
         {
           id: 2,
-          label: '',
+          label: 'Monstruos',
           color: 'salmon',
           percent: 100 - monsters,
         },
@@ -232,7 +232,7 @@ export class HarvestStore extends ComponentStore<HarvestData> {
         },
         {
           id: 2,
-          label: '',
+          label: 'Jefes',
           color: 'lightblue',
           percent: 100 - bosses,
         },

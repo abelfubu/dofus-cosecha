@@ -2,7 +2,7 @@
   {
     "id": 1,
     "name": "Ratón Gris",
-    "image": "https://static.wikia.nocookie.net/dofus/images/c/c6/Grey_Mouse.png",
+    "image": "./assets/img/raton_gris.webp",
     "level": "1",
     "subzone": "Criptas del cementerio",
     "zone": "Amakna",
@@ -12,7 +12,7 @@
   {
     "id": 2,
     "name": "Moskito",
-    "image": "https://static.wikia.nocookie.net/dofus/images/7/7f/Moskito.png",
+    "image": "./assets/img/moskito.webp",
     "level": "16 - 20",
     "subzone": "Linde del mosque maléfico, Campo de Amakna",
     "zone": "Amakna",
@@ -54,7 +54,7 @@
     "name": "Tofu Maléfico",
     "image": "./assets/img/tofu_malefico.webp",
     "level": "32 - 40",
-    "subzone": "Bosque maléfico",
+    "subzone": "Cementerio",
     "zone": "Amakna",
     "step": 1,
     "type": "monster"
@@ -3500,13 +3500,2863 @@
     "type": "boss"
   },
   {
-    "id": 351,
-    "name": "Ugah",
-    "image": "./assets/img/ugah.webp",
-    "level": "180",
+    "id": 401,
+    "name": "Araknekros, el Salvaje",
+    "image": "./assets/img/arakna_de_alcantarilla.webp",
+    "level": "22 - 30",
+    "subzone": "Alcantarillas de Astrub",
+    "zone": "Astrub",
+    "step": 20,
+    "type": "archi"
+  },
+  {
+    "id": 402,
+    "name": "Arakniry, la destripada",
+    "image": "./assets/img/arakna.webp",
+    "level": "16 - 20",
+    "subzone": "Campo de Amakna",
+    "zone": "Amakna",
+    "step": 20,
+    "type": "archi"
+  },
+  {
+    "id": 403,
+    "name": "Arkandinska, la Lírica",
+    "image": "./assets/img/arakna_enferma.webp",
+    "level": "11 - 15",
+    "subzone": "Subterráneos de Astrub",
+    "zone": "Astrub",
+    "step": 20,
+    "type": "archi"
+  },
+  {
+    "id": 404,
+    "name": "Cangri-doo, la Hadada",
+    "image": "./assets/img/cangrejo.webp",
+    "level": "42 - 50",
+    "subzone": "Ribera del golfo sufokeño",
+    "zone": "Bahía de Sufokia",
+    "step": 20,
+    "type": "archi"
+  },
+  {
+    "id": 405,
+    "name": "Capioricito Rojo, el Forestal",
+    "image": "./assets/img/pio_rojo.webp",
+    "level": "11 - 15",
+    "subzone": "Fortificación de Bonta",
+    "zone": "Bonta",
+    "step": 20,
+    "type": "archi"
+  },
+  {
+    "id": 406,
+    "name": "Champi Casso, el Cúbico",
+    "image": "./assets/img/champi_champ.webp",
+    "level": "16 - 20",
+    "subzone": "Rincón de los jalatós",
+    "zone": "Amakna",
+    "step": 20,
+    "type": "archi"
+  },
+  {
+    "id": 407,
+    "name": "Diente de Lennon, el Universal",
+    "image": "./assets/img/diente_de_leon_diabolico.webp",
+    "level": "16 - 20",
+    "subzone": "Campos de Astrub",
+    "zone": "Astrub",
+    "step": 20,
+    "type": "archi"
+  },
+  {
+    "id": 408,
+    "name": "Jalatintanic, el Hundido",
+    "image": "./assets/img/jalatin_negro.webp",
+    "level": "22 - 30",
+    "subzone": "Rincón de los jalatós",
+    "zone": "Amakna",
+    "step": 20,
+    "type": "archi"
+  },
+  {
+    "id": 409,
+    "name": "Jalatintín, el Reportero",
+    "image": "./assets/img/jalatin_blanco.webp",
+    "level": "22 - 30",
+    "subzone": "Rincón de los jalatós",
+    "zone": "Amakna",
+    "step": 20,
+    "type": "archi"
+  },
+  {
+    "id": 410,
+    "name": "Larvichuelas Jack, las Mágicas",
+    "image": "./assets/img/larva_azul.webp",
+    "level": "16 - 20",
+    "subzone": "Praderas de Astrub",
+    "zone": "Astrub",
+    "step": 20,
+    "type": "archi"
+  },
+  {
+    "id": 411,
+    "name": "Mashkira, la Rubia de Bote",
+    "image": "./assets/img/moskito.webp",
+    "level": "16 - 20",
+    "subzone": "Linde del Bosque Maléfico",
+    "zone": "Amakna",
+    "step": 20,
+    "type": "archi"
+  },
+  {
+    "id": 412,
+    "name": "Pido, el Greñas",
+    "image": "./assets/img/pio_rosa.webp",
+    "level": "11 - 15",
+    "subzone": "Sufokia",
+    "zone": "Bahía de Sufokia",
+    "step": 20,
+    "type": "archi"
+  },
+  {
+    "id": 413,
+    "name": "Pioch, el Arenil",
+    "image": "./assets/img/pio_azul.webp",
+    "level": "11 - 15",
+    "subzone": "Sufokia",
+    "zone": "Bahía de Sufokia",
+    "step": 20,
+    "type": "archi"
+  },
+  {
+    "id": 414,
+    "name": "Piokacho, el Eléctrico",
+    "image": "./assets/img/pio_amarillo.webp",
+    "level": "11 - 15",
+    "subzone": "Sufokia",
+    "zone": "Bahía de Sufokia",
+    "step": 20,
+    "type": "archi"
+  },
+  {
+    "id": 415,
+    "name": "Ratom Raider, las Curvas",
+    "image": "./assets/img/raton_gris.webp",
+    "level": "1",
+    "subzone": "Criptas del cementerio",
+    "zone": "Amakna",
+    "step": 20,
+    "type": "archi"
+  },
+  {
+    "id": 416,
+    "name": "Satofu, el PlasticPaddy",
+    "image": "./assets/img/tofu.webp",
+    "level": "32 - 40",
+    "subzone": "Campo de los ingals",
+    "zone": "Amakna",
+    "step": 20,
+    "type": "archi"
+  },
+  {
+    "id": 417,
+    "name": "Spío, el Dragón",
+    "image": "./assets/img/pio_violeta.webp",
+    "level": "11 - 15",
+    "subzone": "Sufokia",
+    "zone": "Bahía de Sufokia",
+    "step": 20,
+    "type": "archi"
+  },
+  {
+    "id": 418,
+    "name": "Spionter Vellde, el Peligroso",
+    "image": "./assets/img/pio_verde.webp",
+    "level": "11 - 15",
+    "subzone": "Sufokia",
+    "zone": "Bahía de Sufokia",
+    "step": 20,
+    "type": "archi"
+  },
+  {
+    "id": 419,
+    "name": "Tofumado, el Alucinado",
+    "image": "./assets/img/tofu_enfermo.webp",
+    "level": "11 - 15",
+    "subzone": "Subterráneos de Astrub",
+    "zone": "Astrub",
+    "step": 20,
+    "type": "archi"
+  },
+  {
+    "id": 420,
+    "name": "Tofumantxú, el Mítico",
+    "image": "./assets/img/tofu_malefico.webp",
+    "level": "32 - 40",
+    "subzone": "Cementerio",
+    "zone": "Amakna",
+    "step": 20,
+    "type": "archi"
+  },
+  {
+    "id": 421,
+    "name": "Bandiras, el zorro del clan Los Malagueños",
+    "image": "./assets/img/bandido_del_clan_de_los_tymadores.webp",
+    "level": "37 - 49",
+    "subzone": "Territorio de los bandidos",
+    "zone": "Amakna",
+    "step": 21,
+    "type": "archi"
+  },
+  {
+    "id": 422,
+    "name": "Banrí Mantís, el Pigmentado",
+    "image": "./assets/img/bandido_manco.webp",
+    "level": "42 - 50",
+    "subzone": "Pasaje hacia Brakmar",
+    "zone": "Amakna",
+    "step": 21,
+    "type": "archi"
+  },
+  {
+    "id": 423,
+    "name": "Black Tegerwoddit, el Swinguero",
+    "image": "./assets/img/black_wabbit.webp",
+    "level": "42 - 50",
+    "subzone": "Isla zanahowia",
+    "zone": "Archipiélago Wabbit",
+    "step": 21,
+    "type": "archi"
+  },
+  {
+    "id": 424,
+    "name": "Culebretty, la Fea",
+    "image": "./assets/img/culebron.webp",
+    "level": "52 - 60",
+    "subzone": "Campos de Cania",
+    "zone": "Llanuras de Cania",
+    "step": 21,
+    "type": "archi"
+  },
+  {
+    "id": 425,
+    "name": "Gearsol Metalvaje, el Espía",
+    "image": "./assets/img/girasol_salvaje.webp",
+    "level": "16 - 20",
+    "subzone": "Campos de Astrub",
+    "zone": "Astrub",
+    "step": 21,
+    "type": "archi"
+  },
+  {
+    "id": 426,
+    "name": "Gelatiris, el Arenero",
+    "image": "./assets/img/gelatina_azul.webp",
+    "level": "46 - 62",
+    "subzone": "Península de las gelatinas",
+    "zone": "Amakna",
+    "step": 21,
+    "type": "archi"
+  },
+  {
+    "id": 427,
+    "name": "Gelazquina, el Men",
+    "image": "./assets/img/gelatina_de_menta.webp",
+    "level": "50 - 62",
+    "subzone": "Península de las gelatinas",
+    "zone": "Amakna",
+    "step": 21,
+    "type": "archi"
+  },
+  {
+    "id": 428,
+    "name": "Goyablín, el Afrancesado",
+    "image": "./assets/img/gobobo.webp",
+    "level": "20 - 24",
+    "subzone": "Piedemonte de los crujidores",
+    "zone": "Amakna",
+    "step": 21,
+    "type": "archi"
+  },
+  {
+    "id": 429,
+    "name": "Jaleté, el Extraterrestre",
+    "image": "./assets/img/jalato.webp",
+    "level": "22 - 30",
+    "subzone": "Rincón de los jalatós",
+    "zone": "Amakna",
+    "step": 21,
+    "type": "archi"
+  },
+  {
+    "id": 430,
+    "name": "Kolafuente, el Pegatodo",
+    "image": "./assets/img/kolerat.webp",
+    "level": "62 - 70",
+    "subzone": "Tierras desoladas de Sidimote",
+    "zone": "Landas de Sidimote",
+    "step": 21,
+    "type": "archi"
+  },
+  {
+    "id": 431,
+    "name": "Kosakhiin, el Lunítico",
+    "image": "./assets/img/kosakepega.webp",
+    "level": "92 - 100",
+    "subzone": "Jungla Prohibida",
+    "zone": "Isla de Moon",
+    "step": 21,
+    "type": "archi"
+  },
+  {
+    "id": 432,
+    "name": "Kwane, el Ciudadano",
+    "image": "./assets/img/kwoan.webp",
+    "level": "92 - 100",
+    "subzone": "Cementerio",
+    "zone": "Amakna",
+    "step": 21,
+    "type": "archi"
+  },
+  {
+    "id": 433,
+    "name": "Larvangoj, el Desorejado",
+    "image": "./assets/img/larva_naranja.webp",
+    "level": "16 - 20",
+    "subzone": "Praderas de Astrub",
+    "zone": "Astrub",
+    "step": 21,
+    "type": "archi"
+  },
+  {
+    "id": 434,
+    "name": "Larvémming, el Descerebrado",
+    "image": "./assets/img/larva_verde.webp",
+    "level": "16 - 20",
+    "subzone": "Praderas de Astrub",
+    "zone": "Astrub",
+    "step": 21,
+    "type": "archi"
+  },
+  {
+    "id": 435,
+    "name": "Nozdoku, el Numérico",
+    "image": "./assets/img/nozdekoko.webp",
+    "level": "42 - 50",
+    "subzone": "Playa tortuga",
+    "zone": "Isla de Moon",
+    "step": 21,
+    "type": "archi"
+  },
+  {
+    "id": 436,
+    "name": "Paelladero Oscuro, el Arrozoso",
+    "image": "./assets/img/panadero_oscuro.webp",
+    "level": "35 - 47",
+    "subzone": "Territorio de los bandidos",
+    "zone": "Amakna",
+    "step": 21,
+    "type": "archi"
+  },
+  {
+    "id": 437,
+    "name": "Pekekokitu, el Interruptus",
+    "image": "./assets/img/pekekoko.webp",
+    "level": "42 - 50",
+    "subzone": "Playa tortuga",
+    "zone": "Isla de Moon",
+    "step": 21,
+    "type": "archi"
+  },
+  {
+    "id": 438,
+    "name": "Pekewasqhabit, el Juguetón",
+    "image": "./assets/img/pekewabbit.webp",
+    "level": "41 - 49",
+    "subzone": "Isla zanahowia",
+    "zone": "Archipiélago Wabbit",
+    "step": 21,
+    "type": "archi"
+  },
+  {
+    "id": 439,
+    "name": "Pekiwbyt Hambriento, el Glotón",
+    "image": "./assets/img/pekewabbit_hambriento.webp",
+    "level": "40 - 48",
+    "subzone": "Isla zanahowia",
+    "zone": "Archipiélago Wabbit",
+    "step": 21,
+    "type": "archi"
+  },
+  {
+    "id": 440,
+    "name": "Rochavo Democho, el Chispotiado",
+    "image": "./assets/img/rosa_demoniaca.webp",
+    "level": "16 - 20",
+    "subzone": "Campos de Astrub",
+    "zone": "Astrub",
+    "step": 21,
+    "type": "archi"
+  },
+  {
+    "id": 441,
+    "name": "Biblidiana, la Controvertida",
+    "image": "./assets/img/biblop_guinda.webp",
+    "level": "24 - 28",
+    "subzone": "Lago de Cania",
+    "zone": "Llanuras de Cania",
+    "step": 22,
+    "type": "archi"
+  },
+  {
+    "id": 442,
+    "name": "Biblópera, el Fantasma",
+    "image": "./assets/img/biblop_reineta.webp",
+    "level": "24 - 28",
+    "subzone": "Lago de Cania",
+    "zone": "Llanuras de Cania",
+    "step": 22,
+    "type": "archi"
+  },
+  {
+    "id": 443,
+    "name": "Biblues, el Ritmo",
+    "image": "./assets/img/biblop_indigo.webp",
+    "level": "24 - 28",
+    "subzone": "Lago de Cania",
+    "zone": "Llanuras de Cania",
+    "step": 22,
+    "type": "archi"
+  },
+  {
+    "id": 444,
+    "name": "Bibolsón, el Anilloso",
+    "image": "./assets/img/biblop_coco.webp",
+    "level": "24 - 28",
+    "subzone": "Lago de Cania",
+    "zone": "Llanuras de Cania",
+    "step": 22,
+    "type": "archi"
+  },
+  {
+    "id": 445,
+    "name": "Bo'Callaghan, el Trebol",
+    "image": "./assets/img/boo.webp",
+    "level": "25 - 29",
+    "subzone": "Pantanos Nauseabundos",
+    "zone": "Montaña de los Koalaks",
+    "step": 22,
+    "type": "archi"
+  },
+  {
+    "id": 446,
+    "name": "Cabalista, el Conspirador",
+    "image": "./assets/img/gobletrotter.webp",
+    "level": "27 - 35",
+    "subzone": "Piedemonte de los crujidores",
+    "zone": "Amakna",
+    "step": 22,
+    "type": "archi"
+  },
+  {
+    "id": 447,
+    "name": "Estroilette, la Atascada",
+    "image": "./assets/img/estrella_del_mar_rano.webp",
+    "level": "25 - 45",
+    "subzone": "Ribera del golfo sufokeño",
+    "zone": "Amakna",
+    "step": 22,
+    "type": "archi"
+  },
+  {
+    "id": 448,
+    "name": "Champolís, el Astronauta",
+    "image": "./assets/img/champo_verde.webp",
+    "level": "35 - 43",
+    "subzone": "Claro de Brus Bulguro",
+    "zone": "Amakna",
+    "step": 22,
+    "type": "archi"
+  },
+  {
+    "id": 449,
+    "name": "Cochumájer, el Rápido",
+    "image": "./assets/img/cochinillo.webp",
+    "level": "42 - 50",
+    "subzone": "Llanura de los puerkazos",
+    "zone": "Llanuras de Cania",
+    "step": 22,
+    "type": "archi"
+  },
+  {
+    "id": 450,
+    "name": "Colmillamoto, el Omnipotente",
+    "image": "./assets/img/colmillo_blando.webp",
+    "level": "62 - 70",
+    "subzone": "Tierras desoladas de Sidimote",
+    "zone": "Landas de Sidimote",
+    "step": 22,
+    "type": "archi"
+  },
+  {
+    "id": 451,
+    "name": "Jabachlí, el Casto",
+    "image": "./assets/img/jabali.webp",
+    "level": "22 - 30",
+    "subzone": "Bosque de Astrub",
+    "zone": "Astrub",
+    "step": 22,
+    "type": "archi"
+  },
+  {
+    "id": 452,
+    "name": "Jalatillo, el Infantil",
+    "image": "./assets/img/jefe_de_guerra_jalato.webp",
+    "level": "22 - 30",
+    "subzone": "Rincón de los jalatós",
+    "zone": "Amakna",
+    "step": 22,
+    "type": "archi"
+  },
+  {
+    "id": 453,
+    "name": "Milirratatúi, el Gastrónomo",
+    "image": "./assets/img/milirrata_strubiense.webp",
+    "level": "22 - 30",
+    "subzone": "Alcantarillas de Astrub",
+    "zone": "Astrub",
+    "step": 22,
+    "type": "archi"
+  },
+  {
+    "id": 454,
+    "name": "Pastortilla, el Huevo",
+    "image": "./assets/img/pastor_puerkazo.webp",
+    "level": "42 - 50",
+    "subzone": "Llanura de los puerkazos",
+    "zone": "Llanuras de Cania",
+    "step": 22,
+    "type": "archi"
+  },
+  {
+    "id": 455,
+    "name": "Prestrit, el Luchador",
+    "image": "./assets/img/prespic.webp",
+    "level": "22 - 30",
+    "subzone": "Bosque de Astrub",
+    "zone": "Astrub",
+    "step": 22,
+    "type": "archi"
+  },
+  {
+    "id": 456,
+    "name": "Robiolego el Ensamblado",
+    "image": "./assets/img/robionicle.webp",
+    "level": "55 - 63",
+    "subzone": "Sierra de Cania",
+    "zone": "Llanuras de Cania",
+    "step": 22,
+    "type": "archi"
+  },
+  {
+    "id": 457,
+    "name": "Tortugadget, el Inspector",
+    "image": "./assets/img/tortuga_azul.webp",
+    "level": "42 - 50",
+    "subzone": "Playa tortuga",
+    "zone": "Isla de Moon",
+    "step": 22,
+    "type": "archi"
+  },
+  {
+    "id": 458,
+    "name": "Tortugríssom, el Doctor",
+    "image": "./assets/img/tortuga_amarilla.webp",
+    "level": "42 - 50",
+    "subzone": "Playa tortuga",
+    "zone": "Isla de Moon",
+    "step": 22,
+    "type": "archi"
+  },
+  {
+    "id": 459,
+    "name": "Vamorespirros, el Múltiple",
+    "image": "./assets/img/vampiro.webp",
+    "level": "32 - 40",
+    "subzone": "Criptas del cementerio",
+    "zone": "Amakna",
+    "step": 22,
+    "type": "archi"
+  },
+  {
+    "id": 460,
+    "name": "Wogew Wabbit, el Engañado",
+    "image": "./assets/img/wabbit.webp",
+    "level": "44 - 52",
+    "subzone": "Isla zanahowia",
+    "zone": "Archipiélago Wabbit",
+    "step": 22,
+    "type": "archi"
+  },
+  {
+    "id": 461,
+    "name": "Bambudín, el Azteca",
+    "image": "./assets/img/bambuto.webp",
+    "level": "36 - 44",
+    "subzone": "Plantala",
+    "zone": "Isla de Pandala",
+    "step": 23,
+    "type": "archi"
+  },
+  {
+    "id": 462,
+    "name": "Barchwork, el Multicolor",
+    "image": "./assets/img/bwork_arquero.webp",
+    "level": "37 - 49",
+    "subzone": "Piedemonte de los crujidores",
+    "zone": "Amakna",
+    "step": 23,
+    "type": "archi"
+  },
+  {
+    "id": 463,
+    "name": "Blackowibbit, el Imaginativo",
+    "image": "./assets/img/black_pekewabbit.webp",
+    "level": "46 - 54",
+    "subzone": "Isla zanahowia",
+    "zone": "Archipiélago Wabbit",
+    "step": 23,
+    "type": "archi"
+  },
+  {
+    "id": 464,
+    "name": "Bwhork Mageneration, el Precursor",
+    "image": "./assets/img/bwork_mago.webp",
+    "level": "39 - 51",
+    "subzone": "Piedemonte de los crujidores",
+    "zone": "Amakna",
+    "step": 23,
+    "type": "archi"
+  },
+  {
+    "id": 465,
+    "name": "Colmillazaqui, el Inagotable",
+    "image": "./assets/img/crowrajo.webp",
+    "level": "62 - 70",
+    "subzone": "Tierras desoladas de Sidimote",
+    "zone": "Landas de Sidimote",
+    "step": 23,
+    "type": "archi"
+  },
+  {
+    "id": 466,
+    "name": "Cuergotismo, el Febril",
+    "image": "./assets/img/cuerbok.webp",
+    "level": "102 - 110",
+    "subzone": "Morada de Cuerbok",
+    "zone": "Llanuras de Cania",
+    "step": 23,
+    "type": "archi"
+  },
+  {
+    "id": 467,
+    "name": "Gazpischos, el Refrescante",
+    "image": "./assets/img/pischis_verde.webp",
+    "level": "16 - 20",
+    "subzone": "Calas de Astrub",
+    "zone": "Astrub",
+    "step": 23,
+    "type": "archi"
+  },
+  {
+    "id": 468,
+    "name": "Maéstric Vaggerpiro, el Canto Rodado",
+    "image": "./assets/img/vampiro_jefe.webp",
+    "level": "37 - 49",
+    "subzone": "Criptas del cementerio",
+    "zone": "Amakna",
+    "step": 23,
+    "type": "archi"
+  },
+  {
+    "id": 469,
+    "name": "Mazomorra, el Rolista",
+    "image": "./assets/img/mazorral.webp",
+    "level": "37 - 49",
+    "subzone": "Jungla Prohibida",
+    "zone": "Isla de Otomai",
+    "step": 23,
+    "type": "archi"
+  },
+  {
+    "id": 470,
+    "name": "Mililupin, el Tercero",
+    "image": "./assets/img/minilubo.webp",
+    "level": "22 - 30",
+    "subzone": "Bosque de Astrub",
+    "zone": "Astrub",
+    "step": 23,
+    "type": "archi"
+  },
+  {
+    "id": 471,
+    "name": "Minerón, el Incendiario",
+    "image": "./assets/img/minero_oscuro.webp",
+    "level": "39 - 51",
+    "subzone": "Territorio de los bandidos",
+    "zone": "Amakna",
+    "step": 23,
+    "type": "archi"
+  },
+  {
+    "id": 472,
+    "name": "Mitoskorleone, el Buen Padre",
+    "image": "./assets/img/minoskito.webp",
+    "level": "100 - 108",
+    "subzone": "Isla del Minotauroro",
+    "zone": "Isla del Minotauroro",
+    "step": 23,
+    "type": "archi"
+  },
+  {
+    "id": 473,
+    "name": "Nujosawa, el Emperador",
+    "image": "./assets/img/nujo.webp",
+    "level": "20 - 24",
+    "subzone": "Criptas del cementerio",
+    "zone": "Amakna",
+    "step": 23,
+    "type": "archi"
+  },
+  {
+    "id": 474,
+    "name": "Pischili Conkarne, el Fuerte",
+    "image": "./assets/img/pischis_blanco.webp",
+    "level": "16 - 20",
+    "subzone": "Calas de Astrub",
+    "zone": "Astrub",
+    "step": 23,
+    "type": "archi"
+  },
+  {
+    "id": 475,
+    "name": "Pischistorra, la Cárnica",
+    "image": "./assets/img/pischis_naranja.webp",
+    "level": "16 - 20",
+    "subzone": "Calas de Astrub",
+    "zone": "Astrub",
+    "step": 23,
+    "type": "archi"
+  },
+  {
+    "id": 476,
+    "name": "Pischurrasco, el Braseado",
+    "image": "./assets/img/pischis_azul.webp",
+    "level": "16 - 20",
+    "subzone": "Calas de Astrub",
+    "zone": "Astrub",
+    "step": 23,
+    "type": "archi"
+  },
+  {
+    "id": 477,
+    "name": "Robocoop el Intercambiado",
+    "image": "./assets/img/robot_mangual.webp",
+    "level": "53 - 61",
+    "subzone": "Sierra de Cania",
+    "zone": "Llanuras de Cania",
+    "step": 23,
+    "type": "archi"
+  },
+  {
+    "id": 478,
+    "name": "Rostetricia, la Reproductiva",
+    "image": "./assets/img/rosa_oscura.webp",
+    "level": "19 - 27",
+    "subzone": "Pastizal de Bonta",
+    "zone": "Bonta",
+    "step": 23,
+    "type": "archi"
+  },
+  {
+    "id": 479,
+    "name": "Tortruquini, el Inspector",
+    "image": "./assets/img/tortuga_verde.webp",
+    "level": "42 - 50",
+    "subzone": "Playa tortuga",
+    "zone": "Isla de Moon",
+    "step": 23,
+    "type": "archi"
+  },
+  {
+    "id": 480,
+    "name": "Tortugo Projatt, el Corto",
+    "image": "./assets/img/tortuga_roja.webp",
+    "level": "42 - 50",
+    "subzone": "Playa tortuga",
+    "zone": "Isla de Moon",
+    "step": 23,
+    "type": "archi"
+  },
+  {
+    "id": 481,
+    "name": "Abrakíledo, el Patas Ligeras",
+    "image": "./assets/img/abraknido.webp",
+    "level": "38 - 50",
+    "subzone": "Linde del bosque de los abráknidos",
+    "zone": "Bosque de los Abráknidos",
+    "step": 24,
+    "type": "archi"
+  },
+  {
+    "id": 482,
+    "name": "Arib Abá, el de los 40",
+    "image": "./assets/img/rib.webp",
+    "level": "34 - 42",
+    "subzone": "Bosque de Litneg",
+    "zone": "Llanuras de Cania",
+    "step": 24,
+    "type": "archi"
+  },
+  {
+    "id": 483,
+    "name": "Bwarkgner, el Magnificentista",
+    "image": "./assets/img/bwork.webp",
+    "level": "44 - 56",
+    "subzone": "Piedemonte de los crujidores",
+    "zone": "Amakna",
+    "step": 24,
+    "type": "archi"
+  },
+  {
+    "id": 484,
+    "name": "Champán, el Espumoso",
+    "image": "./assets/img/champo_rojo.webp",
+    "level": "35 - 43",
+    "subzone": "Claro de Brus Bulguro",
+    "zone": "Amakna",
+    "step": 24,
+    "type": "archi"
+  },
+  {
+    "id": 485,
+    "name": "Champlin, el Cómico",
+    "image": "./assets/img/champo_marron.webp",
+    "level": "35 - 43",
+    "subzone": "Claro de Brus Bulguro",
+    "zone": "Amakna",
+    "step": 24,
+    "type": "archi"
+  },
+  {
+    "id": 486,
+    "name": "Champlomo, el Soldadito",
+    "image": "./assets/img/champo_azul.webp",
+    "level": "35 - 43",
+    "subzone": "Claro de Brus Bulguro",
+    "zone": "Amakna",
+    "step": 24,
+    "type": "archi"
+  },
+  {
+    "id": 487,
+    "name": "Chafo el del 8",
+    "image": "./assets/img/chafer_invisible.webp",
+    "level": "25 - 37",
+    "subzone": "Bosque de Litneg",
+    "zone": "Amakna",
+    "step": 24,
+    "type": "archi"
+  },
+  {
+    "id": 488,
+    "name": "Cofresno el Espinoso",
+    "image": "./assets/img/cofre_equipado.webp",
+    "level": "57 - 65",
+    "subzone": "Sierra de Cania",
+    "zone": "Llanuras de Cania",
+    "step": 24,
+    "type": "archi"
+  },
+  {
+    "id": 489,
+    "name": "Crojmeo, el Veronés",
+    "image": "./assets/img/crujibola.webp",
+    "level": "62 - 70",
+    "subzone": "La montaña de los crujidores",
+    "zone": "Amakna",
+    "step": 24,
+    "type": "archi"
+  },
+  {
+    "id": 490,
+    "name": "Crujaitor, el Eurovisivo",
+    "image": "./assets/img/crujidor.webp",
+    "level": "62 - 70",
+    "subzone": "La montaña de los crujidores",
+    "zone": "Amakna",
+    "step": 24,
+    "type": "archi"
+  },
+  {
+    "id": 491,
+    "name": "Dragozart Almandreus, el Prodigio",
+    "image": "./assets/img/dragopavo_almendrado_salvaje.webp",
+    "level": "55 - 67",
+    "subzone": "Territorio de los dragopavos salvajes",
+    "zone": "Montaña de los Koalaks",
+    "step": 24,
+    "type": "archi"
+  },
+  {
+    "id": 492,
+    "name": "Escaramelo el Derretido",
+    "image": "./assets/img/escarahoja_verde.webp",
+    "level": "34 - 42",
+    "subzone": "Llanura de los escarahojas",
+    "zone": "Amakna",
+    "step": 24,
+    "type": "archi"
+  },
+  {
+    "id": 493,
+    "name": "Escarumais, los Siete",
+    "image": "./assets/img/escarahoja_verde.webp",
+    "level": "34 - 42",
+    "subzone": "Llanura de los escarahojas",
+    "zone": "Amakna",
+    "step": 24,
+    "type": "archi"
+  },
+  {
+    "id": 494,
+    "name": "Escorobeitor, el Malvado",
+    "image": "./assets/img/escarahoja_rojo.webp",
+    "level": "34 - 42",
+    "subzone": "Llanura de los escarahojas",
+    "zone": "Amakna",
+    "step": 24,
+    "type": "archi"
+  },
+  {
+    "id": 495,
+    "name": "Estarausija Azul, el del Danubio",
+    "image": "./assets/img/escarahoja_azul.webp",
+    "level": "34 - 42",
+    "subzone": "Llanura de los escarahojas",
+    "zone": "Amakna",
+    "step": 24,
+    "type": "archi"
+  },
+  {
+    "id": 496,
+    "name": "Gelatina Turner, la Best",
+    "image": "./assets/img/gelatina_de_fresa.webp",
+    "level": "54 - 62",
+    "subzone": "Península de las gelatinas",
+    "zone": "Amakna",
+    "step": 24,
+    "type": "archi"
+  },
+  {
+    "id": 497,
+    "name": "Kramelanoma, el Ennegrecedor",
+    "image": "./assets/img/krameleon.webp",
+    "level": "110 - 118",
+    "subzone": "Isla del Minotauroro",
+    "zone": "Isla del Minotauroro",
+    "step": 24,
+    "type": "archi"
+  },
+  {
+    "id": 498,
+    "name": "Mandreinas, las Nueve",
+    "image": "./assets/img/mandrina.webp",
+    "level": "100 - 108",
+    "subzone": "Isla del Minotauroro",
+    "zone": "Isla del Minotauroro",
+    "step": 24,
+    "type": "archi"
+  },
+  {
+    "id": 499,
+    "name": "Pulgargrolito, el Astuto",
+    "image": "./assets/img/gargrola.webp",
+    "level": "32 - 40",
+    "subzone": "Cementerio de Astrub",
+    "zone": "Astrub",
+    "step": 24,
+    "type": "archi"
+  },
+  {
+    "id": 500,
+    "name": "Waybbit Esquelite, el Rebelde",
+    "image": "./assets/img/wabbit_esqueleto.webp",
+    "level": "48 - 56",
+    "subzone": "Islote sepultuwa",
+    "zone": "Archipiélago Wabbit",
+    "step": 24,
+    "type": "archi"
+  },
+  {
+    "id": 501,
+    "name": "Abrákneo, el Elegido",
+    "image": "./assets/img/abrakno.webp",
+    "level": "40 - 52",
+    "subzone": "Linde del bosque de los abráknidos",
+    "zone": "Bosque de los Abráknidos",
+    "step": 25,
+    "type": "archi"
+  },
+  {
+    "id": 502,
+    "name": "Blómperman, el Explosivo",
+    "image": "./assets/img/blop_coco.webp",
+    "level": "52 - 60",
+    "subzone": "Lago de Cania",
+    "zone": "Llanuras de Cania",
+    "step": 25,
+    "type": "archi"
+  },
+  {
+    "id": 503,
+    "name": "Blop Dylan, el Ventoso",
+    "image": "./assets/img/blop_guinda.webp",
+    "level": "52 - 60",
+    "subzone": "Lago de Cania",
+    "zone": "Llanuras de Cania",
+    "step": 25,
+    "type": "archi"
+  },
+  {
+    "id": 504,
+    "name": "Blop Inocho, el Narizotas",
+    "image": "./assets/img/blop_indigo.webp",
+    "level": "52 - 60",
+    "subzone": "Lago de Cania",
+    "zone": "Llanuras de Cania",
+    "step": 25,
+    "type": "archi"
+  },
+  {
+    "id": 505,
+    "name": "Bloppy Reinarker, la Primera Mitad",
+    "image": "./assets/img/blop_reineta.webp",
+    "level": "52 - 60",
+    "subzone": "Lago de Cania",
+    "zone": "Llanuras de Cania",
+    "step": 25,
+    "type": "archi"
+  },
+  {
+    "id": 506,
+    "name": "Bulbubunet, la Única",
+    "image": "./assets/img/bulbomatorral.webp",
+    "level": "102 - 110",
+    "subzone": "Plantala",
+    "zone": "Isla de Pandala",
+    "step": 25,
+    "type": "archi"
+  },
+  {
+    "id": 507,
+    "name": "Cerduodenitis, el Abdominal",
+    "image": "./assets/img/cerdo_de_farle.webp",
+    "level": "90 - 98",
+    "subzone": "El laberinto del Dragocerdo",
+    "zone": "Laberinto del Dragocerdo",
+    "step": 25,
+    "type": "archi"
+  },
+  {
+    "id": 508,
+    "name": "Cháferlie, el Ángeles",
+    "image": "./assets/img/chafer.webp",
+    "level": "32 - 40",
+    "subzone": "Bosque de Litneg",
+    "zone": "Llanuras de Cania",
+    "step": 25,
+    "type": "archi"
+  },
+  {
+    "id": 509,
+    "name": "Chafíner Divarrio, el Casposo",
+    "image": "./assets/img/chafer_infante.webp",
+    "level": "33 - 41",
+    "subzone": "Bosque de Litneg",
+    "zone": "Llanuras de Cania",
+    "step": 25,
+    "type": "archi"
+  },
+  {
+    "id": 510,
+    "name": "Cocodranel, la Perfumada",
+    "image": "./assets/img/cocodrail.webp",
+    "level": "42 - 50",
+    "subzone": "Pantanos Nauseabundos",
+    "zone": "Montaña de los Koalaks",
+    "step": 25,
+    "type": "archi"
+  },
+  {
+    "id": 511,
+    "name": "Crustérix, el Viajante",
+    "image": "./assets/img/crustoral_mohito.webp",
+    "level": "36 - 48",
+    "subzone": "Playa Coral",
+    "zone": "Isla de Otomai",
+    "step": 25,
+    "type": "archi"
+  },
+  {
+    "id": 512,
+    "name": "Crustodralí, el Bigotudo",
+    "image": "./assets/img/crustoral_malibut.webp",
+    "level": "36 - 48",
+    "subzone": "Playa Coral",
+    "zone": "Isla de Otomai",
+    "step": 25,
+    "type": "archi"
+  },
+  {
+    "id": 513,
+    "name": "Crustoriyama, el Boludo",
+    "image": "./assets/img/crustoral_kuraçao.webp",
+    "level": "36 - 48",
+    "subzone": "Playa Coral",
+    "zone": "Isla de Otomai",
+    "step": 25,
+    "type": "archi"
+  },
+  {
+    "id": 514,
+    "name": "Doomba, el Inimitable",
+    "image": "./assets/img/boomba.webp",
+    "level": "82 - 90",
+    "subzone": "Camino de los cráneos",
+    "zone": "Isla de Moon",
+    "step": 25,
+    "type": "archi"
+  },
+  {
+    "id": 515,
+    "name": "Dragamenón, el Destructoyer",
+    "image": "./assets/img/dragopavo_pelirrojo_salvaje.webp",
+    "level": "60 - 72",
+    "subzone": "Territorio de los dragopavos salvajes",
+    "zone": "Montaña de los Koalaks",
+    "step": 25,
+    "type": "archi"
+  },
+  {
+    "id": 516,
+    "name": "Escarálibur, la Legendaria",
+    "image": "./assets/img/escarato.webp",
+    "level": "110 - 118",
+    "subzone": "Laberinto del Minotauroro",
+    "zone": "Isla del Minotauroro",
+    "step": 25,
+    "type": "archi"
+  },
+  {
+    "id": 517,
+    "name": "Larvado, el Limpio",
+    "image": "./assets/img/larva_amarilla.webp",
+    "level": "16 - 20",
+    "subzone": "Praderas de Astrub",
+    "zone": "Astrub",
+    "step": 25,
+    "type": "archi"
+  },
+  {
+    "id": 518,
+    "name": "Ratokio de Alcontel, la Despeinada",
+    "image": "./assets/img/miserata_strubiense.webp",
+    "level": "22 - 30",
+    "subzone": "Alcantarillas de Astrub",
+    "zone": "Astrub",
+    "step": 25,
+    "type": "archi"
+  },
+  {
+    "id": 519,
+    "name": "Scorbuthoveen, el Sordo",
+    "image": "./assets/img/scorbuto.webp",
+    "level": "62 - 70",
+    "subzone": "Tierras desoladas de Sidimote",
+    "zone": "Landas de Sidimote",
+    "step": 25,
+    "type": "archi"
+  },
+  {
+    "id": 520,
+    "name": "Trroncky III, el Tigre",
+    "image": "./assets/img/tronkonido.webp",
+    "level": "33 - 45",
+    "subzone": "Linde del bosque de los abráknidos",
+    "zone": "Bosque de los Abráknidos",
+    "step": 25,
+    "type": "archi"
+  },
+  {
+    "id": 521,
+    "name": "Abubanero, el Naranja",
+    "image": "./assets/img/abub.webp",
+    "level": "35 - 47",
+    "subzone": "Pueblo de los Dopeuls",
+    "zone": "Llanuras de Cania",
+    "step": 26,
+    "type": "archi"
+  },
+  {
+    "id": 522,
+    "name": "Abustin Pawits, el Bocasucia",
+    "image": "./assets/img/abuelito_wabbit.webp",
+    "level": "52 - 60",
+    "subzone": "Islote la Cowona",
+    "zone": "Archipiélago Wabbit",
+    "step": 26,
+    "type": "archi"
+  },
+  {
+    "id": 523,
+    "name": "Amlobdovar, el Movidista",
+    "image": "./assets/img/amlub.webp",
+    "level": "35 - 47",
+    "subzone": "Bahía de Cania",
+    "zone": "Llanuras de Cania",
+    "step": 26,
+    "type": "archi"
+  },
+  {
+    "id": 524,
+    "name": "Araklas Mausus, el Encofiado",
+    "image": "./assets/img/arakna_mayor.webp",
+    "level": "40 - 48",
+    "subzone": "Linde del bosque de los abráknidos",
+    "zone": "Bosque de los Abráknidos",
+    "step": 26,
+    "type": "archi"
+  },
+  {
+    "id": 525,
+    "name": "Caballagami Pueryukazo, el Aburrido",
+    "image": "./assets/img/caballero_puerkazo.webp",
+    "level": "42 - 50",
+    "subzone": "Llanura de los puerkazos",
+    "zone": "Llanuras de Cania",
+    "step": 26,
+    "type": "archi"
+  },
+  {
+    "id": 526,
+    "name": "Chaferditos, los Tres",
+    "image": "./assets/img/chafer_arquero.webp",
+    "level": "42 - 50",
+    "subzone": "Cementerio de los torturados",
+    "zone": "Brakmar",
+    "step": 26,
+    "type": "archi"
+  },
+  {
+    "id": 527,
+    "name": "Chagüer Langers, los Coloridos",
+    "image": "./assets/img/chafer_lancero.webp",
+    "level": "42 - 50",
+    "subzone": "Bosque de Litneg",
+    "zone": "Llanuras de Cania",
+    "step": 26,
+    "type": "archi"
+  },
+  {
+    "id": 528,
+    "name": "Codembolia, el Obstructor",
+    "image": "./assets/img/codem.webp",
+    "level": "35 - 47",
+    "subzone": "Bahía de Cania",
+    "zone": "Llanuras de Cania",
+    "step": 26,
+    "type": "archi"
+  },
+  {
+    "id": 529,
+    "name": "Crusthórpal, Passian el Submarino",
+    "image": "./assets/img/crustoral_passaoh.webp",
+    "level": "36 - 48",
+    "subzone": "Playa Coral",
+    "zone": "Isla de Otomai",
+    "step": 26,
+    "type": "archi"
+  },
+  {
+    "id": 530,
+    "name": "Florista el Caníbal",
+    "image": "./assets/img/floristilo.webp",
+    "level": "102 - 110",
+    "subzone": "Plantala",
+    "zone": "Isla de Pandala",
+    "step": 26,
+    "type": "archi"
+  },
+  {
+    "id": 531,
+    "name": "Gínsenk, el Estimulante",
+    "image": "./assets/img/gink.webp",
+    "level": "35 - 47",
+    "subzone": "Pueblo de los Dopeuls",
+    "zone": "Llanuras de Cania",
+    "step": 26,
+    "type": "archi"
+  },
+  {
+    "id": 532,
+    "name": "Herranor, el Pizzaiolo",
+    "image": "./assets/img/herrero_oscuro.webp",
+    "level": "41 - 53",
+    "subzone": "Territorio de los bandidos",
+    "zone": "Amakna",
+    "step": 26,
+    "type": "archi"
+  },
+  {
+    "id": 533,
+    "name": "Kiravel, el Artesano",
+    "image": "./assets/img/kirevam.webp",
+    "level": "35 - 47",
+    "subzone": "Bahía de Cania",
+    "zone": "Llanuras de Cania",
+    "step": 26,
+    "type": "archi"
+  },
+  {
+    "id": 534,
+    "name": "Kokotel, el Agitado",
+    "image": "./assets/img/kokoko.webp",
+    "level": "42 - 50",
+    "subzone": "Playa tortuga",
+    "zone": "Isla de Moon",
+    "step": 26,
+    "type": "archi"
+  },
+  {
+    "id": 535,
+    "name": "Led Empling, el Ascensorista",
+    "image": "./assets/img/let_emoliug.webp",
+    "level": "35 - 47",
+    "subzone": "Bahía de Cania",
+    "zone": "Llanuras de Cania",
+    "step": 26,
+    "type": "archi"
+  },
+  {
+    "id": 536,
+    "name": "Nelgibson, el Letal",
+    "image": "./assets/img/nebgib.webp",
+    "level": "35 - 47",
+    "subzone": "Pueblo de los Dopeuls",
+    "zone": "Llanuras de Cania",
+    "step": 26,
+    "type": "archi"
+  },
+  {
+    "id": 537,
+    "name": "Nipultay Dea, el Poco Inspirado",
+    "image": "./assets/img/nipul.webp",
+    "level": "35 - 47",
+    "subzone": "Pueblo de los Dopeuls",
+    "zone": "Llanuras de Cania",
+    "step": 26,
+    "type": "archi"
+  },
+  {
+    "id": 538,
+    "name": "Osurce Kodes, el Problemático",
+    "image": "./assets/img/osurc.webp",
+    "level": "35 - 47",
+    "subzone": "Pueblo de los Dopeuls",
+    "zone": "Llanuras de Cania",
+    "step": 26,
+    "type": "archi"
+  },
+  {
+    "id": 539,
+    "name": "Sushij, el Makisan",
+    "image": "./assets/img/susej.webp",
+    "level": "35 - 47",
+    "subzone": "Bahía de Cania",
+    "zone": "Llanuras de Cania",
+    "step": 26,
+    "type": "archi"
+  },
+  {
+    "id": 540,
+    "name": "Wabibip Woyote, el Persistente",
+    "image": "./assets/img/wabbit_wodo.webp",
+    "level": "52 - 60",
+    "subzone": "Islote la Cowona",
+    "zone": "Archipiélago Wabbit",
+    "step": 26,
+    "type": "archi"
+  },
+  {
+    "id": 541,
+    "name": "Abrakadabra, el Pata de Kabra",
+    "image": "./assets/img/abraknido_venerable.webp",
+    "level": "74 - 86",
+    "subzone": "Bosque oscuro",
+    "zone": "Bosque de los Abráknidos",
+    "step": 27,
+    "type": "archi"
+  },
+  {
+    "id": 542,
+    "name": "Cafernan D'alonzo, el Nano",
+    "image": "./assets/img/chafer_de_elite.webp",
+    "level": "42 - 50",
+    "subzone": "Cementerio de los torturados",
+    "zone": "Brakmar",
+    "step": 27,
+    "type": "archi"
+  },
+  {
+    "id": 543,
+    "name": "Charratos, el Diletante",
+    "image": "./assets/img/raman_de_las_alcantarillas.webp",
+    "level": "52 - 60",
+    "subzone": "Cloaca de Amakna",
+    "zone": "Amakna",
+    "step": 27,
+    "type": "archi"
+  },
+  {
+    "id": 544,
+    "name": "Crujidilo Dundee, el Australiano",
+    "image": "./assets/img/crujidor_de_las_llanuras.webp",
+    "level": "62 - 70",
+    "subzone": "Llanuras rocosas",
+    "zone": "Llanuras de Cania",
+    "step": 27,
+    "type": "archi"
+  },
+  {
+    "id": 545,
+    "name": "Crujilieta, la Veronesa",
+    "image": "./assets/img/crujibola_pulio.webp",
+    "level": "93 - 105",
+    "subzone": "Llanuras herbosas",
+    "zone": "Isla de Otomai",
+    "step": 27,
+    "type": "archi"
+  },
+  {
+    "id": 546,
+    "name": "DoK Ok, el Gasterópodo",
+    "image": "./assets/img/dok_alako.webp",
+    "level": "70 - 78",
+    "subzone": "Lagos encantados",
+    "zone": "Montaña de los Koalaks",
+    "step": 27,
+    "type": "archi"
+  },
+  {
+    "id": 547,
+    "name": "El Strat, el Vampiro",
+    "image": "./assets/img/la_stropajo.webp",
+    "level": "32 - 40",
+    "subzone": "Cementerio de Astrub",
+    "zone": "Astrub",
+    "step": 27,
+    "type": "archi"
+  },
+  {
+    "id": 548,
+    "name": "El Stronyjok, el Pajarillo",
+    "image": "./assets/img/el_stropajo.webp",
+    "level": "32 - 40",
+    "subzone": "Cementerio de Astrub",
+    "zone": "Astrub",
+    "step": 27,
+    "type": "archi"
+  },
+  {
+    "id": 549,
+    "name": "El Strópala Otravez, el Sam",
+    "image": "./assets/img/stropajo_turbado.webp",
+    "level": "92 - 104",
+    "subzone": "Turbera sin fondo",
+    "zone": "Isla de Otomai",
+    "step": 27,
+    "type": "archi"
+  },
+  {
+    "id": 550,
+    "name": "Jabulio de la Llanesias, el Portero",
+    "image": "./assets/img/jabali_de_las_llanuras.webp",
+    "level": "40 - 48",
+    "subzone": "Llanura de los puerkazos",
+    "zone": "Llanuras de Cania",
+    "step": 27,
+    "type": "archi"
+  },
+  {
+    "id": 551,
+    "name": "Kanábolo, el Rubio",
+    "image": "./assets/img/kanibola_jav.webp",
+    "level": "52 - 60",
+    "subzone": "Bosque de las máscaras",
+    "zone": "Isla de Moon",
+    "step": 27,
+    "type": "archi"
+  },
+  {
+    "id": 552,
+    "name": "Kanníbal, el Lector",
+    "image": "./assets/img/kanibola_arquero.webp",
+    "level": "52 - 60",
+    "subzone": "Bosque de las máscaras",
+    "zone": "Isla de Moon",
+    "step": 27,
+    "type": "archi"
+  },
+  {
+    "id": 553,
+    "name": "Kokajín, el Calvo",
+    "image": "./assets/img/koalak_inmaduro.webp",
+    "level": "60 - 68",
+    "subzone": "Lagos encantados",
+    "zone": "Montaña de los Koalaks",
+    "step": 27,
+    "type": "archi"
+  },
+  {
+    "id": 554,
+    "name": "Kukumina la Violenta",
+    "image": "./assets/img/kukumi.webp",
+    "level": "122 - 132",
+    "subzone": "Akwadala",
+    "zone": "Isla de Pandala",
+    "step": 27,
+    "type": "archi"
+  },
+  {
+    "id": 555,
+    "name": "Maestrónomo, el Estrellado",
+    "image": "./assets/img/maestro_boletus.webp",
+    "level": "62 - 70",
+    "subzone": "Caminos rocosos",
+    "zone": "Llanuras de Cania",
+    "step": 27,
+    "type": "archi"
+  },
+  {
+    "id": 556,
+    "name": "Minocontavan Konm'astuzia, el Colorado",
+    "image": "./assets/img/minovillo.webp",
+    "level": "120 - 128",
+    "subzone": "Laberinto del Minotauroro",
+    "zone": "Isla del Minotauroro",
+    "step": 27,
+    "type": "archi"
+  },
+  {
+    "id": 557,
+    "name": "Plamifred Passteroh, el Bailarín",
+    "image": "./assets/img/palmiflor_passaoh.webp",
+    "level": "37 - 49",
+    "subzone": "Playa de coral",
+    "zone": "Isla de Otomai",
+    "step": 27,
+    "type": "archi"
+  },
+  {
+    "id": 558,
+    "name": "Palmila, la Vigilante",
+    "image": "./assets/img/palmiflor_mohito.webp",
+    "level": "37 - 49",
+    "subzone": "Playa de coral",
+    "zone": "Isla de Otomai",
+    "step": 27,
+    "type": "archi"
+  },
+  {
+    "id": 559,
+    "name": "Palmiscor Pions, los Amantes",
+    "image": "./assets/img/palmiflor_malibut.webp",
+    "level": "37 - 49",
+    "subzone": "Playa de coral",
+    "zone": "Isla de Otomai",
+    "step": 27,
+    "type": "archi"
+  },
+  {
+    "id": 560,
+    "name": "Raninia la Buena",
+    "image": "./assets/img/ranufar.webp",
+    "level": "102 - 110",
+    "subzone": "Plantala",
+    "zone": "Isla de Pandala",
+    "step": 27,
+    "type": "archi"
+  },
+  {
+    "id": 561,
+    "name": "Akujune el Capado",
+    "image": "./assets/img/kojonuki.webp",
+    "level": "122 - 130",
+    "subzone": "Tierradala",
+    "zone": "Isla de Pandala",
+    "step": 28,
+    "type": "archi"
+  },
+  {
+    "id": 562,
+    "name": "Cortazador, el Inconformista",
+    "image": "./assets/img/coralador.webp",
+    "level": "38 - 50",
+    "subzone": "Playa de coral",
+    "zone": "Isla de Otomai",
+    "step": 28,
+    "type": "archi"
+  },
+  {
+    "id": 563,
+    "name": "Peluca la Suavita",
+    "image": "./assets/img/almejillon.webp",
+    "level": "42 - 50",
+    "subzone": "Ribera del golfo sufokeño",
+    "zone": "Bahía de Sufokia",
+    "step": 28,
+    "type": "archi"
+  },
+  {
+    "id": 564,
+    "name": "Vetaurino, El Energizado",
+    "image": "./assets/img/vetorano.webp",
+    "level": "66 - 74",
+    "subzone": "Caminos rocosos",
+    "zone": "Llanuras de Cania",
+    "step": 28,
+    "type": "archi"
+  },
+  {
+    "id": 565,
+    "name": "Dragrogui, el Ebrio",
+    "image": "./assets/img/draguirritado.webp",
+    "level": "112 - 120",
+    "subzone": "Santuario de los dragohuevos",
+    "zone": "Amakna",
+    "step": 28,
+    "type": "archi"
+  },
+  {
+    "id": 566,
+    "name": "Kwakamole el Apetitoso",
+    "image": "./assets/img/kwak_de_tierra.webp",
+    "level": "42 - 50",
+    "subzone": "La montaña de los crujidores",
+    "zone": "Amakna",
+    "step": 28,
+    "type": "archi"
+  },
+  {
+    "id": 567,
+    "name": "Serranito el Montadito",
+    "image": "./assets/img/cerdo_serrano.webp",
+    "level": "80 - 92",
+    "subzone": "El laberinto del Dragocerdo",
+    "zone": "Laberinto del Dragocerdo",
+    "step": 28,
+    "type": "archi"
+  },
+  {
+    "id": 568,
+    "name": "Kwakaolatt el Chocolateado",
+    "image": "./assets/img/kwak_de_llamas.webp",
+    "level": "42 - 50",
+    "subzone": "La montaña de los crujidores",
+    "zone": "Amakna",
+    "step": 28,
+    "type": "archi"
+  },
+  {
+    "id": 569,
+    "name": "Kwakawático el Mojado",
+    "image": "./assets/img/kwak_de_hielo.webp",
+    "level": "42 - 50",
+    "subzone": "La montaña de los crujidores",
+    "zone": "Amakna",
+    "step": 28,
+    "type": "archi"
+  },
+  {
+    "id": 570,
+    "name": "Kwakeado el Pirateado",
+    "image": "./assets/img/kwak_de_viento.webp",
+    "level": "42 - 50",
+    "subzone": "La montaña de los crujidores",
+    "zone": "Amakna",
+    "step": 28,
+    "type": "archi"
+  },
+  {
+    "id": 571,
+    "name": "Kakai el Ensuciado",
+    "image": "./assets/img/kuakai.webp",
+    "level": "122 - 130",
+    "subzone": "Akwadala",
+    "zone": "Isla de Pandala",
+    "step": 28,
+    "type": "archi"
+  },
+  {
+    "id": 572,
+    "name": "Kanibúlrich Lars, el Metálico",
+    "image": "./assets/img/kanibola_fipi.webp",
+    "level": "52 - 60",
+    "subzone": "Bosque de las máscaras",
+    "zone": "Isla de Moon",
+    "step": 28,
+    "type": "archi"
+  },
+  {
+    "id": 573,
+    "name": "Klaidíbola Cerbarrow, la Otra Mitad",
+    "image": "./assets/img/kanibola_cerbat.webp",
+    "level": "52 - 60",
+    "subzone": "Bosque de las máscaras",
+    "zone": "Isla de Moon",
+    "step": 28,
+    "type": "archi"
+  },
+  {
+    "id": 574,
+    "name": "Kuantista el Incomprendido",
+    "image": "./assets/img/kuanuto.webp",
+    "level": "122 - 130",
+    "subzone": "Akwadala",
+    "zone": "Isla de Pandala",
+    "step": 28,
+    "type": "archi"
+  },
+  {
+    "id": 575,
+    "name": "Kuapánfilo el Intelectual",
+    "image": "./assets/img/kuapatan.webp",
+    "level": "122 - 131",
+    "subzone": "Akwadala",
+    "zone": "Isla de Pandala",
+    "step": 28,
+    "type": "archi"
+  },
+  {
+    "id": 576,
+    "name": "Palmiró, el Tetradimensional",
+    "image": "./assets/img/palmiflor_kuraçao.webp",
+    "level": "37 - 49",
+    "subzone": "Playa Coral",
+    "zone": "Isla de Otomai",
+    "step": 28,
+    "type": "archi"
+  },
+  {
+    "id": 577,
+    "name": "Rafa de Alnadalillas, el Canibal",
+    "image": "./assets/img/rata_de_alcantarilla.webp",
+    "level": "52 - 60",
+    "subzone": "Alcantarillas de Bonta",
+    "zone": "Bonta",
+    "step": 28,
+    "type": "archi"
+  },
+  {
+    "id": 578,
+    "name": "Raúl Cera, la Péptica",
+    "image": "./assets/img/raul_mops.webp",
+    "level": "42 - 50",
+    "subzone": "Ribera del golfo sufokeño",
+    "zone": "Bahía de Sufokia",
+    "step": 28,
+    "type": "archi"
+  },
+  {
+    "id": 579,
+    "name": "Serpistol, el Afónico",
+    "image": "./assets/img/serpipluma.webp",
+    "level": "120 - 128",
+    "subzone": "Laberinto del Minotauroro",
+    "zone": "Isla del Minotauroro",
+    "step": 28,
+    "type": "archi"
+  },
+  {
+    "id": 580,
+    "name": "Uginukem, el Duque",
+    "image": "./assets/img/chafer_draugr.webp",
+    "level": "42 - 50",
+    "subzone": "Cementerio de los torturados",
+    "zone": "Brakmar",
+    "step": 28,
+    "type": "archi"
+  },
+  {
+    "id": 581,
+    "name": "Barbrétzel, el Salado",
+    "image": "./assets/img/barbrusa.webp",
+    "level": "58 - 70",
+    "subzone": "Arca de Otomai",
+    "zone": "Isla de Otomai",
+    "step": 29,
+    "type": "archi"
+  },
+  {
+    "id": 582,
+    "name": "Cañon Dorzuelo, el Doloroso",
+    "image": "./assets/img/cañon_dorf.webp",
+    "level": "82 - 90",
+    "subzone": "Camino de los cráneos",
+    "zone": "Isla de Moon",
+    "step": 29,
+    "type": "archi"
+  },
+  {
+    "id": 583,
+    "name": "Dragkuín, el Disfrazado",
+    "image": "./assets/img/dragohuevo_arcilloso.webp",
+    "level": "62 - 70",
+    "subzone": "Península de los Dragohuevos",
+    "zone": "Amakna",
+    "step": 29,
+    "type": "archi"
+  },
+  {
+    "id": 584,
+    "name": "Dragmocles, el Fatalista",
+    "image": "./assets/img/dragohuevo_pizarroso.webp",
+    "level": "62 - 70",
+    "subzone": "Península de los Dragohuevos",
+    "zone": "Amakna",
+    "step": 29,
+    "type": "archi"
+  },
+  {
+    "id": 585,
+    "name": "Drajoanito, el Rojo",
+    "image": "./assets/img/dragohuevo_carbonoso.webp",
+    "level": "62 - 70",
+    "subzone": "Península de los Dragohuevos",
+    "zone": "Amakna",
+    "step": 29,
+    "type": "archi"
+  },
+  {
+    "id": 586,
+    "name": "Dreggeatón, el Latino",
+    "image": "./assets/img/dragohuevo_calizo.webp",
+    "level": "62 - 70",
+    "subzone": "Península de los Dragohuevos",
+    "zone": "Amakna",
+    "step": 29,
+    "type": "archi"
+  },
+  {
+    "id": 587,
+    "name": "Fantasma Arepopins, la Niñera",
+    "image": "./assets/img/fantasma_sesino.webp",
+    "level": "42 - 50",
+    "subzone": "Afueras de Brakmar",
+    "zone": "Brakmar",
+    "step": 29,
+    "type": "archi"
+  },
+  {
+    "id": 588,
+    "name": "Fantasmarley, el Rastafari",
+    "image": "./assets/img/fantasma_de_aperitubo.webp",
+    "level": "42 - 50",
+    "subzone": "Afueras de Brakmar",
+    "zone": "Brakmar",
+    "step": 29,
+    "type": "archi"
+  },
+  {
+    "id": 589,
+    "name": "Fantastle Vániante, el Matavampiros",
+    "image": "./assets/img/fantasma_nimado.webp",
+    "level": "42 - 50",
+    "subzone": "Afueras de Brakmar",
+    "zone": "Brakmar",
+    "step": 29,
+    "type": "archi"
+  },
+  {
+    "id": 590,
+    "name": "Fanthraks, el Acomplejado",
+    "image": "./assets/img/fantasma_corazado.webp",
+    "level": "42 - 50",
+    "subzone": "Afueras de Brakmar",
+    "zone": "Brakmar",
+    "step": 29,
+    "type": "archi"
+  },
+  {
+    "id": 591,
+    "name": "Jikitita la Moldeada",
+    "image": "./assets/img/senojiki.webp",
+    "level": "122 - 130",
+    "subzone": "Tierradala",
+    "zone": "Isla de Pandala",
+    "step": 29,
+    "type": "archi"
+  },
+  {
+    "id": 592,
+    "name": "Koalako, el Pato",
+    "image": "./assets/img/koalak_indigo.webp",
+    "level": "80 - 88",
+    "subzone": "Cañon salvaje",
+    "zone": "Montaña de los Koalaks",
+    "step": 29,
+    "type": "archi"
+  },
+  {
+    "id": 593,
+    "name": "Koalalia, el Mudo",
+    "image": "./assets/img/koalak_coco.webp",
+    "level": "80 - 88",
+    "subzone": "Cañon salvaje",
+    "zone": "Montaña de los Koalaks",
+    "step": 29,
+    "type": "archi"
+  },
+  {
+    "id": 594,
+    "name": "Koalugok, el Pato",
+    "image": "./assets/img/koalak_guinda.webp",
+    "level": "80 - 88",
+    "subzone": "Cañon salvaje",
+    "zone": "Montaña de los Koalaks",
+    "step": 29,
+    "type": "archi"
+  },
+  {
+    "id": 595,
+    "name": "Koaluik, el Pato",
+    "image": "./assets/img/koalak_reineta.webp",
+    "level": "80 - 88",
+    "subzone": "Cañon salvaje",
+    "zone": "Montaña de los Koalaks",
+    "step": 29,
+    "type": "archi"
+  },
+  {
+    "id": 596,
+    "name": "Merkxguerrita, el Ogro",
+    "image": "./assets/img/marguerrita.webp",
+    "level": "125 - 137",
+    "subzone": "Oscura jungla",
+    "zone": "Isla de Otomai",
+    "step": 29,
+    "type": "archi"
+  },
+  {
+    "id": 597,
+    "name": "Nakúmbat, el Mortal",
+    "image": "./assets/img/notyebra.webp",
+    "level": "82 - 90",
+    "subzone": "Camino de los cráneos",
+    "zone": "Isla de Moon",
+    "step": 29,
+    "type": "archi"
+  },
+  {
+    "id": 598,
+    "name": "Nieruba, el Poeta",
+    "image": "./assets/img/nierba.webp",
+    "level": "126 - 138",
+    "subzone": "Oscura jungla",
+    "zone": "Isla de Otomai",
+    "step": 29,
+    "type": "archi"
+  },
+  {
+    "id": 599,
+    "name": "Ratila, el Huno",
+    "image": "./assets/img/rata_hyoactiva.webp",
+    "level": "52 - 60",
+    "subzone": "Alcantarillas de Bonta",
+    "zone": "Bonta",
+    "step": 29,
+    "type": "archi"
+  },
+  {
+    "id": 600,
+    "name": "Sparito, el Feo",
+    "image": "./assets/img/sparo.webp",
+    "level": "57 - 69",
+    "subzone": "Arca de Otomai",
+    "zone": "Isla de Otomai",
+    "step": 29,
+    "type": "archi"
+  },
+  {
+    "id": 601,
+    "name": "Crujíbaro, el Tzantza",
+    "image": "./assets/img/crujidor_pulio.webp",
+    "level": "96 - 108",
+    "subzone": "Llanuras herbosas",
+    "zone": "Isla de Otomai",
+    "step": 30,
+    "type": "archi"
+  },
+  {
+    "id": 602,
+    "name": "Larvidriosa la Emocionada",
+    "image": "./assets/img/larva_campestre.webp",
+    "level": "56 - 59",
+    "subzone": "Campos de Cania",
+    "zone": "Llanuras de Cania",
+    "step": 30,
+    "type": "archi"
+  },
+  {
+    "id": 603,
+    "name": "Patón el Metido",
+    "image": "./assets/img/zumbobo.webp",
+    "level": "51 - 59",
+    "subzone": "Campos de Cania",
+    "zone": "Llanuras de Cania",
+    "step": 30,
+    "type": "archi"
+  },
+  {
+    "id": 604,
+    "name": "Fuflé el Definflado",
+    "image": "./assets/img/fuxfaigter.webp",
+    "level": "64 - 72",
+    "subzone": "Caminos rocosos",
+    "zone": "Llanuras de Cania",
+    "step": 30,
+    "type": "archi"
+  },
+  {
+    "id": 605,
+    "name": "Patata la Inmortalizada",
+    "image": "./assets/img/raton_verde.webp",
+    "level": "54 - 62",
+    "subzone": "Campos de Cania",
+    "zone": "Llanuras de Cania",
+    "step": 30,
+    "type": "archi"
+  },
+  {
+    "id": 606,
+    "name": "Huerfeliz el Encantador",
+    "image": "./assets/img/huerfelino.webp",
+    "level": "151 - 159",
+    "subzone": "Dientes de piedra",
+    "zone": "Llanuras de Cania",
+    "step": 30,
+    "type": "archi"
+  },
+  {
+    "id": 607,
+    "name": "Tigredo el Rápido",
+    "image": "./assets/img/tigredon.webp",
+    "level": "150 - 158",
+    "subzone": "Dientes de piedra",
+    "zone": "Llanuras de Cania",
+    "step": 30,
+    "type": "archi"
+  },
+  {
+    "id": 608,
+    "name": "Alhienado el Enajenado",
+    "image": "./assets/img/alhiena.webp",
+    "level": "152 - 160",
+    "subzone": "Dientes de piedra",
+    "zone": "Llanuras de Cania",
+    "step": 30,
+    "type": "archi"
+  },
+  {
+    "id": 609,
+    "name": "Highia la Golosa",
+    "image": "./assets/img/highiena.webp",
+    "level": "150 - 158",
+    "subzone": "Dientes de piedra",
+    "zone": "Llanuras de Cania",
+    "step": 30,
+    "type": "archi"
+  },
+  {
+    "id": 610,
+    "name": "Kanubirra la Fuerte",
+    "image": "./assets/img/kanublu.webp",
+    "level": "151 - 159",
+    "subzone": "Dientes de piedra",
+    "zone": "Llanuras de Cania",
+    "step": 30,
+    "type": "archi"
+  },
+  {
+    "id": 611,
+    "name": "Guerred-Fish, el Cortés",
+    "image": "./assets/img/guerrero_koalak.webp",
+    "level": "100 - 112",
+    "subzone": "Valle de la Muertekemata",
+    "zone": "Montaña de los Koalaks",
+    "step": 30,
+    "type": "archi"
+  },
+  {
+    "id": 612,
+    "name": "Jefe Cocolumbo, el Detective",
+    "image": "./assets/img/jefe_cocodrail.webp",
+    "level": "61 - 77",
+    "subzone": "Pantanos Nauseabundos",
+    "zone": "Montaña de los Koalaks",
+    "step": 30,
+    "type": "archi"
+  },
+  {
+    "id": 613,
+    "name": "Kánudalf, el kanoso",
+    "image": "./assets/img/kanugro.webp",
+    "level": "62 - 70",
+    "subzone": "Caminos rocosos",
+    "zone": "Llanuras de Cania",
+    "step": 30,
+    "type": "archi"
+  },
+  {
+    "id": 614,
+    "name": "Kidoloroso, del Calmante",
+    "image": "./assets/img/kido.webp",
+    "level": "95 - 107",
+    "subzone": "Llanuras herbosas",
+    "zone": "Isla de Otomai",
+    "step": 30,
+    "type": "archi"
+  },
+  {
+    "id": 615,
+    "name": "Kílibrill vol.2, el Vengativo",
+    "image": "./assets/img/kilibris.webp",
+    "level": "98 - 110",
+    "subzone": "Llanuras herbosas",
+    "zone": "Isla de Otomai",
+    "step": 30,
+    "type": "archi"
+  },
+  {
+    "id": 616,
+    "name": "Mafaldragosa, la Hermana pequeña",
+    "image": "./assets/img/dragosa.webp",
+    "level": "112 - 120",
+    "subzone": "Santuario de los dragohuevos",
+    "zone": "Amakna",
+    "step": 30,
+    "type": "archi"
+  },
+  {
+    "id": 617,
+    "name": "Miluigi, el Fontanero",
+    "image": "./assets/img/mediulubo.webp",
+    "level": "92 - 100",
+    "subzone": "Altos de los Aullidos",
+    "zone": "Landas de Sidimote",
+    "step": 30,
+    "type": "archi"
+  },
+  {
+    "id": 618,
+    "name": "Munchfavard, el Gritador",
+    "image": "./assets/img/mufafah.webp",
+    "level": "94 - 106",
+    "subzone": "Llanuras herbosas",
+    "zone": "Isla de Otomai",
+    "step": 30,
+    "type": "archi"
+  },
+  {
+    "id": 619,
+    "name": "Paketeru el Impresionante",
+    "image": "./assets/img/mazaishi.webp",
+    "level": "122 - 130",
+    "subzone": "Tierradala",
+    "zone": "Isla de Pandala",
+    "step": 30,
+    "type": "archi"
+  },
+  {
+    "id": 620,
+    "name": "Tufóbico, el Miedoso",
+    "image": "./assets/img/tufo_de_las_llanuras.webp",
+    "level": "97 - 109",
+    "subzone": "Llanuras herbosas",
+    "zone": "Isla de Otomai",
+    "step": 30,
+    "type": "archi"
+  },
+  {
+    "id": 621,
+    "name": "Abrakeponerse, el Optimista",
+    "image": "./assets/img/abraknido_oscuro.webp",
+    "level": "78  90",
+    "subzone": "Bosque oscuro",
+    "zone": "Bosque de los Abráknidos",
+    "step": 31,
+    "type": "archi"
+  },
+  {
+    "id": 622,
+    "name": "Ábrakin, el Oscuro",
+    "image": "./assets/img/abrakno_oscuro.webp",
+    "level": "80 - 92",
+    "subzone": "Bosque oscuro",
+    "zone": "Bosque de los Abráknidos",
+    "step": 31,
+    "type": "archi"
+  },
+  {
+    "id": 623,
+    "name": "Botalak Cabalgator, el Ingenioso",
+    "image": "./assets/img/koalak_cabalgador.webp",
+    "level": "102 - 114",
+    "subzone": "Cementerio Primitivo",
+    "zone": "Montaña de los Koalaks",
+    "step": 31,
+    "type": "archi"
+  },
+  {
+    "id": 624,
+    "name": "Diszápulo Delzoih, el Profeta",
+    "image": "./assets/img/discipulo_zoth.webp",
+    "level": "114 - 126",
+    "subzone": "Pueblo de la Canopea",
+    "zone": "Isla de Otomai",
+    "step": 31,
+    "type": "archi"
+  },
+  {
+    "id": 625,
+    "name": "Drakójak, el Piruletas",
+    "image": "./assets/img/dragnarok.webp",
+    "level": "112 - 120",
+    "subzone": "Santuario de los dragohuevos",
+    "zone": "Amakna",
+    "step": 31,
+    "type": "archi"
+  },
+  {
+    "id": 626,
+    "name": "Dreghouse, el Cínico",
+    "image": "./assets/img/dragandrop.webp",
+    "level": "112 - 120",
+    "subzone": "Santuario de los dragohuevos",
+    "zone": "Amakna",
+    "step": 31,
+    "type": "archi"
+  },
+  {
+    "id": 627,
+    "name": "Esquenosé, el Indeciso",
+    "image": "./assets/img/esquejika.webp",
+    "level": "127 - 139",
+    "subzone": "Oscura jungla",
+    "zone": "Isla de Otomai",
+    "step": 31,
+    "type": "archi"
+  },
+  {
+    "id": 628,
+    "name": "Kenoikenó el Negativo",
+    "image": "./assets/img/ino-naru.webp",
+    "level": "132 - 140",
+    "subzone": "Airedala",
+    "zone": "Isla de Pandala",
+    "step": 31,
+    "type": "archi"
+  },
+  {
+    "id": 629,
+    "name": "Koalúkyluk, el Solitario",
+    "image": "./assets/img/koalak_forestal.webp",
+    "level": "80 - 88",
+    "subzone": "Bosque de los kaliptos",
+    "zone": "Montaña de los Koalaks",
+    "step": 31,
+    "type": "archi"
+  },
+  {
+    "id": 630,
+    "name": "Kurogordu el Imponente",
+    "image": "./assets/img/kurookin.webp",
+    "level": "132 - 140",
+    "subzone": "Airedala",
+    "zone": "Isla de Pandala",
+    "step": 31,
+    "type": "archi"
+  },
+  {
+    "id": 631,
+    "name": "Lichangora la Inmaculada",
+    "image": "./assets/img/gorolichang.webp",
+    "level": "132 - 140",
+    "subzone": "Airedala",
+    "zone": "Isla de Pandala",
+    "step": 31,
+    "type": "archi"
+  },
+  {
+    "id": 632,
+    "name": "Mamachichu la Exuberante",
+    "image": "./assets/img/mamanuki.webp",
+    "level": "122 - 130",
+    "subzone": "Tierradala",
+    "zone": "Isla de Pandala",
+    "step": 31,
+    "type": "archi"
+  },
+  {
+    "id": 633,
+    "name": "Mospetero, el Triple",
+    "image": "./assets/img/mopet.webp",
+    "level": "143 - 155",
+    "subzone": "Tronco del árbol Hakam",
+    "zone": "Isla de Otomai",
+    "step": 31,
+    "type": "archi"
+  },
+  {
+    "id": 634,
+    "name": "Cracrac, el Resistente",
+    "image": "./assets/img/crujidolmen.webp",
+    "level": "75",
+    "subzone": "Piedemonte de los crujidores",
+    "zone": "Amakna",
+    "step": 31,
+    "type": "archi"
+  },
+  {
+    "id": 635,
+    "name": "Peketchup, el Hamburguesero",
+    "image": "./assets/img/pekewalak.webp",
+    "level": "80 - 88",
+    "subzone": "Lagos encantados",
+    "zone": "Montaña de los Koalaks",
+    "step": 31,
+    "type": "archi"
+  },
+  {
+    "id": 636,
+    "name": "Piralhaka, el Maorí",
+    "image": "./assets/img/piralak.webp",
+    "level": "80 - 88",
+    "subzone": "Lagos encantados",
+    "zone": "Montaña de los Koalaks",
+    "step": 31,
+    "type": "archi"
+  },
+  {
+    "id": 637,
+    "name": "Sepaulturero Kleealak, el Arquitecto",
+    "image": "./assets/img/koalak_sepulturero.webp",
+    "level": "100 - 112",
+    "subzone": "Cementerio Primitivo",
+    "zone": "Montaña de los Koalaks",
+    "step": 31,
+    "type": "archi"
+  },
+  {
+    "id": 638,
+    "name": "Tofofo, el Blandito",
+    "image": "./assets/img/tufo_oscuro.webp",
+    "level": "130 - 142",
+    "subzone": "Oscura jungla",
+    "zone": "Isla de Otomai",
+    "step": 31,
+    "type": "archi"
+  },
+  {
+    "id": 639,
+    "name": "Warkamole, el Apetitoso",
+    "image": "./assets/img/warko_marron.webp",
+    "level": "74 - 82",
+    "subzone": "Cañon salvaje",
+    "zone": "Montaña de los Koalaks",
+    "step": 31,
+    "type": "archi"
+  },
+  {
+    "id": 640,
+    "name": "Zampatávoro, el Miliano",
+    "image": "./assets/img/zampavoro.webp",
+    "level": "92 - 100",
+    "subzone": "Jungla Prohibida",
+    "zone": "Isla de Moon",
+    "step": 31,
+    "type": "archi"
+  },
+  {
+    "id": 641,
+    "name": "Abrajinieves, el Enanito",
+    "image": "./assets/img/abrajidor_oscuro.webp",
+    "level": "131 - 143",
+    "subzone": "Oscura jungla",
+    "zone": "Isla de Otomai",
+    "step": 32,
+    "type": "archi"
+  },
+  {
+    "id": 642,
+    "name": "Barrostroporosis, el Frágil",
+    "image": "./assets/img/barrostropajo.webp",
+    "level": "100 - 112",
+    "subzone": "Turbera sin fondo",
+    "zone": "Isla de Otomai",
+    "step": 32,
+    "type": "archi"
+  },
+  {
+    "id": 643,
+    "name": "Chavala Zotaina, la Castigadora",
+    "image": "./assets/img/chavala_zoth.webp",
+    "level": "117 - 129",
+    "subzone": "Pueblo de la Canopea",
+    "zone": "Isla de Otomai",
+    "step": 32,
+    "type": "archi"
+  },
+  {
+    "id": 644,
+    "name": "Dientetris, el Inolvidable",
+    "image": "./assets/img/diente_pe-leon.webp",
+    "level": "128 - 140",
+    "subzone": "Oscura jungla",
+    "zone": "Isla de Otomai",
+    "step": 32,
+    "type": "archi"
+  },
+  {
+    "id": 645,
+    "name": "Dragore, el Sangriento",
+    "image": "./assets/img/dragoss_carbonoso.webp",
+    "level": "92 - 100",
+    "subzone": "Pueblo de los dragohuevos",
+    "zone": "Amakna",
+    "step": 32,
+    "type": "archi"
+  },
+  {
+    "id": 646,
+    "name": "Dragoss To, el Caluroso",
+    "image": "./assets/img/dragoss_arcilloso.webp",
+    "level": "92 - 100",
+    "subzone": "Pueblo de los dragohuevos",
+    "zone": "Amakna",
+    "step": 32,
+    "type": "archi"
+  },
+  {
+    "id": 647,
+    "name": "Dragoss&Dungeoss, el Original",
+    "image": "./assets/img/dragoss_calizo.webp",
+    "level": "92 - 100",
+    "subzone": "Pueblo de los dragohuevos",
+    "zone": "Amakna",
+    "step": 32,
+    "type": "archi"
+  },
+  {
+    "id": 648,
+    "name": "Drakolakao, el Sabroso",
+    "image": "./assets/img/drakoalak.webp",
+    "level": "90 - 98",
+    "subzone": "Cañon salvaje",
+    "zone": "Montaña de los Koalaks",
+    "step": 32,
+    "type": "archi"
+  },
+  {
+    "id": 649,
+    "name": "Fangshui la Parónima",
+    "image": "./assets/img/fangshu.webp",
+    "level": "132 - 140",
+    "subzone": "Airedala",
+    "zone": "Isla de Pandala",
+    "step": 32,
+    "type": "archi"
+  },
+  {
+    "id": 650,
+    "name": "Florivera, el Muralista",
+    "image": "./assets/img/floribundo.webp",
+    "level": "129 - 141",
+    "subzone": "Oscura jungla",
+    "zone": "Isla de Otomai",
+    "step": 32,
+    "type": "archi"
+  },
+  {
+    "id": 651,
+    "name": "Florivera, el Muralista",
+    "image": "./assets/img/floribundo.webp",
+    "level": "129 - 141",
+    "subzone": "Oscura jungla",
+    "zone": "Isla de Otomai",
+    "step": 32,
+    "type": "archi"
+  },
+  {
+    "id": 652,
+    "name": "Jopetas el Mojado",
+    "image": "./assets/img/petafux.webp",
+    "level": "132 - 140",
+    "subzone": "Fuegodala",
+    "zone": "Isla de Pandala",
+    "step": 32,
+    "type": "archi"
+  },
+  {
+    "id": 653,
+    "name": "Koayak, el Destripador",
+    "image": "./assets/img/koalak_salvaje.webp",
+    "level": "104 - 116",
+    "subzone": "Valle de la Muertekemata",
+    "zone": "Montaña de los Koalaks",
+    "step": 32,
+    "type": "archi"
+  },
+  {
+    "id": 654,
+    "name": "Koelloks, el Cerealista",
+    "image": "./assets/img/koalak_sanguineo.webp",
+    "level": "102 - 114",
+    "subzone": "Valle de la Muertekemata",
+    "zone": "Montaña de los Koalaks",
+    "step": 32,
+    "type": "archi"
+  },
+  {
+    "id": 655,
+    "name": "Ledrag, el Ognat",
+    "image": "./assets/img/dragoss_pizarroso.webp",
+    "level": "92 - 100",
+    "subzone": "Pueblo de los dragohuevos",
+    "zone": "Amakna",
+    "step": 32,
+    "type": "archi"
+  },
+  {
+    "id": 656,
+    "name": "Lodontólogo, el Sonriente",
+    "image": "./assets/img/lodostropajo.webp",
+    "level": "95 - 107",
+    "subzone": "Turbera sin fondo",
+    "zone": "Isla de Otomai",
+    "step": 32,
+    "type": "archi"
+  },
+  {
+    "id": 657,
+    "name": "Mamoon, el Grande",
+    "image": "./assets/img/mama_koalak.webp",
+    "level": "90 - 98",
+    "subzone": "Cañon salvaje",
+    "zone": "Montaña de los Koalaks",
+    "step": 32,
+    "type": "archi"
+  },
+  {
+    "id": 658,
+    "name": "Momíller Frának, el Umbrío",
+    "image": "./assets/img/momia_koalak.webp",
+    "level": "106 - 118",
+    "subzone": "Cementerio Primitivo",
+    "zone": "Montaña de los Koalaks",
+    "step": 32,
+    "type": "archi"
+  },
+  {
+    "id": 659,
+    "name": "Siegálaher, los Chulos",
+    "image": "./assets/img/siegalak.webp",
+    "level": "108 - 120",
+    "subzone": "Valle de la Muertekemata",
+    "zone": "Montaña de los Koalaks",
+    "step": 32,
+    "type": "archi"
+  },
+  {
+    "id": 660,
+    "name": "Warjamer, el Miniaturista",
+    "image": "./assets/img/warko_violeta.webp",
+    "level": "106 - 118",
+    "subzone": "Valle de la Muertekemata",
+    "zone": "Montaña de los Koalaks",
+    "step": 32,
+    "type": "archi"
+  },
+  {
+    "id": 661,
+    "name": "Abroesidor, el Navegante",
+    "image": "./assets/img/abrajidor_claro.webp",
+    "level": "150 - 162",
+    "subzone": "Tronco del árbol Hakam",
+    "zone": "Isla de Otomai",
+    "step": 33,
+    "type": "archi"
+  },
+  {
+    "id": 662,
+    "name": "Chalbis, el King",
+    "image": "./assets/img/champbis.webp",
+    "level": "172 - 180",
+    "subzone": "Caverna de los fongos",
+    "zone": "Landas de Sidimote",
+    "step": 33,
+    "type": "archi"
+  },
+  {
+    "id": 663,
+    "name": "Champacné, el Granitos",
+    "image": "./assets/img/champaknido.webp",
+    "level": "172 - 180",
+    "subzone": "Caverna de los fongos",
+    "zone": "Landas de Sidimote",
+    "step": 33,
+    "type": "archi"
+  },
+  {
+    "id": 664,
+    "name": "Champli, el Sonoro",
+    "image": "./assets/img/champidonte.webp",
+    "level": "172 - 180",
+    "subzone": "Caverna de los fongos",
+    "zone": "Landas de Sidimote",
+    "step": 33,
+    "type": "archi"
+  },
+  {
+    "id": 665,
+    "name": "Don Kizoth, el Obstinado",
+    "image": "./assets/img/maestro_zoth.webp",
+    "level": "126 - 138",
+    "subzone": "Pueblo de la Canopea",
+    "zone": "Isla de Otomai",
+    "step": 33,
+    "type": "archi"
+  },
+  {
+    "id": 666,
+    "name": "Escupefistro el Torpedo",
+    "image": "./assets/img/escupefux.webp",
+    "level": "132 - 140",
+    "subzone": "Fuegodala",
+    "zone": "Isla de Pandala",
+    "step": 33,
+    "type": "archi"
+  },
+  {
+    "id": 667,
+    "name": "Sabeké la Vendedora",
+    "image": "./assets/img/tsukinoichi.webp",
+    "level": "152 - 160",
+    "subzone": "Cementerio de Grobe",
+    "zone": "Isla de Grobe",
+    "step": 33,
+    "type": "archi"
+  },
+  {
+    "id": 668,
+    "name": "Tambulé el Gastrónomo",
+    "image": "./assets/img/tamburai.webp",
+    "level": "152 - 160",
+    "subzone": "Cementerio de Grobe",
+    "zone": "Isla de Grobe",
+    "step": 33,
+    "type": "archi"
+  },
+  {
+    "id": 669,
+    "name": "Samurrancyo el Senil",
+    "image": "./assets/img/jiangshi-nobi.webp",
+    "level": "152 - 160",
+    "subzone": "Cementerio de Grobe",
+    "zone": "Isla de Grobe",
+    "step": 33,
+    "type": "archi"
+  },
+  {
+    "id": 670,
+    "name": "Melokomitó la Saciada",
+    "image": "./assets/img/onabu-geisha.webp",
+    "level": "152 - 160",
+    "subzone": "Cementerio de Grobe",
+    "zone": "Isla de Grobe",
+    "step": 33,
+    "type": "archi"
+  },
+  {
+    "id": 671,
+    "name": "Grambadabum el Elemental",
+    "image": "./assets/img/bumbardero.webp",
+    "level": "132 - 140",
+    "subzone": "Fuegodala",
+    "zone": "Isla de Pandala",
+    "step": 33,
+    "type": "archi"
+  },
+  {
+    "id": 672,
+    "name": "Kasrafantásol, el Parapsicólogo",
+    "image": "./assets/img/kasrakol.webp",
+    "level": "146 - 162",
+    "subzone": "Tronco del árbol Hakam",
+    "zone": "Isla de Otomai",
+    "step": 33,
+    "type": "archi"
+  },
+  {
+    "id": 673,
+    "name": "Maestro Peado, la Cuenta",
+    "image": "./assets/img/maestro_koalak.webp",
+    "level": "108 - 120",
+    "subzone": "Cementerio Primitivo",
+    "zone": "Montaña de los Koalaks",
+    "step": 33,
+    "type": "archi"
+  },
+  {
+    "id": 674,
+    "name": "Pohozí, el Jorobado",
+    "image": "./assets/img/pohoyo.webp",
+    "level": "142 - 158",
+    "subzone": "Tronco del árbol Hakam",
+    "zone": "Isla de Otomai",
+    "step": 33,
+    "type": "archi"
+  },
+  {
+    "id": 675,
+    "name": "Sargende Michael, el Narrador",
+    "image": "./assets/img/sargento_zoth.webp",
+    "level": "123 - 135",
+    "subzone": "Pueblo de la Canopea",
+    "zone": "Isla de Otomai",
+    "step": 33,
+    "type": "archi"
+  },
+  {
+    "id": 676,
+    "name": "Setal Slugdor, el Exterminador",
+    "image": "./assets/img/setador.webp",
+    "level": "172 - 180",
+    "subzone": "Caverna de los fongos",
+    "zone": "Landas de Sidimote",
+    "step": 33,
+    "type": "archi"
+  },
+  {
+    "id": 677,
+    "name": "Setsa'n Desiti, la Amistosa",
+    "image": "./assets/img/seta_peleona.webp",
+    "level": "172 - 180",
+    "subzone": "Caverna de los fongos",
+    "zone": "Landas de Sidimote",
+    "step": 33,
+    "type": "archi"
+  },
+  {
+    "id": 678,
+    "name": "Trompsosis, el Cardiaco",
+    "image": "./assets/img/trompseta.webp",
+    "level": "172 - 180",
     "subzone": "Territorio de los Fongos",
     "zone": "Landas de Sidimote",
-    "step": 19,
+    "step": 33,
+    "type": "archi"
+  },
+  {
+    "id": 679,
+    "name": "Troolbin, el de los Bolsquels",
+    "image": "./assets/img/trooloko.webp",
+    "level": "112 - 120",
+    "subzone": "Bosque de Litneg",
+    "zone": "Llanuras de Cania",
+    "step": 33,
+    "type": "archi"
+  },
+  {
+    "id": 680,
+    "name": "Tufaldo Aréneo, el Marielito",
+    "image": "./assets/img/tufo_aereo.webp",
+    "level": "144 - 160",
+    "subzone": "Tronco del árbol Hakam",
+    "zone": "Isla de Otomai",
+    "step": 33,
+    "type": "archi"
+  },
+  {
+    "id": 681,
+    "name": "Tsumani el Inundador",
+    "image": "./assets/img/tsume-bozu.webp",
+    "level": "162 - 170",
+    "subzone": "Monte de las tumbas",
+    "zone": "Isla de Grobe",
+    "step": 34,
+    "type": "archi"
+  },
+  {
+    "id": 682,
+    "name": "Kaonuclear el Inestable",
+    "image": "./assets/img/kaonashi.webp",
+    "level": "152 - 160",
+    "subzone": "Monte de las tumbas",
+    "zone": "Isla de Grobe",
+    "step": 34,
+    "type": "archi"
+  },
+  {
+    "id": 683,
+    "name": "Majarola el Doctor",
+    "image": "./assets/img/majaro.webp",
+    "level": "162 - 170",
+    "subzone": "Monte de las tumbas",
+    "zone": "Isla de Grobe",
+    "step": 34,
+    "type": "archi"
+  },
+  {
+    "id": 684,
+    "name": "Bakazhielo el congelado",
+    "image": "./assets/img/bakazako.webp",
+    "level": "162 - 170",
+    "subzone": "Monte de las tumbas",
+    "zone": "Isla de Grobe",
+    "step": 34,
+    "type": "archi"
+  },
+  {
+    "id": 685,
+    "name": "Reyuna, el Dibujante",
+    "image": "./assets/img/rey_stropajo.webp",
+    "level": "192 - 200",
+    "subzone": "Turbera sin fondo",
+    "zone": "Isla de Otomai",
+    "step": 34,
+    "type": "archi"
+  },
+  {
+    "id": 686,
+    "name": "Rojevita la Pequeña",
+    "image": "./assets/img/rojiva.webp",
+    "level": "132 - 140",
+    "subzone": "Fuegodala",
+    "zone": "Isla de Pandala",
+    "step": 34,
     "type": "archi"
   }
 ]
