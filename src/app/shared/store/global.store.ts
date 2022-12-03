@@ -1,4 +1,3 @@
-import { state } from '@angular/animations';
 import { Injectable } from '@angular/core';
 import { ComponentStore, tapResponse } from '@ngrx/component-store';
 import { switchMap } from 'rxjs/operators';
@@ -17,8 +16,12 @@ const DEFAULT_STATE: GlobalState = {
   isLoggedIn: false,
 };
 
-@Injectable()
-export class AppStore extends ComponentStore<GlobalState> {
+@Injectable({
+  providedIn: 'root',
+})
+export class GlobalStore extends ComponentStore<GlobalState> {
+  private readonly AUTH_KEY = environment.authKey;
+
   constructor(
     private readonly loginService: LoginService,
     private readonly localStorageService: LocalStorageService
@@ -44,13 +47,25 @@ export class AppStore extends ComponentStore<GlobalState> {
     )
   );
 
-  readonly setLoggedIn = this.updater((state, authResponse: AuthResponse) => {
-    authResponse.accessToken;
+  readonly logout = this.updater((state) => {
+    this.localStorageService.remove(this.AUTH_KEY);
+
     return {
       ...state,
-      isLoggedIn: true,
+      isLoggedIn: false,
     };
   });
+
+  readonly setLoggedIn = this.updater(
+    (state, { accessToken }: AuthResponse) => {
+      this.localStorageService.set(this.AUTH_KEY, accessToken);
+
+      return {
+        ...state,
+        isLoggedIn: true,
+      };
+    }
+  );
 }
 
 // SwitchMap cancels previous requests and only perform the last one

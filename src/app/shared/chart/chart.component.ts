@@ -30,8 +30,8 @@ import { ChartPipe } from './chart.pipe';
       </path>
     </svg>
     <div class="label">
-      <p>{{ data[0].label }}</p>
-      <h1>{{ data[0].percent }}%</h1>
+      <p>{{ data.at(0)?.label }}</p>
+      <h1>{{ data.at(0)?.percent?.toFixed(2) }}%</h1>
     </div>
   `,
 })

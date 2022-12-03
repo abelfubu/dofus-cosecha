@@ -1,8 +1,7 @@
 import { Directive, ElementRef, OnInit, Renderer2 } from '@angular/core';
-import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { AuthProvider } from './models/auth-provider';
-import { LoginService } from './services/login.service';
+import { GlobalStore } from './store/global.store';
 
 declare var google: GoogleAuth;
 
@@ -13,8 +12,7 @@ export class GoogleAuthDirective implements OnInit {
   constructor(
     private readonly renderer: Renderer2,
     private readonly elementRef: ElementRef,
-    private readonly loginService: LoginService,
-    private readonly router: Router
+    private readonly globalStore: GlobalStore
   ) {}
 
   ngOnInit(): void {
@@ -34,14 +32,10 @@ export class GoogleAuthDirective implements OnInit {
       callback: this.onGoogleLogin.bind(this),
     });
 
-    google.accounts.id.prompt();
+    // google.accounts.id.prompt();
   }
 
   onGoogleLogin({ credential }: GoogleAuthResponse): void {
-    this.loginService
-      .login({ provider: AuthProvider.GOOGLE, credential })
-      .subscribe(() => {
-        this.router.navigate(['/']);
-      });
+    this.globalStore.login({ provider: AuthProvider.GOOGLE, credential });
   }
 }

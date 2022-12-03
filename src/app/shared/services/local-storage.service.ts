@@ -8,6 +8,10 @@ export class LocalStorageService {
     localStorage.setItem(key, JSON.stringify({ value }));
   }
 
+  remove(key: string): void {
+    localStorage.removeItem(key);
+  }
+
   get<T>(key: string): T {
     const found = localStorage.getItem(key);
     return found ? JSON.parse(found).value : null;

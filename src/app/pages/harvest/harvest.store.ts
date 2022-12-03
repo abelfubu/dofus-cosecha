@@ -209,84 +209,51 @@ export class HarvestStore extends ComponentStore<HarvestData> {
   }
 
   private calculateStatistics(data: Harvest[]): ChartSlice[][] {
-    const [monsters, bosses, archis] = [
+    const dataMap: Record<number, { label: string; colors: string[] }> = {
+      [HarvestType.MONSTER]: {
+        label: 'Monstruos',
+        colors: ['#8E24AA', '#BA68C877'],
+      },
+      [HarvestType.BOSS]: { label: 'Jefes', colors: ['#00ACC1', '#4DD0E177'] },
+      [HarvestType.ARCHI]: {
+        label: 'Archis',
+        colors: ['#C0CA33', '#DCE77577'],
+      },
+      3: { label: 'Total', colors: ['#FFB300', '#FFD54F77'] },
+    };
+    // const [monsters, bosses, archis] = [
+    return [
       { type: HarvestType.MONSTER, amount: 299 },
       { type: HarvestType.BOSS, amount: 51 },
       { type: HarvestType.ARCHI, amount: 286 },
+      { type: 3, amount: data.length },
     ].map(({ type, amount }) => {
-      return this.calculatePercentage(
-        data.filter((item) => item.captured && item.type === type).length,
-        amount
-      );
+      const percent =
+        this.calculatePercentage(
+          type !== 3
+            ? data.filter((item) => item.captured && item.type === type).length
+            : data.filter((item) => item.captured).length,
+          amount
+        ) || 0.001;
+      return [
+        {
+          id: 1,
+          label: dataMap[type].label,
+          color: dataMap[type].colors.at(0)!,
+          percent: percent,
+        },
+        {
+          id: 2,
+          label: dataMap[type].label,
+          color: dataMap[type].colors.at(1)!,
+          percent: 100 - percent,
+        },
+      ];
     });
-
-    const total = this.calculatePercentage(
-      data.filter((item) => item.captured).length,
-      data.length
-    );
-
-    return [
-      [
-        {
-          id: 1,
-          label: 'Monstruos',
-          color: '#8E24AA',
-          percent: monsters,
-        },
-        {
-          id: 2,
-          label: 'Monstruos',
-          color: '#BA68C877',
-          percent: 100 - monsters,
-        },
-      ],
-      [
-        {
-          id: 1,
-          label: 'Jefes',
-          color: '#00ACC1',
-          percent: bosses,
-        },
-        {
-          id: 2,
-          label: 'Jefes',
-          color: '#4DD0E177',
-          percent: 100 - bosses,
-        },
-      ],
-      [
-        {
-          id: 1,
-          label: 'Archis',
-          color: '#C0CA33',
-          percent: archis,
-        },
-        {
-          id: 2,
-          label: 'Archis',
-          color: '#DCE77577',
-          percent: 100 - archis,
-        },
-      ],
-      [
-        {
-          id: 1,
-          label: 'Total',
-          color: '#FFB300',
-          percent: total,
-        },
-        {
-          id: 4,
-          label: 'Total',
-          color: '#FFD54F77',
-          percent: 100 - total,
-        },
-      ],
-    ];
   }
 
   private calculatePercentage(current: number, total: number): number {
-    return Number(((current / total) * 100).toFixed(2)) || 0;
+    return Number((current / total) * 100) || 0;
   }
 
   private normalize(value: string): string {

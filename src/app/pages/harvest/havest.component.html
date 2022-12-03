@@ -1,3 +1,3 @@
-<app-header></app-header>
+<app-header (logout)="onLogout()"></app-header>
 <app-harvest-filters (changed)="onSearchChange($event)"></app-harvest-filters>
 <app-harvest-table [data]="data$ | async"></app-harvest-table>

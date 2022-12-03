@@ -1,10 +1,11 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
+import { filter } from 'rxjs';
+import { GlobalStore } from 'src/app/shared/store/global.store';
 import { ButtonComponent } from 'src/app/shared/ui/button/button.component';
 import { InputComponent } from 'src/app/shared/ui/input/input.component';
 import { AuthProvider } from '../../shared/models/auth-provider';
-import { LoginService } from '../../shared/services/login.service';
 
 declare var google: GoogleAuth;
 
@@ -35,12 +36,18 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private readonly router: Router,
-    private readonly route: ActivatedRoute,
-    private readonly formBuilder: FormBuilder,
-    private readonly loginService: LoginService
+    private readonly globalStore: GlobalStore,
+    private readonly formBuilder: FormBuilder
   ) {}
 
   ngOnInit(): void {
+    this.renderGoogleButton();
+    this.globalStore.isLoggedIn$.pipe(filter((x) => x)).subscribe(() => {
+      this.router.navigate(['/']);
+    });
+  }
+
+  private renderGoogleButton() {
     google.accounts.id.renderButton(this.googleButton.nativeElement, {
       theme: 'filled_blue',
       size: 'large',
@@ -55,16 +62,10 @@ export class LoginComponent implements OnInit {
   onLoginSubmit() {
     if (this.form.invalid) return;
 
-    this.loginService
-      .login({
-        provider: AuthProvider.EMAIL,
-        email: String(this.form.value.email),
-        password: String(this.form.value.password),
-      })
-      .subscribe(() => {
-        this.router.navigate([
-          this.route.snapshot.queryParamMap.get('from') ?? '/',
-        ]);
-      });
+    this.globalStore.login({
+      provider: AuthProvider.EMAIL,
+      email: String(this.form.value.email),
+      password: String(this.form.value.password),
+    });
   }
 }

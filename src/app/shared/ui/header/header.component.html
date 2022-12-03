@@ -1,5 +1,10 @@
-<header>
-
+<header *ngIf="{isLoggedIn: isLoggedIn$  | async } as data">
   <a [routerLink]="['/']"><img src="./assets/img/logo.png" alt="Logo"></a>
-  <app-button [routerLink]="['/login']" [queryParams]="{ from: 'harvest' }">Log In</app-button>
+
+  <app-button *ngIf="!data.isLoggedIn; else logoutbutton" [routerLink]="['/login']" [queryParams]="{ from: 'harvest' }">
+    Log In
+  </app-button>
+  <ng-template #logoutbutton>
+    <app-button (click)="logout.emit()">Log Out</app-button>
+  </ng-template>
 </header>

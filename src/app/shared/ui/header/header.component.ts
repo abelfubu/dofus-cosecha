@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
-import { Router, RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { Component, EventEmitter, Output } from '@angular/core';
+import { RouterModule } from '@angular/router';
+import { GlobalStore } from '../../store/global.store';
 import { ButtonComponent } from '../button/button.component';
 
 @Component({
@@ -7,6 +9,11 @@ import { ButtonComponent } from '../button/button.component';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
   standalone: true,
-  imports: [ButtonComponent, RouterModule],
+  imports: [CommonModule, ButtonComponent, RouterModule],
 })
-export class HeaderComponent {}
+export class HeaderComponent {
+  isLoggedIn$ = this.globalStore.isLoggedIn$;
+  @Output() logout = new EventEmitter();
+
+  constructor(private readonly globalStore: GlobalStore) {}
+}
