@@ -20,16 +20,17 @@
   }
 
   .green {
-    background-color: rgba(colors.$light, 70%);
+    background-color: colors.$green;
+    color: map-get(colors.$dark, 400);
   }
 
   .red {
     color: #fff;
-    background-color: rgba(colors.$red, 30%);
+    background-color: colors.$red;
   }
 
   .warn {
-    background-color: rgba(colors.$warn, 30%);
+    background-color: colors.$warn;
   }
 
   &:nth-child(odd) {
@@ -61,11 +62,11 @@
 
   &:hover {
     button[disabled] {
-      color: colors.$light-blue;
+      color: transparent;
     }
 
     button:not([disabled]) {
-      color: colors.$dark-blue;
+      color: white;
 
       &:hover {
         box-shadow: 0 0 0 1px colors.$light-blue;

@@ -1,9 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { MatDialogModule } from '@angular/material/dialog';
+import { RouterModule } from '@angular/router';
+import { HeaderComponent } from 'src/app/shared/ui/header/header.component';
 import { HarvestFiltersComponent } from './components/harvest-filters/harvest-filters.component';
+import { HarvestStepModalComponent } from './components/harvest-filters/harvest-step-modal/harvest-step-modal.component';
 import { HarvestTableComponent } from './components/harvest-table/harvest-table.component';
 import { HarvestStore } from './harvest.store';
-import { MatDialogModule } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-havest',
@@ -12,9 +15,12 @@ import { MatDialogModule } from '@angular/material/dialog';
   standalone: true,
   imports: [
     CommonModule,
+    RouterModule,
+    MatDialogModule,
+    HeaderComponent,
     HarvestTableComponent,
     HarvestFiltersComponent,
-    MatDialogModule,
+    HarvestStepModalComponent,
   ],
 })
 export class HavestComponent implements OnInit {

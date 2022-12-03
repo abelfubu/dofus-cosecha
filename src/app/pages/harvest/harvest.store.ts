@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { ComponentStore, tapResponse } from '@ngrx/component-store';
-import { switchMap } from 'rxjs/operators';
+import { catchError, map, mergeMap, switchMap, tap } from 'rxjs/operators';
 
 import { HarvestDataService } from './services/harvest-data.service';
 
 import { Harvest, HarvestType } from './models/harvest';
 import { LocalStorageService } from 'src/app/shared/services/local-storage.service';
 import { ChartSlice } from 'src/app/shared/chart/chart.model';
+import { EMPTY, Observable } from 'rxjs';
 
 export type UserHarvest = Pick<Harvest, 'id' | 'captured' | 'amount'>;
 
@@ -38,7 +39,7 @@ const DEFAULT_STATE: HarvestData = {
 
 interface GetDataResponse {
   data: Harvest[];
-  userData: Record<number, Harvest>;
+  userData: Record<string, Harvest>;
 }
 
 @Injectable({
@@ -71,6 +72,25 @@ export class HarvestStore extends ComponentStore<HarvestData> {
             },
             (error) => console.log(error)
           )
+        )
+      )
+    )
+  );
+
+  readonly updateData = this.effect((trigger$: Observable<UserHarvest>) =>
+    trigger$.pipe(
+      map((item) => ({
+        item,
+        itemBefore: this.get().originalData.find((i) => i.id === item.id),
+      })),
+      tap((data) => this.update(data.item)),
+      mergeMap((data) =>
+        this.harvestDataService.update(data.item).pipe(
+          catchError((error) => {
+            this.update(data.itemBefore!);
+            console.log(error);
+            return EMPTY;
+          })
         )
       )
     )
@@ -122,11 +142,9 @@ export class HarvestStore extends ComponentStore<HarvestData> {
         showRepeatedOnly: !!showRepeatedOnly,
       };
 
-      return {
-        ...state,
-        filters,
-        harvest: this.applyFilters(state.originalData, filters),
-      };
+      const harvest = this.applyFilters(state.originalData, filters);
+
+      return { ...state, filters, harvest };
     }
   );
 
@@ -141,14 +159,13 @@ export class HarvestStore extends ComponentStore<HarvestData> {
   });
 
   readonly update = this.updater((state, item: UserHarvest) => {
-    const storage = this.localStorageService.update<Partial<Harvest>>(
-      this.DOFUS_HARVEST_KEY,
-      item.id,
-      item
-    );
+    // const storage = this.localStorageService.update<Partial<Harvest>>(
+    //   this.DOFUS_HARVEST_KEY,
+    //   item.id,
+    //   item
+    // );
 
-    const callback = (i: Harvest) =>
-      i.id === item.id ? { ...i, ...storage } : i;
+    const callback = (i: Harvest) => (i.id === item.id ? { ...i, ...item } : i);
 
     const originalData = state.originalData.map(callback);
 
@@ -162,11 +179,11 @@ export class HarvestStore extends ComponentStore<HarvestData> {
 
   private applyFilters(source: Harvest[], filters: HarvestFilters): Harvest[] {
     return source.reduce<Harvest[]>((acc, item) => {
-      if (!filters.showCaptured && item.captured) {
+      if (filters.showRepeatedOnly && !item.amount) {
         return acc;
       }
 
-      if (filters.showRepeatedOnly && !item.amount) {
+      if (!filters.showCaptured && item.captured) {
         return acc;
       }
 
@@ -213,13 +230,13 @@ export class HarvestStore extends ComponentStore<HarvestData> {
         {
           id: 1,
           label: 'Monstruos',
-          color: 'red',
+          color: '#8E24AA',
           percent: monsters,
         },
         {
           id: 2,
           label: 'Monstruos',
-          color: 'salmon',
+          color: '#BA68C877',
           percent: 100 - monsters,
         },
       ],
@@ -227,13 +244,13 @@ export class HarvestStore extends ComponentStore<HarvestData> {
         {
           id: 1,
           label: 'Jefes',
-          color: 'blue',
+          color: '#00ACC1',
           percent: bosses,
         },
         {
           id: 2,
           label: 'Jefes',
-          color: 'lightblue',
+          color: '#4DD0E177',
           percent: 100 - bosses,
         },
       ],
@@ -241,13 +258,13 @@ export class HarvestStore extends ComponentStore<HarvestData> {
         {
           id: 1,
           label: 'Archis',
-          color: 'green',
+          color: '#C0CA33',
           percent: archis,
         },
         {
           id: 2,
           label: 'Archis',
-          color: 'lightgreen',
+          color: '#DCE77577',
           percent: 100 - archis,
         },
       ],
@@ -255,13 +272,13 @@ export class HarvestStore extends ComponentStore<HarvestData> {
         {
           id: 1,
           label: 'Total',
-          color: 'yellow',
+          color: '#FFB300',
           percent: total,
         },
         {
           id: 4,
           label: 'Total',
-          color: 'lightyellow',
+          color: '#FFD54F77',
           percent: 100 - total,
         },
       ],

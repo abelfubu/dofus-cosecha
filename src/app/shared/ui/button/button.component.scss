@@ -1,0 +1,29 @@
+@use "colors" as c;
+
+$primary: map-get(
+  $map: c.$dark,
+  $key: 300,
+);
+
+button {
+  color: $primary;
+  padding: 0.5rem 0.7rem;
+  border-radius: 0.4rem;
+  border: none;
+  font-size: 1.2rem;
+  outline: none;
+  // width: 100%;
+  margin: 0.9rem auto;
+  background-color: transparent;
+  transition: box-shadow 200ms ease-in-out;
+  box-shadow: 0 0 0 1px $primary;
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: 0 0 0 2px $primary;
+  }
+
+  &:active {
+    filter: brightness(0.8);
+  }
+}

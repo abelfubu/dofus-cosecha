@@ -2,17 +2,17 @@
 
 :host {
   display: block;
-  padding: 2rem 0;
 
   .search-box {
     display: flex;
-    justify-self: center;
+    justify-content: center;
   }
 
   .controls-box {
     padding: 2rem 0;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
 
     label {
       margin-left: 0.5rem;

@@ -14,7 +14,7 @@ export class LocalStorageService {
   }
 
   update<T>(key: string, id: number, value: T): T {
-    const found = this.get<Record<number, T>>(key) ?? {};
+    const found = this.get<Record<string, T>>(key) ?? {};
     found[id] = { ...found[id], ...value };
     this.set(key, found);
     return found[id];

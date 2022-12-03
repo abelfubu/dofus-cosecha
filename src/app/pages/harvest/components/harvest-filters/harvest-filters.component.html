@@ -1,21 +1,21 @@
-<form [formGroup]="form">
-	<div class="search-box">
-		<input class="search" type="text" formControlName="search" placeholder="Search..." />
-	</div>
-
-	<div class="controls-box">
-		<div class="control">
-			<input type="checkbox" formControlName="completed" id="completed">
-			<label for="completed">Mostrar capturados</label>
-		</div>
-
-		<div class="control">
-			<input type="checkbox" formControlName="repeated" id="repeated">
-			<label for="repeated">Mostrar solo repetidos</label>
-		</div>
-	</div>
-</form>
-
 <div style="display: grid; grid-template-columns: repeat(4, 1fr); grid-gap: 3rem; max-width: 900px; margin: 0 auto">
-	<app-chart *ngFor="let item of data$ | async" [data]="item"></app-chart>
+  <app-chart *ngFor="let item of data$ | async" [data]="item"></app-chart>
 </div>
+
+<form [formGroup]="form">
+  <div class="search-box">
+    <app-input type="text" [control]="form.controls.search" placeholder="Buscar..."></app-input>
+  </div>
+
+  <div class="controls-box">
+    <div class="control">
+      <input type="checkbox" formControlName="completed" id="completed">
+      <label for="completed">Mostrar capturados</label>
+    </div>
+
+    <div class="control">
+      <input type="checkbox" formControlName="repeated" id="repeated">
+      <label for="repeated">Mostrar solo repetidos</label>
+    </div>
+  </div>
+</form>

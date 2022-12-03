@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { take } from 'rxjs';
+import { ButtonComponent } from 'src/app/shared/ui/button/button.component';
 import { HarvestStore } from '../../../harvest.store';
 
 @Component({
@@ -9,7 +10,7 @@ import { HarvestStore } from '../../../harvest.store';
   templateUrl: './harvest-step-modal.component.html',
   styleUrls: ['./harvest-step-modal.component.scss'],
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, ButtonComponent],
 })
 export class HarvestStepModalComponent {
   form!: FormGroup;

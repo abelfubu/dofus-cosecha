@@ -3,7 +3,7 @@
 :host {
   display: block;
   padding: 2rem;
-  accent-color: colors.$dark-blue;
+  accent-color: map-get($map: colors.$primary, $key: 500);
 
   h2 {
     margin-bottom: 1rem;
@@ -25,15 +25,6 @@
     gap: 1rem;
     width: 100%;
     margin-top: 2rem;
-
-    button {
-      cursor: pointer;
-      width: 100%;
-      background-color: colors.$medium-blue;
-      border: none;
-      color: #fff;
-      padding: 0.5rem 1rem;
-      border-radius: 0.4rem;
-    }
+    justify-content: left;
   }
 }

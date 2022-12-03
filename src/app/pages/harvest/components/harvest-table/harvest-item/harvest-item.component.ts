@@ -1,5 +1,11 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+  OnInit,
+} from '@angular/core';
+import { BehaviorSubject, debounceTime, tap } from 'rxjs';
 import { HarvestStore } from '../../../harvest.store';
 import { Harvest } from '../../../models/harvest';
 
@@ -9,6 +15,7 @@ import { Harvest } from '../../../models/harvest';
   styleUrls: ['./harvest-item.component.scss'],
   standalone: true,
   imports: [CommonModule],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HarvestItemComponent {
   @Input() item!: Harvest;
@@ -16,10 +23,14 @@ export class HarvestItemComponent {
   constructor(private readonly harvestStore: HarvestStore) {}
 
   onCapturedChange({ id, captured, amount }: Harvest): void {
-    this.harvestStore.update({ id, captured: !captured, amount: amount ?? 0 });
+    this.harvestStore.updateData({
+      id,
+      captured: !captured,
+      amount: amount ?? 0,
+    });
   }
 
   onAmountChange({ id, captured }: Harvest, amount: number): void {
-    this.harvestStore.update({ id, captured, amount });
+    this.harvestStore.updateData({ id, captured: !!captured, amount });
   }
 }

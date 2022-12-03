@@ -18,7 +18,7 @@ import { ChartPipe } from './chart.pipe';
     <svg [attr.viewBox]="viewBoxAttr" *ngIf="data">
       <path
         *ngFor="
-          let slice of data | chartPipe: radius:viewBox:borderSize;
+          let slice of data | chartPipe : radius : viewBox : borderSize;
           trackBy: trackByFn
         "
         [attr.fill]="slice.color"
@@ -36,9 +36,9 @@ import { ChartPipe } from './chart.pipe';
   `,
 })
 export class ChartComponent implements OnInit {
-  @Input() radius = 50;
-  @Input() viewBox = 100;
-  @Input() borderSize = 12;
+  @Input() radius = 80;
+  @Input() viewBox = 170;
+  @Input() borderSize = 15;
   @Input() data: ChartSlice[] = [];
 
   viewBoxAttr!: string;

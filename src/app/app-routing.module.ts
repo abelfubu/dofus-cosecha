@@ -12,6 +12,11 @@ const routes: Route[] = [
     loadComponent: () =>
       import('./pages/harvest/havest.component').then((c) => c.HavestComponent),
   },
+  {
+    path: 'login',
+    loadComponent: () =>
+      import('./pages/login/login.component').then((c) => c.LoginComponent),
+  },
 ];
 
 @NgModule({

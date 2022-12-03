@@ -3,6 +3,7 @@ import { Component, Output } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { debounceTime, tap } from 'rxjs';
 import { ChartComponent } from 'src/app/shared/chart/chart.component';
+import { InputComponent } from 'src/app/shared/ui/input/input.component';
 import { HarvestStore } from '../../harvest.store';
 
 @Component({
@@ -10,7 +11,7 @@ import { HarvestStore } from '../../harvest.store';
   templateUrl: './harvest-filters.component.html',
   styleUrls: ['./harvest-filters.component.scss'],
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, ChartComponent],
+  imports: [CommonModule, ReactiveFormsModule, ChartComponent, InputComponent],
 })
 export class HarvestFiltersComponent {
   form = this.formBuilder.group({
@@ -23,7 +24,7 @@ export class HarvestFiltersComponent {
     debounceTime(800)
   );
 
-  data$ = this.harvestStore.statistics$.pipe(tap(console.log));
+  data$ = this.harvestStore.statistics$;
 
   constructor(
     private readonly formBuilder: FormBuilder,
