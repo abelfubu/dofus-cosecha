@@ -1,21 +1,38 @@
-<div style="display: grid; grid-template-columns: repeat(4, 1fr); grid-gap: 3rem; max-width: 900px; margin: 0 auto">
+<div class="chart-container">
   <app-chart *ngFor="let item of data$ | async" [data]="item"></app-chart>
 </div>
 
 <form [formGroup]="form">
   <div class="search-box">
-    <app-input type="text" [control]="form.controls.search" placeholder="Buscar..."></app-input>
+    <app-input type="text" [control]="form.controls.search" placeholder="Buscar..." style="flex-basis: 500px">
+    </app-input>
+    <app-button (click)="onClearFilters()">Borrar Filtros</app-button>
   </div>
 
   <div class="controls-box">
     <div class="control">
-      <input type="checkbox" formControlName="completed" id="completed">
+      <input type="checkbox" formControlName="showCaptured" id="completed">
       <label for="completed">Mostrar capturados</label>
     </div>
 
     <div class="control">
-      <input type="checkbox" formControlName="repeated" id="repeated">
+      <input type="checkbox" formControlName="showRepeatedOnly" id="repeated">
       <label for="repeated">Mostrar solo repetidos</label>
+    </div>
+
+    <div class="control">
+      <input type="checkbox" formControlName="monsters" id="monsters">
+      <label for="monsters">Monstruos</label>
+    </div>
+
+    <div class="control">
+      <input type="checkbox" formControlName="bosses" id="bosses">
+      <label for="bosses">Jefes</label>
+    </div>
+
+    <div class="control">
+      <input type="checkbox" formControlName="archis" id="archis">
+      <label for="archis">Archis</label>
     </div>
   </div>
 </form>

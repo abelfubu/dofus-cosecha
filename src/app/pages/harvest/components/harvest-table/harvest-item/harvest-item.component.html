@@ -20,11 +20,11 @@
   <p>{{item.step}}</p>
 </div>
 
-<div [ngClass]="item.captured ? 'green' : 'red'" class="cell pointer" (click)="onCapturedChange(item)">
+<div [ngClass]="item.captured ? 'green' : 'red'" class="cell pointer not-selectable" (click)="onCapturedChange(item)">
   <p>{{ item.captured ? 'Si' : 'No' }}</p>
 </div>
 
-<div [class.warn]="!!item.amount" class="cell">
+<div [class.warn]="!!item.amount" class="cell not-selectable">
   <button (click)="onAmountChange(item, item.amount ? item.amount + 1 : 1)">
     <span class="material-symbols-outlined"> arrow_drop_up </span>
   </button>

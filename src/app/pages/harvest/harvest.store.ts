@@ -1,6 +1,13 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { ComponentStore, tapResponse } from '@ngrx/component-store';
-import { catchError, map, mergeMap, switchMap, tap } from 'rxjs/operators';
+import {
+  catchError,
+  filter,
+  map,
+  mergeMap,
+  switchMap,
+  tap,
+} from 'rxjs/operators';
 
 import { HarvestDataService } from './services/harvest-data.service';
 
@@ -8,14 +15,19 @@ import { Harvest, HarvestType } from './models/harvest';
 import { LocalStorageService } from 'src/app/shared/services/local-storage.service';
 import { ChartSlice } from 'src/app/shared/chart/chart.model';
 import { EMPTY, Observable } from 'rxjs';
+import { GlobalStore } from 'src/app/shared/store/global.store';
+import { Router } from '@angular/router';
 
 export type UserHarvest = Pick<Harvest, 'id' | 'captured' | 'amount'>;
 
 export interface HarvestFilters {
-  showCaptured: boolean;
-  showRepeatedOnly: boolean;
-  search: string | null;
+  showCaptured: boolean | undefined;
+  showRepeatedOnly: boolean | undefined;
+  search: string | undefined | null;
   steps: boolean[];
+  monsters: boolean | undefined;
+  bosses: boolean | undefined;
+  archis: boolean | undefined;
 }
 
 export interface HarvestData {
@@ -34,6 +46,9 @@ const DEFAULT_STATE: HarvestData = {
     showCaptured: true,
     search: null,
     steps: [...new Array(34)].map(() => true),
+    monsters: true,
+    bosses: true,
+    archis: true,
   },
 };
 
@@ -47,12 +62,18 @@ interface GetDataResponse {
 })
 export class HarvestStore extends ComponentStore<HarvestData> {
   private readonly DOFUS_HARVEST_KEY = 'dof.harv';
+  isLoggedIn!: boolean;
 
   constructor(
+    private readonly router: Router,
+    private readonly globalStore: GlobalStore,
     private readonly harvestDataService: HarvestDataService,
     private readonly localStorageService: LocalStorageService
   ) {
     super(DEFAULT_STATE);
+    this.globalStore.isLoggedIn$.subscribe((logged) => {
+      this.isLoggedIn = logged;
+    });
   }
 
   readonly harvest$ = this.select(({ harvest }) => harvest);
@@ -79,6 +100,13 @@ export class HarvestStore extends ComponentStore<HarvestData> {
 
   readonly updateData = this.effect((trigger$: Observable<UserHarvest>) =>
     trigger$.pipe(
+      tap(() => {
+        if (!this.isLoggedIn)
+          this.router.navigate(['/login'], {
+            queryParams: { from: 'harvest' },
+          });
+      }),
+      filter(() => this.isLoggedIn),
       map((item) => ({
         item,
         itemBefore: this.get().originalData.find((i) => i.id === item.id),
@@ -124,6 +152,17 @@ export class HarvestStore extends ComponentStore<HarvestData> {
       harvest: this.applyFilters(state.originalData, filters),
     };
   });
+
+  readonly filter = this.updater(
+    (state, values: Omit<Partial<HarvestFilters>, 'steps' | 'search'>) => {
+      const filters = { ...state.filters, ...values };
+      return {
+        ...state,
+        filters: { ...values, ...state.filters },
+        harvest: this.applyFilters(state.originalData, filters),
+      };
+    }
+  );
 
   readonly completed = this.updater((state, showCaptured: boolean | null) => {
     const filters = { ...state.filters, showCaptured: !!showCaptured };
@@ -188,6 +227,18 @@ export class HarvestStore extends ComponentStore<HarvestData> {
       }
 
       if (!filters.steps[item.step - 1]) {
+        return acc;
+      }
+
+      if (!filters.monsters && item.type === HarvestType.MONSTER) {
+        return acc;
+      }
+
+      if (!filters.bosses && item.type === HarvestType.BOSS) {
+        return acc;
+      }
+
+      if (!filters.archis && item.type === HarvestType.ARCHI) {
         return acc;
       }
 

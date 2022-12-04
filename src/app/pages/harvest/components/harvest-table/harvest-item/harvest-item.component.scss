@@ -39,7 +39,7 @@
 
   img {
     padding: 0.8rem;
-    height: 100px;
+    height: 7rem;
     margin: auto;
   }
 
@@ -76,5 +76,9 @@
         box-shadow: 0 0 0 1px colors.$medium-blue;
       }
     }
+  }
+
+  .not-selectable {
+    user-select: none;
   }
 }

@@ -7,23 +7,38 @@ $primary: map-get(
 
 button {
   color: $primary;
-  padding: 0.5rem 0.7rem;
-  border-radius: 0.4rem;
+  padding: 0.6rem 0.7rem;
   border: none;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   outline: none;
-  // width: 100%;
-  margin: 0.9rem auto;
   background-color: transparent;
-  transition: box-shadow 200ms ease-in-out;
+  display: flex;
+  justify-content: space-between;
+  gap: 0.1rem;
+  align-items: center;
+  // margin: auto;
+  border-radius: 0.4rem;
   box-shadow: 0 0 0 1px $primary;
-  cursor: pointer;
+  transition: box-shadow 200ms ease-in-out;
+
+  &:not([disabled]) {
+    cursor: pointer;
+  }
 
   &:hover {
     box-shadow: 0 0 0 2px $primary;
   }
 
-  &:active {
+  &:active:not([disabled]) {
     filter: brightness(0.8);
   }
+
+  &:disabled {
+    box-shadow: none;
+  }
+}
+
+span {
+  // color: map-get($map: c.$primary, $key: 500);
+  transform: scale(1.1);
 }

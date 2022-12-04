@@ -1,4 +1,10 @@
-import { Directive, ElementRef, OnInit, Renderer2 } from '@angular/core';
+import {
+  Directive,
+  ElementRef,
+  NgZone,
+  OnInit,
+  Renderer2,
+} from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { AuthProvider } from './models/auth-provider';
 import { GlobalStore } from './store/global.store';
@@ -10,6 +16,7 @@ declare var google: GoogleAuth;
 })
 export class GoogleAuthDirective implements OnInit {
   constructor(
+    private readonly ngZone: NgZone,
     private readonly renderer: Renderer2,
     private readonly elementRef: ElementRef,
     private readonly globalStore: GlobalStore
@@ -29,7 +36,7 @@ export class GoogleAuthDirective implements OnInit {
   initializeGoogleAuth(): void {
     google.accounts.id.initialize({
       client_id: environment.googleClientId,
-      callback: this.onGoogleLogin.bind(this),
+      callback: (res) => this.ngZone.run(this.onGoogleLogin, this, [res]),
     });
 
     // google.accounts.id.prompt();

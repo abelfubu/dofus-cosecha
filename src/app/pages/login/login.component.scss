@@ -39,9 +39,8 @@ hr {
   margin: 2rem 0;
 }
 
-input,
-button {
-  width: 100%;
-  padding: 0.5rem 0;
-  margin: 0.5rem 0;
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
 }

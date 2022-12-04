@@ -3,13 +3,23 @@
 :host {
   display: block;
 
+  .chart-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 3rem;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
   .search-box {
     display: flex;
     justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
   }
 
   .controls-box {
-    padding: 2rem 0;
+    padding: 0.5rem 0;
     display: flex;
     justify-content: center;
     gap: 2rem;

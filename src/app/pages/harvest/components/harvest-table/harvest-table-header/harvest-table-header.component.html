@@ -1,0 +1,13 @@
+<div style="display: grid; grid-template-columns: repeat(8, 1fr); text-align: center; padding: 1rem 0;">
+  <div *ngFor="let header of headers" class="table-header">
+
+    <ng-container [ngSwitch]="header.type">
+      <div *ngSwitchCase="'space'"></div>
+      <app-button *ngSwitchCase="'text'" [disabled]="true" [center]="true">{{header.label}}</app-button>
+      <app-button *ngSwitchCase="'filter'" icon="expand_more" [center]="true" (click)="openFilter(header.component!)">
+        {{header.label}}
+      </app-button>
+
+    </ng-container>
+  </div>
+</div>

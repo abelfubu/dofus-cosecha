@@ -6,6 +6,7 @@ import { LazyImagesDirective } from 'src/app/shared/lazy-images.directive';
 import { Harvest } from '../../models/harvest';
 import { HarvestStepModalComponent } from '../harvest-filters/harvest-step-modal/harvest-step-modal.component';
 import { HarvestItemComponent } from './harvest-item/harvest-item.component';
+import { HarvestTableHeaderComponent } from './harvest-table-header/harvest-table-header.component';
 
 @Component({
   selector: 'app-harvest-table',
@@ -14,9 +15,10 @@ import { HarvestItemComponent } from './harvest-item/harvest-item.component';
   standalone: true,
   imports: [
     CommonModule,
-    HarvestItemComponent,
-    LazyImagesDirective,
     MatDialogModule,
+    LazyImagesDirective,
+    HarvestItemComponent,
+    HarvestTableHeaderComponent,
   ],
 })
 export class HarvestTableComponent {

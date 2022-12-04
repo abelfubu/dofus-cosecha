@@ -5,7 +5,8 @@ import {
   Input,
   OnInit,
 } from '@angular/core';
-import { BehaviorSubject, debounceTime, tap } from 'rxjs';
+import { Router } from '@angular/router';
+import { GlobalStore } from 'src/app/shared/store/global.store';
 import { HarvestStore } from '../../../harvest.store';
 import { Harvest } from '../../../models/harvest';
 
@@ -17,10 +18,21 @@ import { Harvest } from '../../../models/harvest';
   imports: [CommonModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HarvestItemComponent {
+export class HarvestItemComponent implements OnInit {
   @Input() item!: Harvest;
 
-  constructor(private readonly harvestStore: HarvestStore) {}
+  isLoggedIn!: boolean;
+
+  constructor(
+    private readonly globalStore: GlobalStore,
+    private readonly harvestStore: HarvestStore
+  ) {}
+
+  ngOnInit(): void {
+    this.globalStore.isLoggedIn$.subscribe((logged) => {
+      this.isLoggedIn = logged;
+    });
+  }
 
   onCapturedChange({ id, captured, amount }: Harvest): void {
     this.harvestStore.updateData({
