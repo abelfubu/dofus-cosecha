@@ -1,10 +1,21 @@
-<header *ngIf="{isLoggedIn: isLoggedIn$  | async } as data">
+<header *ngIf="user$ | async as user">
   <a [routerLink]="['/']"><img src="./assets/img/logo.png" alt="Logo"></a>
 
-  <app-button *ngIf="!data.isLoggedIn; else logoutbutton" [routerLink]="['/login']" [queryParams]="{ from: 'harvest' }">
-    Log In
-  </app-button>
-  <ng-template #logoutbutton>
-    <app-button (click)="logout.emit()">Log Out</app-button>
-  </ng-template>
+
+  <nav>
+    <ng-container *ngIf="user.email">
+      <img [title]="user.email" *ngIf="user.picture; else emailAvatar" [src]="user.picture" alt="User Picture">
+      <ng-template #emailAvatar>
+        <div class="email-avatar">{{ user.email?.at(0) }}</div>
+      </ng-template>
+    </ng-container>
+
+    <app-button *ngIf="!user.isLoggedIn; else logoutbutton" [routerLink]="['/login']"
+      [queryParams]="{ from: 'harvest' }">
+      Log In
+    </app-button>
+    <ng-template #logoutbutton>
+      <app-button (click)="logout.emit()">Log Out</app-button>
+    </ng-template>
+  </nav>
 </header>

@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, Output } from '@angular/core';
-import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormControl, ReactiveFormsModule } from '@angular/forms';
 import { debounceTime, map, tap } from 'rxjs';
 import { ChartComponent } from 'src/app/shared/chart/chart.component';
 import { ButtonComponent } from 'src/app/shared/ui/button/button.component';
@@ -22,8 +22,9 @@ import { DEFAULT_FILTERS } from './filters-data';
   ],
 })
 export class HarvestFiltersComponent {
+  search = new FormControl('');
+
   form = this.formBuilder.nonNullable.group({
-    search: [''],
     showCaptured: [true],
     showRepeatedOnly: [false],
     monsters: [true],
@@ -31,9 +32,7 @@ export class HarvestFiltersComponent {
     archis: [true],
   });
 
-  @Output() changed = this.form.controls.search.valueChanges.pipe(
-    debounceTime(800)
-  );
+  @Output() changed = this.search.valueChanges.pipe(debounceTime(800));
 
   data$ = this.harvestStore.statistics$;
 
@@ -50,6 +49,7 @@ export class HarvestFiltersComponent {
 
   onClearFilters(): void {
     this.form.setValue(DEFAULT_FILTERS);
+    this.search.setValue('');
   }
 
   private mapToHarvestFilters({

@@ -12,7 +12,7 @@ import { ButtonComponent } from '../button/button.component';
   imports: [CommonModule, ButtonComponent, RouterModule],
 })
 export class HeaderComponent {
-  isLoggedIn$ = this.globalStore.isLoggedIn$;
+  user$ = this.globalStore.user$;
   @Output() logout = new EventEmitter();
 
   constructor(private readonly globalStore: GlobalStore) {}

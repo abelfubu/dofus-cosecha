@@ -1,4 +1,4 @@
-import { Injectable, OnInit } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { ComponentStore, tapResponse } from '@ngrx/component-store';
 import {
   catchError,
@@ -158,32 +158,9 @@ export class HarvestStore extends ComponentStore<HarvestData> {
       const filters = { ...state.filters, ...values };
       return {
         ...state,
-        filters: { ...values, ...state.filters },
+        filters,
         harvest: this.applyFilters(state.originalData, filters),
       };
-    }
-  );
-
-  readonly completed = this.updater((state, showCaptured: boolean | null) => {
-    const filters = { ...state.filters, showCaptured: !!showCaptured };
-
-    return {
-      ...state,
-      filters,
-      harvest: this.applyFilters(state.originalData, filters),
-    };
-  });
-
-  readonly repeated = this.updater(
-    (state, showRepeatedOnly: boolean | null) => {
-      const filters = {
-        ...state.filters,
-        showRepeatedOnly: !!showRepeatedOnly,
-      };
-
-      const harvest = this.applyFilters(state.originalData, filters);
-
-      return { ...state, filters, harvest };
     }
   );
 
