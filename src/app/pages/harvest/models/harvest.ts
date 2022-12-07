@@ -2,6 +2,7 @@ export const enum HarvestType {
   MONSTER,
   BOSS,
   ARCHI,
+  TOTAL,
 }
 
 export interface Harvest {

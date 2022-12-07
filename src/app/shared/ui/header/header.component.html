@@ -6,7 +6,7 @@
     <ng-container *ngIf="user.email">
       <img [title]="user.email" *ngIf="user.picture; else emailAvatar" [src]="user.picture" alt="User Picture">
       <ng-template #emailAvatar>
-        <div class="email-avatar">{{ user.email?.at(0) }}</div>
+        <div class="email-avatar">{{ user.email.at(0) }}</div>
       </ng-template>
     </ng-container>
 

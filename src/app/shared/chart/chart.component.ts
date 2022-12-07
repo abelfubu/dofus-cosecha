@@ -32,6 +32,7 @@ import { ChartPipe } from './chart.pipe';
     <div class="label">
       <p>{{ data.at(0)?.label }}</p>
       <h1>{{ data.at(0)?.percent?.toFixed(2) }}%</h1>
+      <p>{{ data.at(0)?.current }} / {{ data.at(0)?.amount }}</p>
     </div>
   `,
 })

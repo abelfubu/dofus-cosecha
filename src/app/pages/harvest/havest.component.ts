@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, InjectionToken, OnInit } from '@angular/core';
 import { MatDialogModule } from '@angular/material/dialog';
 import { RouterModule } from '@angular/router';
 import { GlobalStore } from 'src/app/shared/store/global.store';
@@ -8,12 +8,18 @@ import { HarvestFiltersComponent } from './components/harvest-filters/harvest-fi
 import { HarvestStepModalComponent } from './components/harvest-filters/harvest-step-modal/harvest-step-modal.component';
 import { HarvestTableComponent } from './components/harvest-table/harvest-table.component';
 import { HarvestStore } from './harvest.store';
+import { HarvestType } from './models/harvest';
+import {
+  CHART_TYPE_DATA,
+  CHART_TYPE_PROVIDER,
+} from './tokens/chart-type-data.token';
 
 @Component({
   selector: 'app-havest',
   templateUrl: './havest.component.html',
   styleUrls: ['./havest.component.scss'],
   standalone: true,
+  providers: [HarvestStore, CHART_TYPE_PROVIDER],
   imports: [
     CommonModule,
     RouterModule,

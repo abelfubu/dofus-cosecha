@@ -15,14 +15,12 @@ import { HarvestStore } from '../../../harvest.store';
 export class HarvestStepModalComponent {
   form!: FormGroup;
   steps!: boolean[];
+  store!: HarvestStore;
 
-  constructor(
-    private readonly formBuilder: FormBuilder,
-    private readonly harvestStore: HarvestStore
-  ) {}
+  constructor(private readonly formBuilder: FormBuilder) {}
 
   ngOnInit(): void {
-    this.harvestStore.steps$.pipe(take(1)).subscribe((steps) => {
+    this.store.steps$.pipe(take(1)).subscribe((steps) => {
       this.steps = steps;
       this.form = this.formBuilder.group(
         steps.reduce<Record<number, [boolean]>>((acc, value, index) => {
@@ -32,7 +30,7 @@ export class HarvestStepModalComponent {
       );
     });
 
-    this.harvestStore.steps(this.form.valueChanges);
+    this.store.steps(this.form.valueChanges);
   }
 
   setAllControls(value: boolean): void {

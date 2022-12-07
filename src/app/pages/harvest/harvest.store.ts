@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { ComponentStore, tapResponse } from '@ngrx/component-store';
 import {
   catchError,
@@ -11,12 +11,16 @@ import {
 
 import { HarvestDataService } from './services/harvest-data.service';
 
-import { Harvest, HarvestType } from './models/harvest';
-import { LocalStorageService } from 'src/app/shared/services/local-storage.service';
-import { ChartSlice } from 'src/app/shared/chart/chart.model';
-import { EMPTY, Observable } from 'rxjs';
-import { GlobalStore } from 'src/app/shared/store/global.store';
 import { Router } from '@angular/router';
+import { EMPTY, Observable } from 'rxjs';
+import { ChartSlice } from 'src/app/shared/chart/chart.model';
+import { GlobalStore } from 'src/app/shared/store/global.store';
+import { Harvest, HarvestType } from './models/harvest';
+import {
+  ChartData,
+  ChartItemData,
+  CHART_TYPE_DATA,
+} from './tokens/chart-type-data.token';
 
 export type UserHarvest = Pick<Harvest, 'id' | 'captured' | 'amount'>;
 
@@ -52,28 +56,15 @@ const DEFAULT_STATE: HarvestData = {
   },
 };
 
-interface GetDataResponse {
-  data: Harvest[];
-  userData: Record<string, Harvest>;
-}
-
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class HarvestStore extends ComponentStore<HarvestData> {
-  private readonly DOFUS_HARVEST_KEY = 'dof.harv';
-  isLoggedIn!: boolean;
-
   constructor(
     private readonly router: Router,
     private readonly globalStore: GlobalStore,
-    private readonly harvestDataService: HarvestDataService,
-    private readonly localStorageService: LocalStorageService
+    @Inject(CHART_TYPE_DATA) private chartData: ChartData,
+    private readonly harvestDataService: HarvestDataService
   ) {
     super(DEFAULT_STATE);
-    this.globalStore.isLoggedIn$.subscribe((logged) => {
-      this.isLoggedIn = logged;
-    });
   }
 
   readonly harvest$ = this.select(({ harvest }) => harvest);
@@ -85,12 +76,7 @@ export class HarvestStore extends ComponentStore<HarvestData> {
       switchMap(() =>
         this.harvestDataService.get().pipe(
           tapResponse(
-            (data) => {
-              this.setData({
-                data,
-                userData: this.localStorageService.get(this.DOFUS_HARVEST_KEY),
-              });
-            },
+            (data) => this.setData(data),
             (error) => console.log(error)
           )
         )
@@ -100,14 +86,16 @@ export class HarvestStore extends ComponentStore<HarvestData> {
 
   readonly updateData = this.effect((trigger$: Observable<UserHarvest>) =>
     trigger$.pipe(
-      tap(() => {
-        if (!this.isLoggedIn)
-          this.router.navigate(['/login'], {
-            queryParams: { from: 'harvest' },
-          });
-      }),
-      filter(() => this.isLoggedIn),
-      map((item) => ({
+      switchMap((item) =>
+        this.globalStore.isLoggedIn$.pipe(map((logged) => ({ logged, item })))
+      ),
+      tap(
+        ({ logged }) =>
+          !logged &&
+          this.router.navigate(['/login'], { queryParams: { from: 'harvest' } })
+      ),
+      filter(({ logged }) => logged),
+      map(({ item }) => ({
         item,
         itemBefore: this.get().originalData.find((i) => i.id === item.id),
       })),
@@ -124,24 +112,14 @@ export class HarvestStore extends ComponentStore<HarvestData> {
     )
   );
 
-  readonly setData = this.updater(
-    (state, { data, userData }: GetDataResponse) => {
-      const mappedData = data.map((item) => {
-        const found = userData?.[item.id];
-
-        if (!found) return item;
-
-        return { ...item, ...found };
-      });
-
-      return {
-        ...state,
-        statistics: this.calculateStatistics(mappedData),
-        originalData: mappedData,
-        harvest: mappedData,
-      };
-    }
-  );
+  readonly setData = this.updater((state, data: Harvest[]) => {
+    return {
+      ...state,
+      statistics: this.calculateStatistics(data),
+      originalData: data,
+      harvest: data,
+    };
+  });
 
   readonly search = this.updater((state, search: string | null) => {
     const filters = { ...state.filters, search };
@@ -175,12 +153,6 @@ export class HarvestStore extends ComponentStore<HarvestData> {
   });
 
   readonly update = this.updater((state, item: UserHarvest) => {
-    // const storage = this.localStorageService.update<Partial<Harvest>>(
-    //   this.DOFUS_HARVEST_KEY,
-    //   item.id,
-    //   item
-    // );
-
     const callback = (i: Harvest) => (i.id === item.id ? { ...i, ...item } : i);
 
     const originalData = state.originalData.map(callback);
@@ -219,10 +191,10 @@ export class HarvestStore extends ComponentStore<HarvestData> {
         return acc;
       }
 
+      const { name, zone, subzone } = item;
       if (
         filters.search &&
-        !Object.values(item)
-          .filter((value) => typeof value === 'string')
+        !Object.values({ name, zone, subzone })
           .map((value) => this.normalize(value))
           .some((value) =>
             value.includes(this.normalize(String(filters.search)))
@@ -237,43 +209,21 @@ export class HarvestStore extends ComponentStore<HarvestData> {
   }
 
   private calculateStatistics(data: Harvest[]): ChartSlice[][] {
-    const dataMap: Record<number, { label: string; colors: string[] }> = {
-      [HarvestType.MONSTER]: {
-        label: 'Monstruos',
-        colors: ['#8E24AA', '#BA68C877'],
-      },
-      [HarvestType.BOSS]: { label: 'Jefes', colors: ['#00ACC1', '#4DD0E177'] },
-      [HarvestType.ARCHI]: {
-        label: 'Archis',
-        colors: ['#C0CA33', '#DCE77577'],
-      },
-      3: { label: 'Total', colors: ['#FFB300', '#FFD54F77'] },
-    };
-    // const [monsters, bosses, archis] = [
-    return [
-      { type: HarvestType.MONSTER, amount: 299 },
-      { type: HarvestType.BOSS, amount: 51 },
-      { type: HarvestType.ARCHI, amount: 286 },
-      { type: 3, amount: data.length },
-    ].map(({ type, amount }) => {
-      const percent =
-        this.calculatePercentage(
-          type !== 3
-            ? data.filter((item) => item.captured && item.type === type).length
-            : data.filter((item) => item.captured).length,
-          amount
-        ) || 0.001;
+    return this.chartData.map(({ amount, colors, label, callback }) => {
+      const current = data.filter(callback).length;
+      const percent = this.calculatePercentage(current, amount) || 0.001;
       return [
         {
           id: 1,
-          label: dataMap[type].label,
-          color: dataMap[type].colors.at(0)!,
+          amount,
+          current,
+          label: label,
           percent: percent,
+          color: colors.at(0)!,
         },
         {
           id: 2,
-          label: dataMap[type].label,
-          color: dataMap[type].colors.at(1)!,
+          color: colors.at(1)!,
           percent: 100 - percent,
         },
       ];
