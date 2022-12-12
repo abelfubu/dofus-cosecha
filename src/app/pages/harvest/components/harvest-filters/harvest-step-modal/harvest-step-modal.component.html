@@ -2,7 +2,7 @@
 <form [formGroup]="form">
   <div *ngFor="let step of steps; let index = index">
     <input type="checkbox" [formControlName]="index + 1" [id]="'etapa-' + (index + 1)">
-    <label [for]="'etapa-' + (index + 1)">{{ 'Etapa' + (index + 1)}}</label>
+    <label [for]="'etapa-' + (index + 1)">{{ 'Etapa ' + (index + 1)}}</label>
   </div>
 </form>
 

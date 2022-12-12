@@ -1,12 +1,5 @@
 import { CommonModule } from '@angular/common';
-import {
-  ChangeDetectionStrategy,
-  Component,
-  Input,
-  OnInit,
-} from '@angular/core';
-import { Router } from '@angular/router';
-import { GlobalStore } from 'src/app/shared/store/global.store';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { HarvestStore } from '../../../harvest.store';
 import { Harvest } from '../../../models/harvest';
 
@@ -18,21 +11,10 @@ import { Harvest } from '../../../models/harvest';
   imports: [CommonModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HarvestItemComponent implements OnInit {
+export class HarvestItemComponent {
   @Input() item!: Harvest;
 
-  isLoggedIn!: boolean;
-
-  constructor(
-    private readonly globalStore: GlobalStore,
-    private readonly harvestStore: HarvestStore
-  ) {}
-
-  ngOnInit(): void {
-    this.globalStore.isLoggedIn$.subscribe((logged) => {
-      this.isLoggedIn = logged;
-    });
-  }
+  constructor(private readonly harvestStore: HarvestStore) {}
 
   onCapturedChange({ id, captured, amount }: Harvest): void {
     this.harvestStore.updateData({

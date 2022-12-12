@@ -32,7 +32,7 @@ export class HarvestFiltersComponent {
     archis: [true],
   });
 
-  @Output() changed = this.search.valueChanges.pipe(debounceTime(800));
+  @Output() changed = this.search.valueChanges.pipe(debounceTime(400));
 
   data$ = this.harvestStore.statistics$;
 

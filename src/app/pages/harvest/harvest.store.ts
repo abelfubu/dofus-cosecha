@@ -16,11 +16,9 @@ import { EMPTY, Observable } from 'rxjs';
 import { ChartSlice } from 'src/app/shared/chart/chart.model';
 import { GlobalStore } from 'src/app/shared/store/global.store';
 import { Harvest, HarvestType } from './models/harvest';
-import {
-  ChartData,
-  ChartItemData,
-  CHART_TYPE_DATA,
-} from './tokens/chart-type-data.token';
+import { ChartData, CHART_TYPE_DATA } from './tokens/chart-type-data.token';
+import { MathUtils } from 'src/app/utils/math.utils';
+import { StringUtils } from 'src/app/utils/string.utils';
 
 export type UserHarvest = Pick<Harvest, 'id' | 'captured' | 'amount'>;
 
@@ -195,9 +193,9 @@ export class HarvestStore extends ComponentStore<HarvestData> {
       if (
         filters.search &&
         !Object.values({ name, zone, subzone })
-          .map((value) => this.normalize(value))
+          .map((value) => StringUtils.normalize(value))
           .some((value) =>
-            value.includes(this.normalize(String(filters.search)))
+            value.includes(StringUtils.normalize(filters.search!))
           )
       ) {
         return acc;
@@ -209,36 +207,28 @@ export class HarvestStore extends ComponentStore<HarvestData> {
   }
 
   private calculateStatistics(data: Harvest[]): ChartSlice[][] {
-    return this.chartData.map(({ amount, colors, label, callback }) => {
-      const current = data.filter(callback).length;
-      const percent = this.calculatePercentage(current, amount) || 0.001;
-      return [
-        {
-          id: 1,
-          amount,
-          current,
-          label: label,
-          percent: percent,
-          color: colors.at(0)!,
-        },
-        {
-          id: 2,
-          color: colors.at(1)!,
-          percent: 100 - percent,
-        },
-      ];
-    });
-  }
+    return this.chartData.map(
+      ({ amount, colors: [c1, c2], label, callback }) => {
+        const current = data.filter(callback).length;
+        const percent = MathUtils.calculatePercentage(current, amount);
 
-  private calculatePercentage(current: number, total: number): number {
-    return Number((current / total) * 100) || 0;
-  }
-
-  private normalize(value: string): string {
-    return value
-      .normalize('NFD')
-      .replace(/\p{Diacritic}/gu, '')
-      .toLowerCase();
+        return [
+          {
+            id: 1,
+            amount,
+            current,
+            label: label,
+            percent: percent,
+            color: c1,
+          },
+          {
+            id: 2,
+            color: c2,
+            percent: 100 - percent,
+          },
+        ];
+      }
+    );
   }
 }
 

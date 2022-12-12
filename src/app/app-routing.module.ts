@@ -17,10 +17,15 @@ const routes: Route[] = [
     loadComponent: () =>
       import('./pages/login/login.component').then((c) => c.LoginComponent),
   },
+  {
+    path: '**',
+    redirectTo: 'harvest',
+    pathMatch: 'full',
+  },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { useHash: true })],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

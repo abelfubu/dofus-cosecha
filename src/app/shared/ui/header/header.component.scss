@@ -6,9 +6,15 @@ header {
   max-width: 95%;
   margin: auto;
   justify-content: space-between;
+  align-items: center;
 
   img {
     width: 3rem;
+  }
+
+  h3 {
+    flex: 1 0 0;
+    margin-left: 0.5rem;
   }
 
   nav {
