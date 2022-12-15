@@ -64,7 +64,7 @@ export class GlobalStore extends ComponentStore<GlobalState> {
       const helper = new JwtHelperService();
       const user = helper.decodeToken(accessToken);
 
-      return { ...state, isLoggedIn: true, user };
+      return { ...state, isLoggedIn: !!accessToken, user };
     }
   );
 }

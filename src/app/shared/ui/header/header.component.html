@@ -1,8 +1,6 @@
 <header *ngIf="user$ | async as user">
-
   <a [routerLink]="['/']"><img src="./assets/img/logo.png" alt="Logo"></a>
   <h3>Cosecha</h3>
-
 
   <nav>
     <ng-container *ngIf="user.email">

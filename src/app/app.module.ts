@@ -14,11 +14,11 @@ import { LocalStorageService } from './shared/services/local-storage.service';
 import { environment } from 'src/environments/environment';
 
 export function getJwtUser(
-  localStorage: LocalStorageService,
+  localStorageService: LocalStorageService,
   store: GlobalStore
 ): () => void {
   return () => {
-    const accessToken = localStorage.get<string>(environment.authKey);
+    const accessToken = localStorageService.get<string>(environment.authKey);
     store.setLoggedIn({ accessToken });
   };
 }
