@@ -1,7 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { ActivatedRoute, Router, RouterModule } from '@angular/router';
-import { filter } from 'rxjs';
+import { RouterModule } from '@angular/router';
 import { GlobalStore } from 'src/app/shared/store/global.store';
 import { ButtonComponent } from 'src/app/shared/ui/button/button.component';
 import { InputComponent } from 'src/app/shared/ui/input/input.component';
@@ -36,26 +35,12 @@ export class LoginComponent implements OnInit {
   });
 
   constructor(
-    private readonly router: Router,
-    private readonly route: ActivatedRoute,
     private readonly globalStore: GlobalStore,
     private readonly formBuilder: FormBuilder
   ) {}
 
   ngOnInit(): void {
     this.renderGoogleButton();
-    this.globalStore.isLoggedIn$
-      .pipe(filter((logged) => logged))
-      .subscribe(() => {
-        this.router.navigate([this.route.snapshot.queryParams['from'] ?? '/']);
-      });
-  }
-
-  private renderGoogleButton() {
-    google.accounts.id.renderButton(
-      this.googleButton.nativeElement,
-      GOOGLE_BUTTON_CONFIG
-    );
   }
 
   onLoginSubmit() {
@@ -66,5 +51,12 @@ export class LoginComponent implements OnInit {
       email: String(this.form.value.email),
       password: String(this.form.value.password),
     });
+  }
+
+  private renderGoogleButton() {
+    google.accounts.id.renderButton(
+      this.googleButton.nativeElement,
+      GOOGLE_BUTTON_CONFIG
+    );
   }
 }

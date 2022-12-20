@@ -1,9 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { take } from 'rxjs';
+import { Observable, take, tap } from 'rxjs';
 import { ButtonComponent } from 'src/app/shared/ui/button/button.component';
 import { HarvestStore } from '../../../harvest.store';
+import { HarvestSteps } from '../../../models/harvest-steps';
 
 @Component({
   selector: 'app-harvest-step-modal',
@@ -14,34 +15,24 @@ import { HarvestStore } from '../../../harvest.store';
 })
 export class HarvestStepModalComponent {
   form!: FormGroup;
-  steps!: boolean[];
   store!: HarvestStore;
+  steps$!: Observable<boolean[]>;
 
   constructor(private readonly formBuilder: FormBuilder) {}
 
   ngOnInit(): void {
-    this.store.steps$.pipe(take(1)).subscribe((steps) => {
-      this.steps = steps;
-      this.form = this.formBuilder.group(
-        steps.reduce<Record<number, [boolean]>>((acc, value, index) => {
-          acc[index + 1] = [value];
-          return acc;
-        }, {})
-      );
-    });
-
-    this.store.steps(this.form.valueChanges);
+    this.steps$ = this.store.steps$.pipe(
+      take(1),
+      tap((steps) => this.initializeStepsForm(steps))
+    );
   }
 
-  setAllControls(value: boolean): void {
-    const formValue = this.steps.reduce<Record<number, boolean>>(
-      (acc, _value, index) => {
-        acc[index + 1] = value;
-        return acc;
-      },
-      {}
-    );
+  setAllControls(steps: boolean[], value: boolean): void {
+    this.form.setValue(HarvestSteps.mapToFormValue(steps, value));
+  }
 
-    this.form.setValue(formValue);
+  private initializeStepsForm(steps: boolean[]): void {
+    this.form = this.formBuilder.group(HarvestSteps.mapToFormGroup(steps));
+    this.store.steps(this.form.valueChanges);
   }
 }

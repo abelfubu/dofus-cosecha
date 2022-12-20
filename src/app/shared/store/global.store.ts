@@ -7,6 +7,7 @@ import { User } from '../models/user';
 import { LocalStorageService } from '../services/local-storage.service';
 import { LoginService } from '../services/login.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { Router } from '@angular/router';
 
 export interface GlobalState {
   currentHarvestId: string;
@@ -27,6 +28,7 @@ export class GlobalStore extends ComponentStore<GlobalState> {
   private readonly AUTH_KEY = environment.authKey;
 
   constructor(
+    private readonly router: Router,
     private readonly loginService: LoginService,
     private readonly localStorageService: LocalStorageService
   ) {
@@ -44,7 +46,10 @@ export class GlobalStore extends ComponentStore<GlobalState> {
       switchMap((credentials) =>
         this.loginService.login(credentials).pipe(
           tapResponse(
-            (response) => this.setLoggedIn(response),
+            (response) => {
+              this.router.navigate(['/']);
+              this.setLoggedIn(response);
+            },
             (error) => console.log(error)
           )
         )
@@ -68,8 +73,3 @@ export class GlobalStore extends ComponentStore<GlobalState> {
     }
   );
 }
-
-// SwitchMap cancels previous requests and only perform the last one
-// MergeMap performs all requests in parallel
-// ConcatMap Performs all requests in sequence
-// ExhaustMap cancels last requests until first request is finished

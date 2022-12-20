@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
-import { environment } from 'src/environments/environment';
 
+import { environment } from 'src/environments/environment';
+import { UserHarvest } from '../harvest.store';
 import { Harvest } from '../models/harvest';
 
 @Injectable({
@@ -25,7 +26,7 @@ export class HarvestDataService {
       );
   }
 
-  update(data: any): Observable<void> {
+  update(data: UserHarvest): Observable<void> {
     return this.http.post<void>(`${this.URL}/harvest`, {
       harvestId: this.harvestId,
       ...data,

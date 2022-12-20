@@ -92,7 +92,7 @@ export class HarvestStore extends ComponentStore<HarvestData> {
           !logged &&
           this.router.navigate(['/login'], { queryParams: { from: 'harvest' } })
       ),
-      filter(({ logged }) => logged),
+      filter(Boolean),
       map(({ item }) => ({
         item,
         itemBefore: this.get().originalData.find((i) => i.id === item.id),
@@ -100,9 +100,8 @@ export class HarvestStore extends ComponentStore<HarvestData> {
       tap((data) => this.update(data.item)),
       mergeMap((data) =>
         this.harvestDataService.update(data.item).pipe(
-          catchError((error) => {
+          catchError(() => {
             this.update(data.itemBefore!);
-            console.log(error);
             return EMPTY;
           })
         )
@@ -165,43 +164,17 @@ export class HarvestStore extends ComponentStore<HarvestData> {
 
   private applyFilters(source: Harvest[], filters: HarvestFilters): Harvest[] {
     return source.reduce<Harvest[]>((acc, item) => {
-      if (filters.showRepeatedOnly && !item.amount) {
-        return acc;
-      }
+      try {
+        showRepeatedOnly(item, filters);
+        showCaptured(item, filters);
+        steps(item, filters);
+        filterMonsters(item, filters);
+        filterBosses(item, filters);
+        filterArchis(item, filters);
+        filterSearch(item, filters);
+        acc.push(item);
+      } catch {}
 
-      if (!filters.showCaptured && item.captured) {
-        return acc;
-      }
-
-      if (!filters.steps[item.step - 1]) {
-        return acc;
-      }
-
-      if (!filters.monsters && item.type === HarvestType.MONSTER) {
-        return acc;
-      }
-
-      if (!filters.bosses && item.type === HarvestType.BOSS) {
-        return acc;
-      }
-
-      if (!filters.archis && item.type === HarvestType.ARCHI) {
-        return acc;
-      }
-
-      const { name, zone, subzone } = item;
-      if (
-        filters.search &&
-        !Object.values({ name, zone, subzone })
-          .map((value) => StringUtils.normalize(value))
-          .some((value) =>
-            value.includes(StringUtils.normalize(filters.search!))
-          )
-      ) {
-        return acc;
-      }
-
-      acc.push(item);
       return acc;
     }, []);
   }
@@ -236,3 +209,52 @@ export class HarvestStore extends ComponentStore<HarvestData> {
 // MergeMap performs all requests in parallel
 // ConcatMap Performs all requests in sequence
 // ExhaustMap cancels last requests until first request is finished
+
+function showRepeatedOnly(item: Harvest, filters: HarvestFilters) {
+  if (filters.showRepeatedOnly && !item.amount) {
+    throw new Error('Repeated Only');
+  }
+}
+
+function showCaptured(item: Harvest, filters: HarvestFilters) {
+  if (!filters.showCaptured && item.captured) {
+    throw new Error('Show Captured');
+  }
+}
+
+function steps(item: Harvest, filters: HarvestFilters) {
+  if (!filters.steps[item.step - 1]) {
+    throw new Error('Steps');
+  }
+}
+
+function filterMonsters(item: Harvest, filters: HarvestFilters) {
+  if (!filters.monsters && item.type === HarvestType.MONSTER) {
+    throw new Error('Filter Monsters');
+  }
+}
+
+function filterBosses(item: Harvest, filters: HarvestFilters) {
+  if (!filters.bosses && item.type === HarvestType.BOSS) {
+    throw new Error('Filter Bosses');
+  }
+}
+
+function filterArchis(item: Harvest, filters: HarvestFilters) {
+  if (!filters.archis && item.type === HarvestType.ARCHI) {
+    throw new Error('Filter Archis');
+  }
+}
+
+function filterSearch(item: Harvest, filters: HarvestFilters) {
+  const { name, zone, subzone } = item;
+
+  if (
+    filters.search &&
+    !Object.values({ name, zone, subzone })
+      .map((value) => StringUtils.normalize(value))
+      .some((value) => value.includes(StringUtils.normalize(filters.search!)))
+  ) {
+    throw new Error('Filter Search');
+  }
+}
