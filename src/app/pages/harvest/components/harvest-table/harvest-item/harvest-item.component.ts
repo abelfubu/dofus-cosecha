@@ -2,7 +2,6 @@ import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
-  HostListener,
   Inject,
   Input,
 } from '@angular/core';
@@ -24,15 +23,13 @@ export class HarvestItemComponent {
   constructor(
     private readonly harvestStore: HarvestStore,
     @Inject(EDITABLE) public editable: boolean
-  ) {
-    console.log(this.editable);
-  }
+  ) {}
 
-  onCapturedChange({ id, captured, amount }: Harvest): void {
+  onCapturedChange({ id, captured, amount = 0 }: Harvest): void {
     this.harvestStore.updateData({
       id,
       captured: !captured,
-      amount: amount ?? 0,
+      amount: amount,
     });
   }
 

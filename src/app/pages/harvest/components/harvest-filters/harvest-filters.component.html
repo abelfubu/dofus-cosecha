@@ -7,6 +7,10 @@
     <app-input type="text" [control]="search" placeholder="Buscar..." style="flex-basis: 500px">
     </app-input>
     <app-button (click)="onClearFilters()">Borrar Filtros</app-button>
+    <ng-container *ngIf="{ id: harvestId$ | async } as harvest">
+      <app-button *ngIf="harvest.id" (click)="onShareHarvest(harvest.id)">Compartir</app-button>
+      <app-button *ngIf="!harvest.id" [routerLink]="['/']">Volver</app-button>
+    </ng-container>
   </div>
 
   <div class="controls-box">

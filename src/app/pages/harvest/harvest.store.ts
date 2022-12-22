@@ -74,6 +74,7 @@ export class HarvestStore extends ComponentStore<HarvestData> {
   }
 
   readonly harvest$ = this.select(({ harvest }) => harvest);
+  readonly harvestId$ = this.select(({ harvestId }) => harvestId);
   readonly steps$ = this.select(({ filters }) => filters.steps);
   readonly statistics$ = this.select(({ statistics }) => statistics);
 
