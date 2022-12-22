@@ -3,14 +3,23 @@ import { Route, RouterModule } from '@angular/router';
 
 const routes: Route[] = [
   {
-    path: '',
-    loadComponent: () =>
-      import('./pages/harvest/havest.component').then((c) => c.HavestComponent),
-  },
-  {
     path: 'login',
     loadComponent: () =>
       import('./pages/login/login.component').then((c) => c.LoginComponent),
+  },
+  {
+    path: '',
+    loadComponent: () =>
+      import('./pages/harvest/harvest.component').then(
+        (c) => c.HarvestComponent
+      ),
+  },
+  {
+    path: ':id',
+    loadComponent: () =>
+      import('./pages/harvest/harvest.component').then(
+        (c) => c.HarvestComponent
+      ),
   },
   {
     path: '**',

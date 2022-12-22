@@ -8,6 +8,7 @@ import { LocalStorageService } from '../services/local-storage.service';
 import { LoginService } from '../services/login.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Router } from '@angular/router';
+import { HotToastService } from '@ngneat/hot-toast';
 
 export interface GlobalState {
   currentHarvestId: string;
@@ -30,6 +31,7 @@ export class GlobalStore extends ComponentStore<GlobalState> {
   constructor(
     private readonly router: Router,
     private readonly loginService: LoginService,
+    private readonly toast: HotToastService,
     private readonly localStorageService: LocalStorageService
   ) {
     super({ ...DEFAULT_STATE, isLoggedIn: false });
@@ -48,9 +50,10 @@ export class GlobalStore extends ComponentStore<GlobalState> {
           tapResponse(
             (response) => {
               this.router.navigate(['/']);
+              this.toast.success('Bienvenido!');
               this.setLoggedIn(response);
             },
-            (error) => console.log(error)
+            (error) => this.toast.error(String(error))
           )
         )
       )

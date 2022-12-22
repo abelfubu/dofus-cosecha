@@ -20,16 +20,17 @@
   <p>{{item.step}}</p>
 </div>
 
-<div [ngClass]="item.captured ? 'green' : 'red'" class="cell pointer not-selectable" (click)="onCapturedChange(item)">
+<div [ngClass]="item.captured ? 'green' : 'red'" [ngStyle]="{ 'pointer-events': !editable && 'none'}"
+  class="cell pointer not-selectable" (click)="onCapturedChange(item)">
   <p>{{ item.captured ? 'Si' : 'No' }}</p>
 </div>
 
-<div [class.warn]="!!item.amount" class="cell not-selectable">
-  <button (click)="onAmountChange(item, item.amount ? item.amount + 1 : 1)">
+<div [class.warn]="!!item.amount" class="cell not-selectable" [ngStyle]="{ 'pointer-events': !editable && 'none'}">
+  <button [disabled]="!editable" (click)="onAmountChange(item, item.amount ? item.amount + 1 : 1)">
     <span class="material-symbols-outlined"> arrow_drop_up </span>
   </button>
   <p>{{item.amount ?? '0'}}</p>
-  <button [disabled]="!item.amount" (click)="onAmountChange(item, item.amount! - 1)">
+  <button [disabled]="!item.amount || !editable" (click)="onAmountChange(item, item.amount! - 1)">
     <span class="material-symbols-outlined"> arrow_drop_down </span>
   </button>
 </div>

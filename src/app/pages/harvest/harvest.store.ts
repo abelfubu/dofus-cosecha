@@ -19,8 +19,13 @@ import { Harvest, HarvestType } from './models/harvest';
 import { ChartData, CHART_TYPE_DATA } from './tokens/chart-type-data.token';
 import { MathUtils } from 'src/app/utils/math.utils';
 import { StringUtils } from 'src/app/utils/string.utils';
+import { HarvestDataResponse } from './models/harvest-data.response';
+import { HarvestSteps } from './models/harvest-steps';
+import { HotToastService } from '@ngneat/hot-toast';
 
-export type UserHarvest = Pick<Harvest, 'id' | 'captured' | 'amount'>;
+export type UserHarvest = Pick<Harvest, 'id' | 'captured' | 'amount'> & {
+  harvestId?: string;
+};
 
 export interface HarvestFilters {
   showCaptured: boolean | undefined;
@@ -36,6 +41,7 @@ export interface HarvestData {
   statistics: ChartSlice[][];
   originalData: Harvest[];
   harvest: Harvest[];
+  harvestId: string;
   filters: HarvestFilters;
 }
 
@@ -43,11 +49,12 @@ const DEFAULT_STATE: HarvestData = {
   statistics: [],
   originalData: [],
   harvest: [],
+  harvestId: '',
   filters: {
     showRepeatedOnly: false,
     showCaptured: true,
     search: null,
-    steps: [...new Array(34)].map(() => true),
+    steps: HarvestSteps.generate(34),
     monsters: true,
     bosses: true,
     archis: true,
@@ -58,6 +65,7 @@ const DEFAULT_STATE: HarvestData = {
 export class HarvestStore extends ComponentStore<HarvestData> {
   constructor(
     private readonly router: Router,
+    private readonly toast: HotToastService,
     private readonly globalStore: GlobalStore,
     @Inject(CHART_TYPE_DATA) private chartData: ChartData,
     private readonly harvestDataService: HarvestDataService
@@ -69,13 +77,13 @@ export class HarvestStore extends ComponentStore<HarvestData> {
   readonly steps$ = this.select(({ filters }) => filters.steps);
   readonly statistics$ = this.select(({ statistics }) => statistics);
 
-  readonly getData = this.effect((trigger$) =>
-    trigger$.pipe(
-      switchMap(() =>
-        this.harvestDataService.get().pipe(
+  readonly getData = this.effect<string>((id$) =>
+    id$.pipe(
+      switchMap((id) =>
+        this.harvestDataService.get(id).pipe(
           tapResponse(
             (data) => this.setData(data),
-            (error) => console.log(error)
+            () => this.toast.error('Error en el servidor', { icon: '⚠️' })
           )
         )
       )
@@ -99,24 +107,28 @@ export class HarvestStore extends ComponentStore<HarvestData> {
       })),
       tap((data) => this.update(data.item)),
       mergeMap((data) =>
-        this.harvestDataService.update(data.item).pipe(
-          catchError(() => {
-            this.update(data.itemBefore!);
-            return EMPTY;
-          })
-        )
+        this.harvestDataService
+          .update({ ...data.item, harvestId: this.get().harvestId })
+          .pipe(
+            catchError(() => {
+              this.update(data.itemBefore!);
+              this.toast.error('Algo ha ido mal...');
+              return EMPTY;
+            })
+          )
       )
     )
   );
 
-  readonly setData = this.updater((state, data: Harvest[]) => {
-    return {
+  readonly setData = this.updater(
+    (state, { harvest, harvestId }: HarvestDataResponse) => ({
       ...state,
-      statistics: this.calculateStatistics(data),
-      originalData: data,
-      harvest: data,
-    };
-  });
+      harvest,
+      harvestId,
+      originalData: harvest,
+      statistics: this.calculateStatistics(harvest),
+    })
+  );
 
   readonly search = this.updater((state, search: string | null) => {
     const filters = { ...state.filters, search };

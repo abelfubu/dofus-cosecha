@@ -50,8 +50,6 @@ body {
   background-color: map-get($map: c.$dark, $key: 400);
   background-image: url("https://i70mages.unsplash.com/photo-1493217465235-252dd9c0d632?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80");
   background-attachment: fixed;
-  // filter: contrast(1.2);
-  // min-height: 100vh;
   color: #ffffffaa;
 
   ::-moz-selection {
@@ -73,4 +71,52 @@ input[type="checkbox"] {
 
 .background .mat-mdc-dialog-container .mdc-dialog__surface {
   background-color: map-get($map: c.$dark, $key: 400);
+}
+
+@keyframes hotToastEnterAnimationNegative {
+  0% {
+    opacity: 0.5;
+    transform: translate3d(0, -80px, 0) scale(0.6);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@keyframes hotToastEnterAnimationPositive {
+  0% {
+    opacity: 0.5;
+    transform: translate3d(0, 80px, 0) scale(0.6);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@keyframes hotToastExitAnimationPositive {
+  0% {
+    opacity: 1;
+    transform: translate3d(0, 0, -1px) scale(1);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate3d(0, 130px, -1px) scale(0.5);
+  }
+}
+
+@keyframes hotToastExitAnimationNegative {
+  0% {
+    opacity: 1;
+    transform: translate3d(0, 0, -1px) scale(1);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate3d(0, -130px, -1px) scale(0.5);
+  }
 }
