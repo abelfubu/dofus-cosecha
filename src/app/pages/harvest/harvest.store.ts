@@ -12,53 +12,35 @@ import {
 import { HarvestDataService } from './services/harvest-data.service';
 
 import { Router } from '@angular/router';
+import { HotToastService } from '@ngneat/hot-toast';
 import { EMPTY, Observable } from 'rxjs';
 import { ChartSlice } from 'src/app/shared/chart/chart.model';
 import { GlobalStore } from 'src/app/shared/store/global.store';
-import { Harvest, HarvestType } from './models/harvest';
-import { ChartData, CHART_TYPE_DATA } from './tokens/chart-type-data.token';
 import { MathUtils } from 'src/app/utils/math.utils';
-import { StringUtils } from 'src/app/utils/string.utils';
+import { Harvest } from './models/harvest';
 import { HarvestDataResponse } from './models/harvest-data.response';
-import { HarvestSteps } from './models/harvest-steps';
-import { HotToastService } from '@ngneat/hot-toast';
+import { ChartData, CHART_TYPE_DATA } from './tokens/chart-type-data.token';
+import { Filters } from './tokens/harvest-filter.token';
+import { HarvestFilter } from './services/harvest-filter';
 
 export type UserHarvest = Pick<Harvest, 'id' | 'captured' | 'amount'> & {
   harvestId?: string;
 };
-
-export interface HarvestFilters {
-  showCaptured: boolean | undefined;
-  showRepeatedOnly: boolean | undefined;
-  search: string | undefined | null;
-  steps: boolean[];
-  monsters: boolean | undefined;
-  bosses: boolean | undefined;
-  archis: boolean | undefined;
-}
 
 export interface HarvestData {
   statistics: ChartSlice[][];
   originalData: Harvest[];
   harvest: Harvest[];
   harvestId: string;
-  filters: HarvestFilters;
+  filters: Filters;
 }
 
-const DEFAULT_STATE: HarvestData = {
+const DEFAULT_STATE = {
   statistics: [],
   originalData: [],
   harvest: [],
   harvestId: '',
-  filters: {
-    showRepeatedOnly: false,
-    showCaptured: true,
-    search: null,
-    steps: HarvestSteps.generate(34),
-    monsters: true,
-    bosses: true,
-    archis: true,
-  },
+  filters: null,
 };
 
 @Injectable()
@@ -67,15 +49,16 @@ export class HarvestStore extends ComponentStore<HarvestData> {
     private readonly router: Router,
     private readonly toast: HotToastService,
     private readonly globalStore: GlobalStore,
+    private readonly harvestFilter: HarvestFilter,
     @Inject(CHART_TYPE_DATA) private chartData: ChartData,
     private readonly harvestDataService: HarvestDataService
   ) {
-    super(DEFAULT_STATE);
+    super({ ...DEFAULT_STATE, filters: harvestFilter.harvestFilter.state });
   }
 
   readonly harvest$ = this.select(({ harvest }) => harvest);
   readonly harvestId$ = this.select(({ harvestId }) => harvestId);
-  readonly steps$ = this.select(({ filters }) => filters.steps);
+  readonly steps$ = this.select(({ filters }) => filters?.steps);
   readonly statistics$ = this.select(({ statistics }) => statistics);
 
   readonly getData = this.effect<string>((id$) =>
@@ -131,7 +114,7 @@ export class HarvestStore extends ComponentStore<HarvestData> {
     })
   );
 
-  readonly search = this.updater((state, search: string | null) => {
+  readonly search = this.updater((state, search: string) => {
     const filters = { ...state.filters, search };
 
     return {
@@ -142,7 +125,7 @@ export class HarvestStore extends ComponentStore<HarvestData> {
   });
 
   readonly filter = this.updater(
-    (state, values: Omit<Partial<HarvestFilters>, 'steps' | 'search'>) => {
+    (state, values: Omit<Partial<Filters>, 'steps' | 'search'>) => {
       const filters = { ...state.filters, ...values };
       return {
         ...state,
@@ -171,20 +154,14 @@ export class HarvestStore extends ComponentStore<HarvestData> {
       ...state,
       originalData,
       statistics: this.calculateStatistics(originalData),
-      harvest: this.applyFilters(state.harvest.map(callback), state.filters),
+      harvest: this.applyFilters(state.harvest.map(callback), state.filters!),
     };
   });
 
-  private applyFilters(source: Harvest[], filters: HarvestFilters): Harvest[] {
+  private applyFilters(source: Harvest[], filters: Filters): Harvest[] {
     return source.reduce<Harvest[]>((acc, item) => {
       try {
-        showRepeatedOnly(item, filters);
-        showCaptured(item, filters);
-        steps(item, filters);
-        filterMonsters(item, filters);
-        filterBosses(item, filters);
-        filterArchis(item, filters);
-        filterSearch(item, filters);
+        this.harvestFilter.applyFilters(item, filters);
         acc.push(item);
       } catch {}
 
@@ -222,52 +199,3 @@ export class HarvestStore extends ComponentStore<HarvestData> {
 // MergeMap performs all requests in parallel
 // ConcatMap Performs all requests in sequence
 // ExhaustMap cancels last requests until first request is finished
-
-function showRepeatedOnly(item: Harvest, filters: HarvestFilters) {
-  if (filters.showRepeatedOnly && !item.amount) {
-    throw new Error('Repeated Only');
-  }
-}
-
-function showCaptured(item: Harvest, filters: HarvestFilters) {
-  if (!filters.showCaptured && item.captured) {
-    throw new Error('Show Captured');
-  }
-}
-
-function steps(item: Harvest, filters: HarvestFilters) {
-  if (!filters.steps[item.step - 1]) {
-    throw new Error('Steps');
-  }
-}
-
-function filterMonsters(item: Harvest, filters: HarvestFilters) {
-  if (!filters.monsters && item.type === HarvestType.MONSTER) {
-    throw new Error('Filter Monsters');
-  }
-}
-
-function filterBosses(item: Harvest, filters: HarvestFilters) {
-  if (!filters.bosses && item.type === HarvestType.BOSS) {
-    throw new Error('Filter Bosses');
-  }
-}
-
-function filterArchis(item: Harvest, filters: HarvestFilters) {
-  if (!filters.archis && item.type === HarvestType.ARCHI) {
-    throw new Error('Filter Archis');
-  }
-}
-
-function filterSearch(item: Harvest, filters: HarvestFilters) {
-  const { name, zone, subzone } = item;
-
-  if (
-    filters.search &&
-    !Object.values({ name, zone, subzone })
-      .map((value) => StringUtils.normalize(value))
-      .some((value) => value.includes(StringUtils.normalize(filters.search!)))
-  ) {
-    throw new Error('Filter Search');
-  }
-}

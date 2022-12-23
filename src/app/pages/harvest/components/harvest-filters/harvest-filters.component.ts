@@ -3,7 +3,7 @@ import { Component, Inject, InjectionToken, Output } from '@angular/core';
 import { FormBuilder, FormControl, ReactiveFormsModule } from '@angular/forms';
 import { RouterLinkWithHref } from '@angular/router';
 import { HotToastService } from '@ngneat/hot-toast';
-import { debounceTime, from, Observable } from 'rxjs';
+import { debounceTime, from, map, Observable } from 'rxjs';
 import { ChartComponent } from 'src/app/shared/chart/chart.component';
 import { ChartSlice } from 'src/app/shared/chart/chart.model';
 import { ButtonComponent } from 'src/app/shared/ui/button/button.component';
@@ -55,7 +55,10 @@ export class HarvestFiltersComponent {
     archis: [true],
   });
 
-  @Output() changed = this.search.valueChanges.pipe(debounceTime(400));
+  @Output() changed = this.search.valueChanges.pipe(
+    debounceTime(400),
+    map(String)
+  );
 
   constructor(
     private readonly toast: HotToastService,

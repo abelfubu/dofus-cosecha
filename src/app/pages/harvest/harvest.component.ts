@@ -10,7 +10,9 @@ import { HarvestStepModalComponent } from './components/harvest-filters/harvest-
 import { HarvestTableComponent } from './components/harvest-table/harvest-table.component';
 import { HarvestStore } from './harvest.store';
 import { Harvest } from './models/harvest';
+import { HarvestFilter } from './services/harvest-filter';
 import { CHART_TYPE_PROVIDER } from './tokens/chart-type-data.token';
+import { HARVEST_FILTER_PROVIDER } from './tokens/harvest-filter.token';
 
 const HARVEST_DATA = new InjectionToken<Observable<Harvest[]>>('HARVEST_DATA');
 export const EDITABLE = new InjectionToken<Observable<boolean>>('EDITABLE');
@@ -28,8 +30,10 @@ export const EDITABLE = new InjectionToken<Observable<boolean>>('EDITABLE');
     HarvestStepModalComponent,
   ],
   providers: [
-    HarvestStore,
+    HARVEST_FILTER_PROVIDER,
     CHART_TYPE_PROVIDER,
+    HarvestFilter,
+    HarvestStore,
     {
       provide: HARVEST_DATA,
       useFactory: (store: HarvestStore) => store.harvest$,
@@ -71,7 +75,7 @@ export class HarvestComponent implements OnInit {
     this.harvestStore.getData(this.route.snapshot.params['id']);
   }
 
-  onSearchChange(search: string | null): void {
+  onSearchChange(search: string): void {
     this.harvestStore.search(search);
   }
 

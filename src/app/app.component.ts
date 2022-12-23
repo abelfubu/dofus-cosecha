@@ -5,6 +5,7 @@ import { Component } from '@angular/core';
   template: `
     <app-google-auth></app-google-auth>
     <router-outlet></router-outlet>
+    <app-footer></app-footer>
   `,
 })
 export class AppComponent {}
