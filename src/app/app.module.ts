@@ -12,6 +12,7 @@ import { JWT_INITIALIZER } from './chore/initializers/jwt.initializer';
 import { GoogleAuthDirective } from './shared/google-auth.directive';
 import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
 import { FooterComponent } from './shared/ui/footer/footer.component';
+import { WINDOW } from './chore/tokens/window.token';
 
 @NgModule({
   declarations: [AppComponent, GoogleAuthDirective],
@@ -30,6 +31,10 @@ import { FooterComponent } from './shared/ui/footer/footer.component';
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
       multi: true,
+    },
+    {
+      provide: WINDOW,
+      useFactory: () => (typeof window !== 'undefined' ? window : null),
     },
   ],
   bootstrap: [AppComponent],

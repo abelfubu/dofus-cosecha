@@ -1,3 +1,7 @@
+interface Window {
+  dataLayer: DataLayer;
+}
+
 interface GoogleAuth {
   accounts: {
     id: {
@@ -9,6 +13,10 @@ interface GoogleAuth {
       prompt: () => void;
     };
   };
+}
+
+interface DataLayer {
+  push: (data: Record<string, unknown>) => void;
 }
 
 interface GoogleAuthResponse {

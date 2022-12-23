@@ -9,6 +9,8 @@ import { LoginService } from '../services/login.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Router } from '@angular/router';
 import { HotToastService } from '@ngneat/hot-toast';
+import { GtmTrackingService } from '../../chore/services/gtm-tracking.service';
+import { LoginSuccessEvent } from '../../chore/tracking/gtm/login-success.event';
 
 export interface GlobalState {
   currentHarvestId: string;
@@ -30,8 +32,9 @@ export class GlobalStore extends ComponentStore<GlobalState> {
 
   constructor(
     private readonly router: Router,
-    private readonly loginService: LoginService,
     private readonly toast: HotToastService,
+    private readonly loginService: LoginService,
+    private readonly gtmTracking: GtmTrackingService,
     private readonly localStorageService: LocalStorageService
   ) {
     super({ ...DEFAULT_STATE, isLoggedIn: false });
@@ -66,13 +69,18 @@ export class GlobalStore extends ComponentStore<GlobalState> {
     return { ...state, isLoggedIn: false, user: null };
   });
 
-  readonly setLoggedIn = this.updater(
+  private readonly _setLoggedIn = this.updater(
     (state, { accessToken }: AuthResponse) => {
       this.localStorageService.set(this.AUTH_KEY, accessToken);
       const helper = new JwtHelperService();
       const user = helper.decodeToken(accessToken);
+      this.gtmTracking.setGlobalProperties({ user });
+      this.gtmTracking.track(new LoginSuccessEvent());
 
       return { ...state, isLoggedIn: !!accessToken, user };
     }
   );
+  public get setLoggedIn() {
+    return this._setLoggedIn;
+  }
 }
