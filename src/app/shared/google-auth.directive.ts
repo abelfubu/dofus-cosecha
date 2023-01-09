@@ -1,10 +1,5 @@
-import {
-  Directive,
-  ElementRef,
-  NgZone,
-  OnInit,
-  Renderer2,
-} from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+import { Directive, inject, NgZone, OnInit, Renderer2 } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { AuthProvider } from './models/auth-provider';
 import { GlobalStore } from './store/global.store';
@@ -15,22 +10,16 @@ declare var google: GoogleAuth;
   selector: 'app-google-auth',
 })
 export class GoogleAuthDirective implements OnInit {
-  constructor(
-    private readonly ngZone: NgZone,
-    private readonly renderer: Renderer2,
-    private readonly elementRef: ElementRef,
-    private readonly globalStore: GlobalStore
-  ) {}
+  private readonly document = inject(DOCUMENT);
+  private readonly ngZone = inject(NgZone);
+  private readonly renderer = inject(Renderer2);
+  private readonly globalStore = inject(GlobalStore);
 
   ngOnInit(): void {
     const script: HTMLScriptElement = this.renderer.createElement('script');
-    this.renderer.setAttribute(
-      script,
-      'src',
-      'https://accounts.google.com/gsi/client'
-    );
+    this.renderer.setAttribute(script, 'src', './assets/gsi.js');
     script.onload = this.initializeGoogleAuth.bind(this);
-    this.renderer.appendChild(this.elementRef.nativeElement, script);
+    this.renderer.appendChild(this.document.head, script);
   }
 
   initializeGoogleAuth(): void {

@@ -78,7 +78,7 @@ export class HarvestFiltersComponent {
   }
 
   onShareHarvest(id: string) {
-    from(navigator.clipboard.writeText(`${environment.baseUrl}/${id}`))
+    from(navigator.clipboard.writeText(`${environment.baseUrl}/share/${id}`))
       .pipe(
         this.toast.observe({
           loading: 'Copiando url en el portapapeles',

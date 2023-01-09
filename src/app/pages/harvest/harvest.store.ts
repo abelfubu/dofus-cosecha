@@ -67,7 +67,10 @@ export class HarvestStore extends ComponentStore<HarvestData> {
         this.harvestDataService.get(id).pipe(
           tapResponse(
             (data) => this.setData(data),
-            () => this.toast.error('Error en el servidor', { icon: '⚠️' })
+            () => {
+              this.toast.error('Error en el servidor', { icon: '⚠️' });
+              if (id) this.router.navigate(['/']);
+            }
           )
         )
       )

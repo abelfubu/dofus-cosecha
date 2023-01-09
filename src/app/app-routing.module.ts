@@ -15,7 +15,7 @@ const routes: Route[] = [
       ),
   },
   {
-    path: ':id',
+    path: 'share/:id',
     loadComponent: () =>
       import('./pages/harvest/harvest.component').then(
         (c) => c.HarvestComponent

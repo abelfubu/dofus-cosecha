@@ -14,6 +14,7 @@ export class GtmTrackingService {
   private globalProperties = new BehaviorSubject<Record<string, unknown>>({});
 
   track(data: TrackingEvent): void {
+    console.log(this.window.dataLayer);
     if (isPlatformServer(this.platformId) || !this.window.dataLayer) return;
 
     this.window.dataLayer.push(

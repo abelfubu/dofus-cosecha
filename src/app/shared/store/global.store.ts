@@ -69,7 +69,7 @@ export class GlobalStore extends ComponentStore<GlobalState> {
     return { ...state, isLoggedIn: false, user: null };
   });
 
-  private readonly _setLoggedIn = this.updater(
+  readonly setLoggedIn = this.updater(
     (state, { accessToken }: AuthResponse) => {
       this.localStorageService.set(this.AUTH_KEY, accessToken);
       const helper = new JwtHelperService();
@@ -80,7 +80,4 @@ export class GlobalStore extends ComponentStore<GlobalState> {
       return { ...state, isLoggedIn: !!accessToken, user };
     }
   );
-  public get setLoggedIn() {
-    return this._setLoggedIn;
-  }
 }
