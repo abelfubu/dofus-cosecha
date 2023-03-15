@@ -1,10 +1,12 @@
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
-import { APP_INITIALIZER, Component } from '@angular/core';
+import { APP_INITIALIZER, Component, importProvidersFrom } from '@angular/core';
 import { bootstrapApplication } from '@angular/platform-browser';
 import { provideRouter, RouterOutlet } from '@angular/router';
+import { TOAST_CONFIG } from '@chore/config/toast.config';
 import { jwtInitalizer } from '@chore/initializers/jwt.initializer';
 import { appRoutes } from '@chore/routes/app.routes';
 import { WINDOW } from '@chore/tokens/window.token';
+import { HotToastModule } from '@ngneat/hot-toast';
 import { GoogleAuthDirective } from '@shared/google-auth.directive';
 import { authInterceptor } from '@shared/interceptors/auth.interceptor';
 import { FooterComponent } from '@shared/ui/footer/footer.component';
@@ -25,6 +27,7 @@ bootstrapApplication(AppComponent, {
   providers: [
     provideRouter(appRoutes),
     provideHttpClient(withInterceptors([authInterceptor])),
+    importProvidersFrom([HotToastModule.forRoot(TOAST_CONFIG)]),
     {
       provide: APP_INITIALIZER,
       useFactory: jwtInitalizer,
