@@ -8,6 +8,7 @@ declare var google: GoogleAuth;
 
 @Directive({
   selector: 'app-google-auth',
+  standalone: true,
 })
 export class GoogleAuthDirective implements OnInit {
   private readonly document = inject(DOCUMENT);

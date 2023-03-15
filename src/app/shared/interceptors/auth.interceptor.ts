@@ -1,31 +1,22 @@
-import { Injectable } from '@angular/core';
-import {
-  HttpRequest,
-  HttpHandler,
-  HttpEvent,
-  HttpInterceptor,
-} from '@angular/common/http';
+import { HttpEvent, HttpHandlerFn, HttpRequest } from '@angular/common/http';
+import { inject } from '@angular/core';
 import { Observable } from 'rxjs';
-import { LocalStorageService } from '../services/local-storage.service';
 import { environment } from 'src/environments/environment';
+import { LocalStorageService } from '../services/local-storage.service';
 
-@Injectable()
-export class AuthInterceptor implements HttpInterceptor {
-  private readonly DFHV_KEY = environment.authKey;
+export function authInterceptor(
+  request: HttpRequest<unknown>,
+  next: HttpHandlerFn,
+): Observable<HttpEvent<unknown>> {
+  const DFHV_KEY = environment.authKey;
+  const localStorageService = inject(LocalStorageService);
 
-  constructor(private readonly localStorageService: LocalStorageService) {}
-
-  intercept(
-    request: HttpRequest<unknown>,
-    next: HttpHandler
-  ): Observable<HttpEvent<unknown>> {
-    return next.handle(
-      request.clone({
-        headers: request.headers.set(
-          'Authorization',
-          `Bearer ${this.localStorageService.get(this.DFHV_KEY)}`
-        ),
-      })
-    );
-  }
+  return next(
+    request.clone({
+      headers: request.headers.set(
+        'Authorization',
+        `Bearer ${localStorageService.get(DFHV_KEY)}`,
+      ),
+    }),
+  );
 }

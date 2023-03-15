@@ -1,11 +1,9 @@
 import { InjectionToken } from '@angular/core';
-import { StringUtils } from '../../../utils/string.utils';
+import { StringUtils } from '@libs/string';
 import { Harvest, HarvestType } from '../models/harvest';
 import { HarvestSteps } from '../models/harvest-steps';
 
-export const HARVEST_FILTER = new InjectionToken<HarvestFilterI>(
-  'HARVEST_FILTER'
-);
+export const HARVEST_FILTER = new InjectionToken<HarvestFilterI>('HARVEST_FILTER');
 
 export interface Filters {
   showRepeatedOnly: boolean;
@@ -72,9 +70,7 @@ const FILTER_VALUE: HarvestFilterI = {
         filters.search &&
         !Object.values({ name, zone, subzone })
           .map((value) => StringUtils.normalize(value))
-          .some((value) =>
-            value.includes(StringUtils.normalize(filters.search!))
-          )
+          .some((value) => value.includes(StringUtils.normalize(filters.search!)))
       ) {
         throw new Error('Filter Search');
       }

@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Inject, InjectionToken, OnInit } from '@angular/core';
+import { Component, inject, InjectionToken, OnInit } from '@angular/core';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -36,20 +36,16 @@ export const EDITABLE = new InjectionToken<Observable<boolean>>('EDITABLE');
     HarvestStore,
     {
       provide: HARVEST_DATA,
-      useFactory: (store: HarvestStore) => store.harvest$,
-      deps: [HarvestStore],
+      useFactory: () => inject(HarvestStore).harvest$,
     },
     {
       provide: EDITABLE,
-      useFactory: (route: ActivatedRoute) => !route.snapshot.params['id'],
-      deps: [ActivatedRoute],
+      useFactory: () => !inject(ActivatedRoute).snapshot.params['id'],
     },
   ],
   template: `
     <app-header (logout)="onLogout()"></app-header>
-    <app-harvest-filters
-      (changed)="onSearchChange($event)"
-    ></app-harvest-filters>
+    <app-harvest-filters (changed)="onSearchChange($event)"></app-harvest-filters>
     <app-harvest-table [data]="data$ | async"></app-harvest-table>
   `,
   styles: [
@@ -63,13 +59,11 @@ export const EDITABLE = new InjectionToken<Observable<boolean>>('EDITABLE');
   ],
 })
 export class HarvestComponent implements OnInit {
-  constructor(
-    private readonly route: ActivatedRoute,
-    private readonly globalStore: GlobalStore,
-    private readonly harvestStore: HarvestStore,
-    @Inject(EDITABLE) public editable: boolean,
-    @Inject(HARVEST_DATA) public data$: Observable<Harvest[]>
-  ) {}
+  private readonly route = inject(ActivatedRoute);
+  private readonly globalStore = inject(GlobalStore);
+  private readonly harvestStore = inject(HarvestStore);
+  protected readonly data$ = inject(HARVEST_DATA);
+  protected readonly editable = inject(EDITABLE);
 
   ngOnInit(): void {
     this.harvestStore.getData(this.route.snapshot.params['id']);
