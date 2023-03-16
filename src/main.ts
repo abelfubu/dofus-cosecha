@@ -2,10 +2,12 @@ import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { APP_INITIALIZER, Component, importProvidersFrom } from '@angular/core';
 import { bootstrapApplication } from '@angular/platform-browser';
 import { provideRouter, RouterOutlet } from '@angular/router';
+import { ServiceWorkerModule } from '@angular/service-worker';
 import { TOAST_CONFIG } from '@chore/config/toast.config';
 import { jwtInitalizer } from '@chore/initializers/jwt.initializer';
 import { appRoutes } from '@chore/routes/app.routes';
 import { WINDOW } from '@chore/tokens/window.token';
+import { environment } from '@environments/environment';
 import { HotToastModule } from '@ngneat/hot-toast';
 import { GoogleAuthDirective } from '@shared/google-auth.directive';
 import { authInterceptor } from '@shared/interceptors/auth.interceptor';
@@ -27,7 +29,15 @@ bootstrapApplication(AppComponent, {
   providers: [
     provideRouter(appRoutes),
     provideHttpClient(withInterceptors([authInterceptor])),
-    importProvidersFrom([HotToastModule.forRoot(TOAST_CONFIG)]),
+    importProvidersFrom([
+      HotToastModule.forRoot(TOAST_CONFIG),
+      ServiceWorkerModule.register('ngsw-worker.js', {
+        enabled: environment.production,
+        // Register the ServiceWorker as soon as the application is stable
+        // or after 30 seconds (whichever comes first).
+        registrationStrategy: 'registerWhenStable:30000',
+      }),
+    ]),
     {
       provide: APP_INITIALIZER,
       useFactory: jwtInitalizer,

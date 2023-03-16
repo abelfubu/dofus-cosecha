@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { environment } from 'src/environments/environment';
@@ -10,13 +10,9 @@ import { Credentials } from '../models/credentials';
 })
 export class LoginService {
   private readonly URL = environment.apiUrl;
-
-  constructor(private readonly http: HttpClient) {}
+  private readonly http = inject(HttpClient);
 
   login({ provider, ...credentials }: Credentials): Observable<AuthResponse> {
-    return this.http.post<AuthResponse>(
-      `${this.URL}/auth/${provider}`,
-      credentials
-    );
+    return this.http.post<AuthResponse>(`${this.URL}/auth/${provider}`, credentials);
   }
 }

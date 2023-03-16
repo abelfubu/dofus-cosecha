@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { LazyImagesDirective } from 'src/app/shared/lazy-images.directive';
 
@@ -24,7 +24,7 @@ import { HarvestTableHeaderComponent } from './harvest-table-header/harvest-tabl
 export class HarvestTableComponent {
   @Input() data!: Harvest[] | null;
 
-  constructor(private readonly matDialog: MatDialog) {}
+  private readonly matDialog = inject(MatDialog);
 
   openFilter() {
     this.matDialog.open(HarvestStepModalComponent, {

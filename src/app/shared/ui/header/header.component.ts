@@ -1,11 +1,5 @@
 import { CommonModule } from '@angular/common';
-import {
-  Component,
-  EventEmitter,
-  Inject,
-  InjectionToken,
-  Output,
-} from '@angular/core';
+import { Component, EventEmitter, inject, InjectionToken, Output } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { Observable } from 'rxjs';
 import { GlobalStore } from '../../store/global.store';
@@ -36,5 +30,5 @@ const GLOBAL_USER = new InjectionToken<Observable<GlobalUser>>('GLOBAL_USER');
 export class HeaderComponent {
   @Output() logout = new EventEmitter();
 
-  constructor(@Inject(GLOBAL_USER) public user$: Observable<GlobalUser>) {}
+  protected readonly user$ = inject(GLOBAL_USER);
 }

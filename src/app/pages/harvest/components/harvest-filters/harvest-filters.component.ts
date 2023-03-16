@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Inject, InjectionToken, Output } from '@angular/core';
+import { Component, inject, InjectionToken, Output } from '@angular/core';
 import { FormBuilder, FormControl, ReactiveFormsModule } from '@angular/forms';
 import { RouterLinkWithHref } from '@angular/router';
 import { HotToastService } from '@ngneat/hot-toast';
@@ -12,9 +12,9 @@ import { environment } from '../../../../../environments/environment';
 import { HarvestStore } from '../../harvest.store';
 import { DEFAULT_FILTERS } from './filters-data';
 
-export const HARVEST_STATISTICS = new InjectionToken<
-  Observable<ChartSlice[][]>
->('HARVEST_STATISTICS');
+export const HARVEST_STATISTICS = new InjectionToken<Observable<ChartSlice[][]>>(
+  'HARVEST_STATISTICS',
+);
 
 export const HARVEST_ID = new InjectionToken<string>('HARVEST_ID');
 
@@ -47,6 +47,14 @@ export const HARVEST_ID = new InjectionToken<string>('HARVEST_ID');
 export class HarvestFiltersComponent {
   search = new FormControl('');
 
+  @Output() changed = this.search.valueChanges.pipe(debounceTime(400), map(String));
+
+  private readonly toast = inject(HotToastService);
+  private readonly formBuilder = inject(FormBuilder);
+  private readonly harvestStore = inject(HarvestStore);
+  protected readonly harvestId$ = inject(HARVEST_ID);
+  protected readonly data$ = inject(HARVEST_STATISTICS);
+
   form = this.formBuilder.nonNullable.group({
     showCaptured: [true],
     showRepeatedOnly: [false],
@@ -54,19 +62,6 @@ export class HarvestFiltersComponent {
     bosses: [true],
     archis: [true],
   });
-
-  @Output() changed = this.search.valueChanges.pipe(
-    debounceTime(400),
-    map(String)
-  );
-
-  constructor(
-    private readonly toast: HotToastService,
-    private readonly formBuilder: FormBuilder,
-    private readonly harvestStore: HarvestStore,
-    @Inject(HARVEST_ID) public harvestId$: Observable<string>,
-    @Inject(HARVEST_STATISTICS) public data$: Observable<ChartSlice[][]>
-  ) {}
 
   ngOnInit(): void {
     this.harvestStore.filter(this.form.valueChanges);
@@ -84,7 +79,7 @@ export class HarvestFiltersComponent {
           loading: 'Copiando url en el portapapeles',
           success: 'Enlace copiado en el portapapeles',
           error: 'Algo ha ido mal, intentalo más tarde',
-        })
+        }),
       )
       .subscribe();
   }

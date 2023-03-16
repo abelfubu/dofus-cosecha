@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Observable, take, tap } from 'rxjs';
 import { ButtonComponent } from 'src/app/shared/ui/button/button.component';
@@ -18,12 +18,12 @@ export class HarvestStepModalComponent {
   store!: HarvestStore;
   steps$!: Observable<boolean[]>;
 
-  constructor(private readonly formBuilder: FormBuilder) {}
+  private readonly formBuilder = inject(FormBuilder);
 
   ngOnInit(): void {
     this.steps$ = this.store.steps$.pipe(
       take(1),
-      tap((steps) => this.initializeStepsForm(steps))
+      tap((steps) => this.initializeStepsForm(steps)),
     );
   }
 

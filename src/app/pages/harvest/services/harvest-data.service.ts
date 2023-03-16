@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from '../../../../environments/environment';
 
@@ -11,13 +11,10 @@ import { HarvestDataResponse } from '../models/harvest-data.response';
 })
 export class HarvestDataService {
   private readonly URL = environment.apiUrl;
-
-  constructor(private readonly http: HttpClient) {}
+  private readonly http = inject(HttpClient);
 
   get(id: string): Observable<HarvestDataResponse> {
-    return this.http.get<HarvestDataResponse>(
-      `${this.URL}/harvest/${id ?? ''}`
-    );
+    return this.http.get<HarvestDataResponse>(`${this.URL}/harvest/${id ?? ''}`);
   }
 
   update(data: UserHarvest): Observable<void> {

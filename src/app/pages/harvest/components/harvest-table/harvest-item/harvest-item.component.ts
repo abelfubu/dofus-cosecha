@@ -1,10 +1,5 @@
 import { CommonModule } from '@angular/common';
-import {
-  ChangeDetectionStrategy,
-  Component,
-  Inject,
-  Input,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, Input } from '@angular/core';
 import { EDITABLE } from '../../../harvest.component';
 import { HarvestStore } from '../../../harvest.store';
 import { Harvest } from '../../../models/harvest';
@@ -20,10 +15,8 @@ import { Harvest } from '../../../models/harvest';
 export class HarvestItemComponent {
   @Input() item!: Harvest;
 
-  constructor(
-    private readonly harvestStore: HarvestStore,
-    @Inject(EDITABLE) public editable: boolean
-  ) {}
+  private readonly harvestStore = inject(HarvestStore);
+  protected readonly editable = inject(EDITABLE);
 
   onCapturedChange({ id, captured, amount = 0 }: Harvest): void {
     this.harvestStore.updateData({

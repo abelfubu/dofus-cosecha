@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, inject, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { GlobalStore } from 'src/app/shared/store/global.store';
@@ -20,6 +20,9 @@ export class LoginComponent implements OnInit {
   @ViewChild('googleButton', { read: ElementRef, static: true })
   private googleButton!: ElementRef;
 
+  private readonly globalStore = inject(GlobalStore);
+  private readonly formBuilder = inject(FormBuilder);
+
   form = this.formBuilder.group({
     email: ['', [Validators.required, Validators.email]],
     password: [
@@ -27,17 +30,10 @@ export class LoginComponent implements OnInit {
       [
         Validators.required,
         Validators.minLength(6),
-        Validators.pattern(
-          /((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/
-        ),
+        Validators.pattern(/((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/),
       ],
     ],
   });
-
-  constructor(
-    private readonly globalStore: GlobalStore,
-    private readonly formBuilder: FormBuilder
-  ) {}
 
   ngOnInit(): void {
     this.renderGoogleButton();
@@ -56,7 +52,7 @@ export class LoginComponent implements OnInit {
   private renderGoogleButton() {
     google.accounts.id.renderButton(
       this.googleButton.nativeElement,
-      GOOGLE_BUTTON_CONFIG
+      GOOGLE_BUTTON_CONFIG,
     );
   }
 }

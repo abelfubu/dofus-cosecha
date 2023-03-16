@@ -1,14 +1,12 @@
-import { Directive, ElementRef, OnInit, Renderer2 } from '@angular/core';
+import { Directive, ElementRef, inject, OnInit, Renderer2 } from '@angular/core';
 
 @Directive({
   selector: 'img:not([loading])',
   standalone: true,
 })
 export class LazyImagesDirective implements OnInit {
-  constructor(
-    private readonly el: ElementRef,
-    private readonly renderer: Renderer2
-  ) {}
+  private readonly el = inject(ElementRef);
+  private readonly renderer = inject(Renderer2);
 
   ngOnInit(): void {
     this.renderer.setAttribute(this.el, 'loading', 'lazy');
