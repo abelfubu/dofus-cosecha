@@ -1,6 +1,6 @@
-<button [disabled]="disabled" [ngStyle]="{margin: center ? 'auto' : ''}">
+<button [disabled]="disabled" [ngStyle]="{ margin: center ? 'auto' : '' }">
   <span *ngIf="icon" class="material-symbols-outlined">
-    {{icon}}
+    {{ icon }}
   </span>
   <ng-content></ng-content>
 </button>
