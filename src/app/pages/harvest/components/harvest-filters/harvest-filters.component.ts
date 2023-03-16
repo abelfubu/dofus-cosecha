@@ -16,7 +16,7 @@ export const HARVEST_STATISTICS = new InjectionToken<Observable<ChartSlice[][]>>
   'HARVEST_STATISTICS',
 );
 
-export const HARVEST_ID = new InjectionToken<string>('HARVEST_ID');
+export const HARVEST_ID = new InjectionToken<Observable<string>>('HARVEST_ID');
 
 @Component({
   selector: 'app-harvest-filters',
