@@ -6,7 +6,7 @@ import { RouterLinkWithHref } from '@angular/router';
 import { HotToastService } from '@ngneat/hot-toast';
 import { HarvestStepModalComponent } from '@pages/harvest/components/harvest-filters/harvest-step-modal/harvest-step-modal.component';
 import { ChartSlice } from '@shared/chart/chart.model';
-import { combineLatest, debounceTime, from, map, Observable } from 'rxjs';
+import { combineLatest, debounceTime, filter, from, map, Observable } from 'rxjs';
 import { ChartComponent } from 'src/app/shared/chart/chart.component';
 import { ButtonComponent } from 'src/app/shared/ui/button/button.component';
 import { InputComponent } from 'src/app/shared/ui/input/input.component';
@@ -17,6 +17,7 @@ import { DEFAULT_FILTERS } from './filters-data';
 export const HARVEST_FILTERS_VM = new InjectionToken<Observable<HarvestFiltersVM>>(
   'HARVEST_FILTERS_VM',
 );
+
 interface HarvestFiltersVM {
   statistics: ChartSlice[][];
   harvestId: string;
@@ -97,7 +98,8 @@ export class HarvestFiltersComponent {
     this.harvestStore.completeSteps(
       this.matDialog
         .open(HarvestStepModalComponent, { data: steps, panelClass: 'background' })
-        .afterClosed(),
+        .afterClosed()
+        .pipe(filter(Boolean)),
     );
   }
 }
