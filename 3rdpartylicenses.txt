@@ -103,6 +103,11 @@ MIT
 @ngrx/component-store
 MIT
 
+dh-mygolia
+
+ngx-infinite-scroll
+MIT
+
 rxjs
 Apache-2.0
                                Apache License
