@@ -72,7 +72,7 @@ describe(DhMygoliaDataset.name, () => {
   let dataset: DhMygoliaDataset<Animal>;
 
   beforeEach(() => {
-    dataset = new DhMygoliaDataset({ dataSet, validators, maxResults: 3 });
+    dataset = new DhMygoliaDataset({ validators, maxResults: 3 });
   });
 
   it('should create an instance', () => {
@@ -80,20 +80,18 @@ describe(DhMygoliaDataset.name, () => {
   });
 
   it('should return the correct number of pages', () => {
-    expect(dataset.getDataSet(0, { type: 'dog' }).pages).toBe(2);
+    expect(dataset.getDataSet(dataSet, { type: 'dog' }).next).toBe(1);
   });
 
   it('should return a correct second page with one item', () => {
-    expect(dataset.getDataSet(1, { type: 'dog' }).dataSet.length).toBe(1);
+    expect(dataset.getDataSet(dataSet, { type: 'dog' }, 1).dataSet.length).toBe(1);
   });
 
   it('should return the correct number of cats', () => {
-    expect(dataset.getDataSet(0, { type: 'cat' }).dataSet.length).toBe(2);
+    expect(dataset.getDataSet(dataSet, { type: 'cat' }, 0).dataSet.length).toBe(2);
   });
 
   it('should return an empty dataset for no matches', () => {
-    const result = dataset.getDataSet(0, { type: 'tiger' });
-    console.log(result);
-    expect(dataset.getDataSet(0, { type: 'tiger' }).dataSet.length).toBe(0);
+    expect(dataset.getDataSet(dataSet, { type: 'tiger' }, 0).dataSet.length).toBe(0);
   });
 });

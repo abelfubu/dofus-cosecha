@@ -5,6 +5,7 @@ import { catchError, concatMap, filter, map, switchMap, tap } from 'rxjs/operato
 import { HarvestDataService } from './services/harvest-data.service';
 
 import { Router } from '@angular/router';
+import { DhMygoliaDataset } from '@dh-mygolia';
 import { MathUtils } from '@libs/math';
 import { HotToastService } from '@ngneat/hot-toast';
 import { ChartSlice } from '@shared/chart/chart.model';
@@ -26,6 +27,9 @@ export interface HarvestData {
   harvest: Harvest[];
   harvestId: string;
   filters: Filters;
+  page: number;
+  next: number | null;
+  previous: number | null;
 }
 
 const DEFAULT_STATE = {
@@ -34,6 +38,9 @@ const DEFAULT_STATE = {
   harvest: [],
   harvestId: '',
   filters: null,
+  page: 0,
+  next: null,
+  previous: null,
 };
 
 @Injectable()
@@ -43,9 +50,14 @@ export class HarvestStore extends ComponentStore<HarvestData> {
   private readonly globalStore = inject(GlobalStore);
   private readonly harvestDataService = inject(HarvestDataService);
   private readonly chartData = inject(CHART_TYPE_DATA);
+  private dhMygoliaDataset: DhMygoliaDataset<Harvest>;
 
   constructor(private readonly harvestFilter: HarvestFilter) {
     super({ ...DEFAULT_STATE, filters: harvestFilter.harvestFilter.state });
+    this.dhMygoliaDataset = new DhMygoliaDataset({
+      maxResults: 12,
+      validators: this.harvestFilter.harvestFilter.validators,
+    });
   }
 
   readonly harvest$ = this.select(({ harvest }) => harvest);
@@ -100,69 +112,86 @@ export class HarvestStore extends ComponentStore<HarvestData> {
   );
 
   readonly setData = this.updater(
-    (state, { harvest, harvestId }: HarvestDataResponse) => ({
-      ...state,
-      harvest,
-      harvestId,
-      originalData: harvest,
-      statistics: this.calculateStatistics(harvest),
-    }),
+    (state, { harvest, harvestId }: HarvestDataResponse) => {
+      const { dataSet, page, next, previous } = this.dhMygoliaDataset.getDataSet(
+        harvest,
+        state.filters,
+      );
+
+      return {
+        ...state,
+        harvest: dataSet,
+        page,
+        next,
+        previous,
+        harvestId,
+        originalData: harvest,
+        statistics: this.calculateStatistics(harvest),
+      };
+    },
   );
 
   readonly search = this.updater((state, search: string) => {
     const filters = { ...state.filters, search };
-
-    return {
-      ...state,
+    const { dataSet, page, next, previous } = this.dhMygoliaDataset.getDataSet(
+      state.originalData,
       filters,
-      harvest: this.applyFilters(state.originalData, filters),
-    };
+    );
+
+    return { ...state, filters, harvest: dataSet, page, next, previous };
   });
 
   readonly filter = this.updater(
     (state, values: Omit<Partial<Filters>, 'steps' | 'search'>) => {
-      const filters = { ...state.filters, ...values };
-      return {
-        ...state,
+      const filters: Filters = { ...state.filters, ...values };
+      const { dataSet, page, next, previous } = this.dhMygoliaDataset.getDataSet(
+        state.originalData,
         filters,
-        harvest: this.applyFilters(state.originalData, filters),
-      };
+      );
+      return { ...state, filters, harvest: dataSet, page, next, previous };
     },
   );
 
   readonly steps = this.updater((state, steps: Record<number, boolean>) => {
     const filters = { ...state.filters, steps: Object.values(steps) };
-
-    return {
-      ...state,
+    const { dataSet, page, next, previous } = this.dhMygoliaDataset.getDataSet(
+      state.originalData,
       filters,
-      harvest: this.applyFilters(state.originalData, filters),
-    };
+    );
+
+    return { ...state, filters, harvest: dataSet, page, next, previous };
   });
 
   readonly update = this.updater((state, item: UserHarvest) => {
     const callback = (i: Harvest) => (i.id === item.id ? { ...i, ...item } : i);
-
     const originalData = state.originalData.map(callback);
+    const harvest = state.harvest.map(callback);
 
     return {
       ...state,
       originalData,
       statistics: this.calculateStatistics(originalData),
-      harvest: this.applyFilters(state.harvest.map(callback), state.filters!),
+      harvest,
     };
   });
 
-  private applyFilters(source: Harvest[], filters: Filters): Harvest[] {
-    return source.reduce<Harvest[]>((acc, item) => {
-      try {
-        this.harvestFilter.applyFilters(item, filters);
-        acc.push(item);
-      } catch {}
+  readonly handleInfiniteScroll = this.updater((state) => {
+    if (!state.next) return state;
 
-      return acc;
-    }, []);
-  }
+    const { dataSet, page, next, previous } = this.dhMygoliaDataset.getDataSet(
+      state.originalData,
+      state.filters,
+      state.next,
+    );
+
+    return {
+      ...state,
+      harvest: state.harvest.concat(dataSet),
+      page,
+      next,
+      previous,
+    };
+  });
 
   private calculateStatistics(data: Harvest[]): ChartSlice[][] {
     return this.chartData.map(({ amount, colors: [c1, c2], label, callback }) => {
@@ -170,19 +199,8 @@ export class HarvestStore extends ComponentStore<HarvestData> {
       const percent = MathUtils.calculatePercentage(current, amount);
 
       return [
-        {
-          id: 1,
-          amount,
-          current,
-          label: label,
-          percent: percent,
-          color: c1,
-        },
-        {
-          id: 2,
-          color: c2,
-          percent: 100 - percent,
-        },
+        { id: 1, amount, current, label: label, percent: percent, color: c1 },
+        { id: 2, color: c2, percent: 100 - percent },
       ];
     });
   }

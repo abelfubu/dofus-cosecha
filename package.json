@@ -26,6 +26,7 @@
     "@ngneat/hot-toast": "^4.1.0",
     "@ngneat/overview": "^3.0.0",
     "@ngrx/component-store": "^15.3.0",
+    "ngx-infinite-scroll": "^15.0.0",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.12.0"

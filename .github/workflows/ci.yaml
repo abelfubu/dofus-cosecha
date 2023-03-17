@@ -23,6 +23,9 @@ jobs:
       - run: yarn install
         env:
           CI: true
+      - name: Build dh-mygolia library
+        run: yarn build --project=dh-mygolia
+        timeout-minutes: 2
       - name: Build Project
         if: github.event_name == 'push'
         run: yarn run build --base-href "/dofus-cosecha/"
@@ -33,4 +36,4 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
+          publish_dir: ./dist/cosecha

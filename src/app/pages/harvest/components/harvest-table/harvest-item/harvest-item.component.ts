@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject, Input } from '@angular/core';
 import { EDITABLE } from '../../../harvest.component';
 import { HarvestStore } from '../../../harvest.store';
@@ -9,7 +9,7 @@ import { Harvest } from '../../../models/harvest';
   templateUrl: './harvest-item.component.html',
   styleUrls: ['./harvest-item.component.scss'],
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, NgOptimizedImage],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HarvestItemComponent {

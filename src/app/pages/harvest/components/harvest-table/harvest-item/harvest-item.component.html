@@ -1,36 +1,50 @@
-<img [src]="item.image" [alt]="item.name" loading="lazy">
+<img [ngSrc]="item.image" [alt]="item.name" width="120" height="112" priority />
 
 <div class="cell">
-  <p>{{item.name}}</p>
+  <p>{{ item.name }}</p>
 </div>
 
 <div class="cell">
-  <p>{{item.level}}</p>
+  <p>{{ item.level }}</p>
 </div>
 
 <div class="cell">
-  <p>{{item.subzone}}</p>
+  <p>{{ item.subzone }}</p>
 </div>
 
 <div class="cell">
-  <p>{{item.zone}}</p>
+  <p>{{ item.zone }}</p>
 </div>
 
 <div class="cell">
-  <p>{{item.step}}</p>
+  <p>{{ item.step }}</p>
 </div>
 
-<div [ngClass]="item.captured ? 'green' : 'red'" [ngStyle]="{ 'pointer-events': !editable && 'none'}"
-  class="cell pointer not-selectable" (click)="onCapturedChange(item)">
+<div
+  [ngClass]="item.captured ? 'green' : 'red'"
+  [ngStyle]="{ 'pointer-events': !editable && 'none' }"
+  class="cell pointer not-selectable"
+  (click)="onCapturedChange(item)"
+>
   <p>{{ item.captured ? 'Si' : 'No' }}</p>
 </div>
 
-<div [class.warn]="!!item.amount" class="cell not-selectable" [ngStyle]="{ 'pointer-events': !editable && 'none'}">
-  <button [disabled]="!editable" (click)="onAmountChange(item, item.amount ? item.amount + 1 : 1)">
+<div
+  [class.warn]="!!item.amount"
+  class="cell not-selectable"
+  [ngStyle]="{ 'pointer-events': !editable && 'none' }"
+>
+  <button
+    [disabled]="!editable"
+    (click)="onAmountChange(item, item.amount ? item.amount + 1 : 1)"
+  >
     <span class="material-symbols-outlined"> arrow_drop_up </span>
   </button>
-  <p>{{item.amount ?? '0'}}</p>
-  <button [disabled]="!item.amount || !editable" (click)="onAmountChange(item, item.amount! - 1)">
+  <p>{{ item.amount ?? '0' }}</p>
+  <button
+    [disabled]="!item.amount || !editable"
+    (click)="onAmountChange(item, item.amount! - 1)"
+  >
     <span class="material-symbols-outlined"> arrow_drop_down </span>
   </button>
 </div>

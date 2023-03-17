@@ -1,11 +1,12 @@
 import { InjectionToken } from '@angular/core';
+import { DhMygoliaValidatorFn } from '@dh-mygolia';
 import { StringUtils } from '@libs/string';
 import { Harvest, HarvestType } from '../models/harvest';
 import { HarvestSteps } from '../models/harvest-steps';
 
 export const HARVEST_FILTER = new InjectionToken<HarvestFilterI>('HARVEST_FILTER');
 
-export interface Filters {
+export interface Filters extends Record<string, unknown> {
   showRepeatedOnly: boolean;
   showCaptured: boolean;
   search: string;
@@ -19,7 +20,7 @@ export type FilterValidator = (item: Harvest, filters: Filters) => void | Error;
 
 export interface HarvestFilterI {
   state: Filters;
-  validators: FilterValidator[];
+  validators: DhMygoliaValidatorFn<Harvest>[];
 }
 
 const FILTER_VALUE: HarvestFilterI = {
@@ -34,32 +35,32 @@ const FILTER_VALUE: HarvestFilterI = {
   },
   validators: [
     (item, filters) => {
-      if (filters.showRepeatedOnly && !item.amount) {
+      if (filters['showRepeatedOnly'] && !item.amount) {
         throw new Error('Repeated Only');
       }
     },
     (item, filters) => {
-      if (!filters.showCaptured && item.captured) {
+      if (!filters['showCaptured'] && item.captured) {
         throw new Error('Show Captured');
       }
     },
     (item, filters) => {
-      if (!filters?.['steps']?.[item.step - 1]) {
+      if (!(filters?.['steps'] as Record<number, unknown>)?.[item.step - 1]) {
         throw new Error('Steps');
       }
     },
     (item, filters) => {
-      if (!filters.monsters && item.type === HarvestType.MONSTER) {
+      if (!filters['monsters'] && item.type === HarvestType.MONSTER) {
         throw new Error('Filter Monsters');
       }
     },
     (item, filters) => {
-      if (!filters.bosses && item.type === HarvestType.BOSS) {
+      if (!filters['bosses'] && item.type === HarvestType.BOSS) {
         throw new Error('Filter Bosses');
       }
     },
     (item, filters) => {
-      if (!filters.archis && item.type === HarvestType.ARCHI) {
+      if (!filters['archis'] && item.type === HarvestType.ARCHI) {
         throw new Error('Filter Archis');
       }
     },
@@ -67,10 +68,12 @@ const FILTER_VALUE: HarvestFilterI = {
       const { name, zone, subzone } = item;
 
       if (
-        filters.search &&
+        filters['search'] &&
         !Object.values({ name, zone, subzone })
           .map((value) => StringUtils.normalize(value))
-          .some((value) => value.includes(StringUtils.normalize(filters.search!)))
+          .some((value) =>
+            value.includes(StringUtils.normalize(filters['search']! as string)),
+          )
       ) {
         throw new Error('Filter Search');
       }

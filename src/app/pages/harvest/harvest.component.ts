@@ -46,7 +46,10 @@ export const EDITABLE = new InjectionToken<Observable<boolean>>('EDITABLE');
   template: `
     <app-header (logout)="onLogout()"></app-header>
     <app-harvest-filters (changed)="onSearchChange($event)"></app-harvest-filters>
-    <app-harvest-table [data]="data$ | async"></app-harvest-table>
+    <app-harvest-table
+      [data]="data$ | async"
+      (scrolled)="handleInfiniteScroll()"
+    ></app-harvest-table>
   `,
   styles: [
     `
@@ -76,5 +79,10 @@ export class HarvestComponent implements OnInit {
   onLogout(): void {
     this.globalStore.logout();
     this.harvestStore.getData(this.route.snapshot.params['id']);
+  }
+
+  handleInfiniteScroll(): void {
+    console.log();
+    this.harvestStore.handleInfiniteScroll();
   }
 }
