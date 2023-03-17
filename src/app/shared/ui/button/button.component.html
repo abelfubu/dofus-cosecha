@@ -1,4 +1,8 @@
-<button [disabled]="disabled" [ngStyle]="{ margin: center ? 'auto' : '' }">
+<button
+  [disabled]="disabled"
+  [ngStyle]="{ margin: center ? 'auto' : '' }"
+  [class.accent]="accent"
+>
   <span *ngIf="icon" class="material-symbols-outlined">
     {{ icon }}
   </span>

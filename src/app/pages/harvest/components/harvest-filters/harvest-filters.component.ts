@@ -1,22 +1,27 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject, InjectionToken, Output } from '@angular/core';
 import { FormBuilder, FormControl, ReactiveFormsModule } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { RouterLinkWithHref } from '@angular/router';
 import { HotToastService } from '@ngneat/hot-toast';
-import { debounceTime, from, map, Observable } from 'rxjs';
+import { HarvestStepModalComponent } from '@pages/harvest/components/harvest-filters/harvest-step-modal/harvest-step-modal.component';
+import { ChartSlice } from '@shared/chart/chart.model';
+import { combineLatest, debounceTime, from, map, Observable } from 'rxjs';
 import { ChartComponent } from 'src/app/shared/chart/chart.component';
-import { ChartSlice } from 'src/app/shared/chart/chart.model';
 import { ButtonComponent } from 'src/app/shared/ui/button/button.component';
 import { InputComponent } from 'src/app/shared/ui/input/input.component';
 import { environment } from '../../../../../environments/environment';
 import { HarvestStore } from '../../harvest.store';
 import { DEFAULT_FILTERS } from './filters-data';
 
-export const HARVEST_STATISTICS = new InjectionToken<Observable<ChartSlice[][]>>(
-  'HARVEST_STATISTICS',
+export const HARVEST_FILTERS_VM = new InjectionToken<Observable<HarvestFiltersVM>>(
+  'HARVEST_FILTERS_VM',
 );
-
-export const HARVEST_ID = new InjectionToken<Observable<string>>('HARVEST_ID');
+interface HarvestFiltersVM {
+  statistics: ChartSlice[][];
+  harvestId: string;
+  steps: boolean[];
+}
 
 @Component({
   selector: 'app-harvest-filters',
@@ -30,17 +35,21 @@ export const HARVEST_ID = new InjectionToken<Observable<string>>('HARVEST_ID');
     InputComponent,
     ButtonComponent,
     RouterLinkWithHref,
+    HarvestStepModalComponent,
   ],
   providers: [
     {
-      provide: HARVEST_STATISTICS,
-      useFactory: (store: HarvestStore) => store.statistics$,
-      deps: [HarvestStore],
-    },
-    {
-      provide: HARVEST_ID,
-      useFactory: (store: HarvestStore) => store.harvestId$,
-      deps: [HarvestStore],
+      provide: HARVEST_FILTERS_VM,
+      useFactory: () => {
+        const store = inject(HarvestStore);
+        return combineLatest([store.statistics$, store.harvestId$, store.steps$]).pipe(
+          map(([statistics, harvestId, steps]) => ({
+            statistics,
+            harvestId,
+            steps,
+          })),
+        );
+      },
     },
   ],
 })
@@ -52,8 +61,8 @@ export class HarvestFiltersComponent {
   private readonly toast = inject(HotToastService);
   private readonly formBuilder = inject(FormBuilder);
   private readonly harvestStore = inject(HarvestStore);
-  protected readonly harvestId$ = inject(HARVEST_ID);
-  protected readonly data$ = inject(HARVEST_STATISTICS);
+  protected readonly vm$ = inject(HARVEST_FILTERS_VM);
+  private readonly matDialog = inject(MatDialog);
 
   form = this.formBuilder.nonNullable.group({
     showCaptured: [true],
@@ -82,5 +91,13 @@ export class HarvestFiltersComponent {
         }),
       )
       .subscribe();
+  }
+
+  onStepCompleted(steps: boolean[]): void {
+    this.harvestStore.completeSteps(
+      this.matDialog
+        .open(HarvestStepModalComponent, { data: steps, panelClass: 'background' })
+        .afterClosed(),
+    );
   }
 }

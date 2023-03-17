@@ -1,42 +1,52 @@
-<div class="chart-container">
-  <app-chart *ngFor="let item of data$ | async" [data]="item"></app-chart>
-</div>
-
-<form [formGroup]="form">
-  <div class="search-box">
-    <app-input type="text" [control]="search" placeholder="Buscar..." style="flex-basis: 500px">
-    </app-input>
-    <app-button (click)="onClearFilters()">Borrar Filtros</app-button>
-    <ng-container *ngIf="{ id: harvestId$ | async } as harvest">
-      <app-button *ngIf="harvest.id" (click)="onShareHarvest(harvest.id)">Compartir</app-button>
-      <app-button *ngIf="!harvest.id" [routerLink]="['/']">Volver</app-button>
-    </ng-container>
+<ng-container *ngIf="vm$ | async as vm">
+  <div class="chart-container">
+    <app-chart *ngFor="let item of vm.statistics" [data]="item"></app-chart>
   </div>
 
-  <div class="controls-box">
-    <div class="control">
-      <input type="checkbox" formControlName="showCaptured" id="completed">
-      <label for="completed">Mostrar capturados</label>
+  <form [formGroup]="form">
+    <div class="search-box">
+      <app-input
+        type="text"
+        [control]="search"
+        placeholder="Buscar..."
+        style="flex-basis: 500px"
+      >
+      </app-input>
+      <app-button (click)="onClearFilters()">Borrar Filtros</app-button>
+      <app-button *ngIf="vm.harvestId; else back" (click)="onShareHarvest(vm.harvestId)"
+        >Compartir</app-button
+      >
+      <ng-template #back>
+        <app-button [routerLink]="['/']">Volver</app-button>
+      </ng-template>
+      <app-button (click)="onStepCompleted(vm.steps)">Entregar</app-button>
     </div>
 
-    <div class="control">
-      <input type="checkbox" formControlName="showRepeatedOnly" id="repeated">
-      <label for="repeated">Mostrar solo repetidos</label>
-    </div>
+    <div class="controls-box">
+      <div class="control">
+        <input type="checkbox" formControlName="showCaptured" id="completed" />
+        <label for="completed">Mostrar capturados</label>
+      </div>
 
-    <div class="control">
-      <input type="checkbox" formControlName="monsters" id="monsters">
-      <label for="monsters">Monstruos</label>
-    </div>
+      <div class="control">
+        <input type="checkbox" formControlName="showRepeatedOnly" id="repeated" />
+        <label for="repeated">Mostrar solo repetidos</label>
+      </div>
 
-    <div class="control">
-      <input type="checkbox" formControlName="bosses" id="bosses">
-      <label for="bosses">Jefes</label>
-    </div>
+      <div class="control">
+        <input type="checkbox" formControlName="monsters" id="monsters" />
+        <label for="monsters">Monstruos</label>
+      </div>
 
-    <div class="control">
-      <input type="checkbox" formControlName="archis" id="archis">
-      <label for="archis">Archis</label>
+      <div class="control">
+        <input type="checkbox" formControlName="bosses" id="bosses" />
+        <label for="bosses">Jefes</label>
+      </div>
+
+      <div class="control">
+        <input type="checkbox" formControlName="archis" id="archis" />
+        <label for="archis">Archis</label>
+      </div>
     </div>
-  </div>
-</form>
+  </form>
+</ng-container>

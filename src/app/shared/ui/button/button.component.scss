@@ -1,8 +1,12 @@
-@use "colors" as c;
+@use 'colors' as c;
 
 $primary: map-get(
   $map: c.$dark,
   $key: 300,
+);
+$accent: map-get(
+  $map: c.$primary,
+  $key: 400,
 );
 
 button {
@@ -34,6 +38,13 @@ button {
 
   &:disabled {
     box-shadow: none;
+  }
+
+  &.accent {
+    box-shadow: 0 0 0 1px $accent;
+    &:hover {
+      box-shadow: 0 0 0 2px $accent;
+    }
   }
 }
 

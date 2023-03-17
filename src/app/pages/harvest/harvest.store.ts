@@ -81,6 +81,21 @@ export class HarvestStore extends ComponentStore<HarvestData> {
     ),
   );
 
+  readonly completeSteps = this.effect<Record<number, boolean>>((steps$) =>
+    steps$.pipe(
+      switchMap((steps) =>
+        this.harvestDataService.completeSteps(steps).pipe(
+          tapResponse(
+            (data) => this.setData(data),
+            (error) => {
+              this.toast.error(String(error), { icon: '⚠️' });
+            },
+          ),
+        ),
+      ),
+    ),
+  );
+
   readonly updateData = this.effect((trigger$: Observable<UserHarvest>) =>
     trigger$.pipe(
       switchMap((item) =>

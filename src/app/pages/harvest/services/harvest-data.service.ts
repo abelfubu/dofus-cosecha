@@ -20,4 +20,8 @@ export class HarvestDataService {
   update(data: UserHarvest): Observable<void> {
     return this.http.post<void>(`${this.URL}/harvest`, data);
   }
+
+  completeSteps(steps: Record<number, boolean>): Observable<HarvestDataResponse> {
+    return this.http.post<HarvestDataResponse>(`${this.URL}/harvest/complete`, { steps });
+  }
 }
