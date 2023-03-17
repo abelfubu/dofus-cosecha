@@ -1,7 +1,7 @@
 {
   "name": "Dofus cosecha",
   "short_name": "dofus-cosecha",
-  "theme_color": "#1976d2",
+  "theme_color": "#282c34",
   "background_color": "#fafafa",
   "display": "standalone",
   "scope": "./",
