@@ -2,6 +2,6 @@ import { Route } from '@angular/router';
 
 export const notFoundPath: Route = {
   path: '**',
-  redirectTo: '',
+  redirectTo: '/es',
   pathMatch: 'full',
 } as const;

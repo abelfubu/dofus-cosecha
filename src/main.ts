@@ -12,6 +12,7 @@ import { HotToastModule } from '@ngneat/hot-toast';
 import { GoogleAuthDirective } from '@shared/google-auth.directive';
 import { authInterceptor } from '@shared/interceptors/auth.interceptor';
 import { FooterComponent } from '@shared/ui/footer/footer.component';
+import { provideLanguages } from 'providers/language-provider';
 
 @Component({
   standalone: true,
@@ -29,12 +30,11 @@ bootstrapApplication(AppComponent, {
   providers: [
     provideRouter(appRoutes),
     provideHttpClient(withInterceptors([authInterceptor])),
+    provideLanguages({ supportedLanguages: ['en', 'es'] }),
     importProvidersFrom([
       HotToastModule.forRoot(TOAST_CONFIG),
       ServiceWorkerModule.register('ngsw-worker.js', {
         enabled: environment.production,
-        // Register the ServiceWorker as soon as the application is stable
-        // or after 30 seconds (whichever comes first).
         registrationStrategy: 'registerWhenStable:30000',
       }),
     ]),

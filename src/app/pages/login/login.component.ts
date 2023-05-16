@@ -18,7 +18,7 @@ declare var google: GoogleAuth;
 })
 export class LoginComponent implements OnInit {
   @ViewChild('googleButton', { read: ElementRef, static: true })
-  private googleButton!: ElementRef;
+  private googleButton!: ElementRef<HTMLDivElement>;
 
   private readonly globalStore = inject(GlobalStore);
   private readonly formBuilder = inject(FormBuilder);
