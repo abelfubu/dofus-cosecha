@@ -1,0 +1,24 @@
+{
+  "home": {
+    "monsters": "Mostri",
+    "bosses": "Boss",
+    "archis": "Archis",
+    "total": "Totale",
+    "search": "Cerca...",
+    "reset": "Resetta Filtri",
+    "share": "Condividi",
+    "back": "Indietro",
+    "complete": "Completa",
+    "captured": "Mostra Catturati",
+    "repeated": "Mostra solo Ripetuti",
+    "table": {
+      "name": "Nome",
+      "level": "Livello",
+      "subzone": "Sottozona",
+      "zone": "Zona",
+      "step": "Passo",
+      "captured": "Catturato",
+      "repeated": "Ripetuto"
+    }
+  }
+}

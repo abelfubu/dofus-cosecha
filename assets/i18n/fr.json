@@ -1,0 +1,24 @@
+{
+  "home": {
+    "monsters": "Monstres",
+    "bosses": "Face",
+    "archis": "Archis",
+    "total": "Total",
+    "search": "Rechercher...",
+    "reset": "Réinitialiser les filtres",
+    "share": "Partager",
+    "back": "Retour",
+    "complete": "complet",
+    "captured": "Spectacle capturé",
+    "repeated": "Afficher seulement Répété",
+    "table": {
+      "name": "Nom",
+      "level": "Niveau",
+      "subzone": "Sous-zone",
+      "zone": "Zone",
+      "step": "Étape",
+      "captured": "Capturé",
+      "repeated": "Répété"
+    }
+  }
+}
