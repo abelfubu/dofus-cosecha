@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1684338332098,
+  "timestamp": 1684338826053,
   "index": "/dofus-cosecha/index.html",
   "assetGroups": [
     {
@@ -15,7 +15,7 @@
         "/dofus-cosecha/997.80061074857b2195.js",
         "/dofus-cosecha/favicon.ico",
         "/dofus-cosecha/index.html",
-        "/dofus-cosecha/main.5b9ee9edd056bdd0.js",
+        "/dofus-cosecha/main.a52df5fb19423c95.js",
         "/dofus-cosecha/manifest.webmanifest",
         "/dofus-cosecha/polyfills.2f956929f2bd7720.js",
         "/dofus-cosecha/runtime.946ed10110d03e5a.js",
@@ -793,9 +793,9 @@
     "/dofus-cosecha/assets/img/zampavoro.webp": "f67ad1e744861bd18d2357c193ace322823c7f1a",
     "/dofus-cosecha/assets/img/zumbobo.webp": "cf6b8d7c4aef522a7dbf392642989fca063a4b26",
     "/dofus-cosecha/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
-    "/dofus-cosecha/index.html": "14377a02ebab3fe0d5b13a10c0e8675746ff35ea",
+    "/dofus-cosecha/index.html": "4a5f7cc9efc7723330ba6e345de6e8c506258a4b",
     "/dofus-cosecha/login.881b1cbe5f42c04b.jpg": "9428af20a1c25ac71812e6a7578952bd6c6cc23e",
-    "/dofus-cosecha/main.5b9ee9edd056bdd0.js": "3f018f2aeceaebff5b850add4b3e1de664b97e01",
+    "/dofus-cosecha/main.a52df5fb19423c95.js": "4a13a6a9deb43448133c9dd2422664651608ae82",
     "/dofus-cosecha/manifest.webmanifest": "28001ef8d05c5d8e0e56efdd624bb9ee305b9d46",
     "/dofus-cosecha/polyfills.2f956929f2bd7720.js": "a4065dbdb73b0a1f881a12fdebf13b1fe1d4c590",
     "/dofus-cosecha/runtime.946ed10110d03e5a.js": "f5faaeb996ed178ad661fc5e3bd42e65c4762851",
