@@ -1,21 +1,55 @@
 <header *ngIf="user$ | async as user">
-  <a [routerLink]="['/']"><img src="./assets/img/logo.png" alt="Logo"></a>
+  <a [routerLink]="['/']"><img class="logo" src="./assets/img/logo.png" alt="Logo" /></a>
   <h3>Cosecha</h3>
 
   <nav>
     <ng-container *ngIf="user.email">
-      <img [title]="user.email" *ngIf="user.picture; else emailAvatar" [src]="user.picture" alt="User Picture">
+      <img
+        class="avatar"
+        [title]="user.email"
+        *ngIf="user.picture; else emailAvatar"
+        [src]="user.picture"
+        alt="User Picture"
+      />
       <ng-template #emailAvatar>
         <div class="email-avatar">{{ user.email.at(0) }}</div>
       </ng-template>
     </ng-container>
 
-    <app-button *ngIf="!user.isLoggedIn; else logoutbutton" [routerLink]="['/login']"
-      [queryParams]="{ from: 'harvest' }">
+    <app-button
+      *ngIf="!user.isLoggedIn; else logoutbutton"
+      [routerLink]="['/login']"
+      [queryParams]="{ from: 'harvest' }"
+    >
       Log In
     </app-button>
     <ng-template #logoutbutton>
       <app-button (click)="logout.emit()">Log Out</app-button>
     </ng-template>
+
+    <app-button [matMenuTriggerFor]="menu">
+      <div class="language-flag">
+        <img
+          src="./assets/flags/{{ selectedLanguage() }}.png"
+          alt="Language Flag"
+          width="24"
+          height="24"
+        />
+        {{ selectedLanguage() | uppercase }}
+      </div>
+    </app-button>
+    <mat-menu #menu="matMenu">
+      <button *ngFor="let language of languages" mat-menu-item>
+        <div class="language-flag" (click)="onLangChange(language)">
+          <img
+            src="./assets/flags/{{ language }}.png"
+            alt="Language Flag"
+            width="24"
+            height="24"
+          />
+          {{ language | uppercase }}
+        </div>
+      </button>
+    </mat-menu>
   </nav>
 </header>

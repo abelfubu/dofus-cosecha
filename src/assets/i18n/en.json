@@ -1,0 +1,24 @@
+{
+  "home": {
+    "monsters": "Monsters",
+    "bosses": "Bosses",
+    "archis": "Archis",
+    "total": "Total",
+    "search": "Search...",
+    "reset": "Reset Filters",
+    "share": "Share",
+    "back": "Back",
+    "complete": "Complete",
+    "captured": "Show Captured",
+    "repeated": "Show only repetated",
+    "table": {
+      "name": "Name",
+      "level": "Level",
+      "subzone": "Subzone",
+      "zone": "Zone",
+      "step": "Step",
+      "captured": "Captured",
+      "repeated": "Repeated"
+    }
+  }
+}

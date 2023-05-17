@@ -6,32 +6,28 @@ export const HEADERS = [
     type: 'space',
   },
   {
-    label: 'Nombre',
+    label: 'home.table.name',
     type: 'text',
   },
   {
-    label: 'Nivel',
+    label: 'home.table.level',
     type: 'text',
   },
   {
-    label: 'Subzona',
+    label: 'home.table.subzone',
     type: 'text',
   },
   {
-    label: 'Zona',
-    type: 'text',
-  },
-  {
-    label: 'Etapa',
+    label: 'home.table.step',
     type: 'filter',
     component: HarvestStepModalComponent,
   },
   {
-    label: 'Capturado',
+    label: 'home.table.captured',
     type: 'text',
   },
   {
-    label: 'Repetido',
+    label: 'home.table.repeated',
     type: 'text',
   },
 ];

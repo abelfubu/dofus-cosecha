@@ -2,8 +2,9 @@ import { CommonModule } from '@angular/common';
 import { Component, inject, InjectionToken, Output } from '@angular/core';
 import { FormBuilder, FormControl, ReactiveFormsModule } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { RouterLinkWithHref } from '@angular/router';
+import { ActivatedRoute, Router, RouterLinkWithHref } from '@angular/router';
 import { HotToastService } from '@ngneat/hot-toast';
+import { TranslocoModule, TranslocoService } from '@ngneat/transloco';
 import { HarvestStepModalComponent } from '@pages/harvest/components/harvest-filters/harvest-step-modal/harvest-step-modal.component';
 import { ChartSlice } from '@shared/chart/chart.model';
 import { combineLatest, debounceTime, filter, from, map, Observable } from 'rxjs';
@@ -37,6 +38,7 @@ interface HarvestFiltersVM {
     ButtonComponent,
     RouterLinkWithHref,
     HarvestStepModalComponent,
+    TranslocoModule,
   ],
   providers: [
     {
@@ -60,10 +62,13 @@ export class HarvestFiltersComponent {
   @Output() changed = this.search.valueChanges.pipe(debounceTime(400), map(String));
 
   private readonly toast = inject(HotToastService);
+  private readonly router = inject(Router);
   private readonly formBuilder = inject(FormBuilder);
   private readonly harvestStore = inject(HarvestStore);
   protected readonly vm$ = inject(HARVEST_FILTERS_VM);
   private readonly matDialog = inject(MatDialog);
+  private readonly translate = inject(TranslocoService);
+  protected readonly isShared = inject(ActivatedRoute).snapshot.params['id'];
 
   form = this.formBuilder.nonNullable.group({
     showCaptured: [true],
@@ -82,8 +87,16 @@ export class HarvestFiltersComponent {
     this.search.setValue('');
   }
 
+  onBack(): void {
+    this.router.navigate(['/', this.translate.getActiveLang()]);
+  }
+
   onShareHarvest(id: string) {
-    from(navigator.clipboard.writeText(`${environment.baseUrl}/share/${id}`))
+    from(
+      navigator.clipboard.writeText(
+        `${environment.baseUrl}/${this.translate.getActiveLang()}/share/${id}`,
+      ),
+    )
       .pipe(
         this.toast.observe({
           loading: 'Copiando url en el portapapeles',

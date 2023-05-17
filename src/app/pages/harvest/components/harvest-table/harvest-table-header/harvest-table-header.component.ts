@@ -2,6 +2,7 @@ import { ComponentType } from '@angular/cdk/portal';
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { TranslocoModule } from '@ngneat/transloco';
 import { filter } from 'rxjs';
 import { ButtonComponent } from 'src/app/shared/ui/button/button.component';
 import { HarvestStore } from '../../../harvest.store';
@@ -13,7 +14,7 @@ import { HEADERS } from './header-data';
   templateUrl: './harvest-table-header.component.html',
   styleUrls: ['./harvest-table-header.component.scss'],
   standalone: true,
-  imports: [CommonModule, ButtonComponent, HarvestStepModalComponent],
+  imports: [CommonModule, ButtonComponent, HarvestStepModalComponent, TranslocoModule],
 })
 export class HarvestTableHeaderComponent {
   readonly headers = HEADERS;

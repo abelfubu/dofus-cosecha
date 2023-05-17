@@ -3,49 +3,51 @@
     <app-chart *ngFor="let item of vm.statistics" [data]="item"></app-chart>
   </div>
 
-  <form [formGroup]="form">
+  <form [formGroup]="form" *transloco="let t">
     <div class="search-box">
       <app-input
         type="text"
         [control]="search"
-        placeholder="Buscar..."
+        [placeholder]="t('home.search')"
         style="flex-basis: 500px"
       >
       </app-input>
-      <app-button (click)="onClearFilters()">Borrar Filtros</app-button>
-      <app-button *ngIf="vm.harvestId; else back" (click)="onShareHarvest(vm.harvestId)"
-        >Compartir</app-button
-      >
+      <app-button (click)="onClearFilters()">{{ t('home.reset') }}</app-button>
+      <app-button *ngIf="!isShared; else back" (click)="onShareHarvest(vm.harvestId)">{{
+        t('home.share')
+      }}</app-button>
       <ng-template #back>
-        <app-button [routerLink]="['/']">Volver</app-button>
+        <app-button (click)="onBack()">{{ t('home.back') }}</app-button>
       </ng-template>
-      <app-button (click)="onStepCompleted(vm.steps)">Entregar</app-button>
+      <app-button *ngIf="!isShared" (click)="onStepCompleted(vm.steps)">{{
+        t('home.complete')
+      }}</app-button>
     </div>
 
     <div class="controls-box">
       <div class="control">
         <input type="checkbox" formControlName="showCaptured" id="completed" />
-        <label for="completed">Mostrar capturados</label>
+        <label for="completed">{{ t('home.captured') }}</label>
       </div>
 
       <div class="control">
         <input type="checkbox" formControlName="showRepeatedOnly" id="repeated" />
-        <label for="repeated">Mostrar solo repetidos</label>
+        <label for="repeated">{{ t('home.repeated') }}</label>
       </div>
 
       <div class="control">
         <input type="checkbox" formControlName="monsters" id="monsters" />
-        <label for="monsters">Monstruos</label>
+        <label for="monsters">{{ t('home.monsters') }}</label>
       </div>
 
       <div class="control">
         <input type="checkbox" formControlName="bosses" id="bosses" />
-        <label for="bosses">Jefes</label>
+        <label for="bosses">{{ t('home.bosses') }}</label>
       </div>
 
       <div class="control">
         <input type="checkbox" formControlName="archis" id="archis" />
-        <label for="archis">Archis</label>
+        <label for="archis">{{ t('home.archis') }}</label>
       </div>
     </div>
   </form>

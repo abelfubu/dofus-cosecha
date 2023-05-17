@@ -1,0 +1,24 @@
+{
+  "home": {
+    "monsters": "Monstros",
+    "bosses": "Chefes",
+    "archis": "Arquis",
+    "total": "Total",
+    "search": "Pesquisar...",
+    "reset": "Limpar Filtros",
+    "share": "Compartilhar",
+    "back": "Voltar",
+    "complete": "Completar",
+    "captured": "Mostrar Capturados",
+    "repeated": "Mostrar Somente Repetidos",
+    "table": {
+      "name": "Nome",
+      "level": "Nível",
+      "subzone": "Subzona",
+      "zone": "Zona",
+      "step": "Passo",
+      "captured": "Capturado",
+      "repeated": "Repetido"
+    }
+  }
+}

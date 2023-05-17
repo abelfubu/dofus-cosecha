@@ -1,4 +1,6 @@
 import { inject, Injectable } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { TranslocoService } from '@ngneat/transloco';
 import { ComponentStore, tapResponse } from '@ngrx/component-store';
 import { catchError, concatMap, filter, map, switchMap, tap } from 'rxjs/operators';
 
@@ -50,6 +52,7 @@ export class HarvestStore extends ComponentStore<HarvestData> {
   private readonly globalStore = inject(GlobalStore);
   private readonly harvestDataService = inject(HarvestDataService);
   private readonly chartData = inject(CHART_TYPE_DATA);
+  private readonly translate = inject(TranslocoService);
   private dhMygoliaDataset: DhMygoliaDataset<Harvest>;
 
   constructor(private readonly harvestFilter: HarvestFilter) {
@@ -57,6 +60,10 @@ export class HarvestStore extends ComponentStore<HarvestData> {
     this.dhMygoliaDataset = new DhMygoliaDataset({
       maxResults: 12,
       validators: this.harvestFilter.harvestFilter.validators,
+    });
+
+    this.translate.langChanges$.pipe(takeUntilDestroyed()).subscribe((lang) => {
+      this.updateTranslation(lang as 'es' | 'en' | 'fr');
     });
   }
 
@@ -128,8 +135,16 @@ export class HarvestStore extends ComponentStore<HarvestData> {
 
   readonly setData = this.updater(
     (state, { harvest, harvestId }: HarvestDataResponse) => {
+      const lang = this.translate.getActiveLang() as 'en' | 'es' | 'fr';
+
+      const translatedHarvest = harvest.map((item) => ({
+        ...item,
+        name: item[lang].name,
+        subzone: item[lang].subzone,
+      }));
+
       const { dataSet, page, next, previous } = this.dhMygoliaDataset.getDataSet(
-        harvest,
+        translatedHarvest,
         state.filters,
       );
 
@@ -140,11 +155,25 @@ export class HarvestStore extends ComponentStore<HarvestData> {
         next,
         previous,
         harvestId,
-        originalData: harvest,
-        statistics: this.calculateStatistics(harvest),
+        originalData: translatedHarvest,
+        statistics: this.calculateStatistics(translatedHarvest),
       };
     },
   );
+
+  readonly updateTranslation = this.updater((state, lang: 'en' | 'es' | 'fr') => {
+    const callback = (item: Harvest) => ({
+      ...item,
+      name: item[lang].name,
+      subzone: item[lang].subzone,
+    });
+
+    return {
+      ...state,
+      harvest: state.harvest.map(callback),
+      originalData: state.originalData.map(callback),
+    };
+  });
 
   readonly search = this.updater((state, search: string) => {
     const filters = { ...state.filters, search };

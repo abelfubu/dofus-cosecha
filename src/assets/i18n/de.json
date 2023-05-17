@@ -1,0 +1,24 @@
+{
+  "home": {
+    "monsters": "Scheusale",
+    "bosses": "Köpfe",
+    "archis": "Archis",
+    "total": "Gesamt",
+    "search": "Finden...",
+    "reset": "Filter löschen",
+    "share": "Freigeben",
+    "back": "Rückgabe",
+    "complete": "Vollständig",
+    "captured": "Aufnahmen Anzeigen",
+    "repeated": "Nur Wiederholungen anzeigen",
+    "table": {
+      "name": "Zahl",
+      "level": "Niveau",
+      "subzone": "Unterzone",
+      "zone": "Zone",
+      "step": "Bühne",
+      "captured": "Eingefangen",
+      "repeated": "Wiederholt"
+    }
+  }
+}

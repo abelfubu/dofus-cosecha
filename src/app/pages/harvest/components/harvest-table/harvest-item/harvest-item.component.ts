@@ -1,5 +1,5 @@
 import { CommonModule, NgOptimizedImage } from '@angular/common';
-import { ChangeDetectionStrategy, Component, inject, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, inject } from '@angular/core';
 import { EDITABLE } from '../../../harvest.component';
 import { HarvestStore } from '../../../harvest.store';
 import { Harvest } from '../../../models/harvest';
