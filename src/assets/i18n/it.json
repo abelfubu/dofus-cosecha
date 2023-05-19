@@ -20,5 +20,11 @@
       "captured": "Catturato",
       "repeated": "Ripetuto"
     }
+  },
+  "profile": {
+    "gameNick": "Nome di Dofus",
+    "server": "Server",
+    "back": "Indietro",
+    "submit": "Invia"
   }
 }

@@ -3,18 +3,19 @@
 header {
   display: flex;
   padding: 1rem 0;
-  max-width: 95%;
+  // max-width: 95%;
   margin: auto;
   justify-content: space-between;
   align-items: center;
 
   .logo {
-    width: 3rem;
+    width: 2rem;
   }
 
   h3 {
     flex: 1 0 0;
-    margin-left: 0.5rem;
+    margin-left: 0.3rem;
+    text-transform: uppercase;
   }
 
   nav {
@@ -26,6 +27,7 @@ header {
       border-radius: 50%;
       width: 2rem;
       height: 2rem;
+      cursor: pointer;
     }
 
     .email-avatar {
@@ -36,6 +38,13 @@ header {
       height: 2.5rem;
       border-radius: 50%;
       place-content: center;
+    }
+  }
+
+  .bmc-link {
+    img {
+      height: 2.6rem;
+      transform: translateY(2px);
     }
   }
 }

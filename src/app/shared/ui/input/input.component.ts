@@ -13,4 +13,5 @@ export class InputComponent {
   @Input() control!: FormControl;
   @Input() type = 'text';
   @Input() placeholder = '';
+  @Input() readonly = false;
 }

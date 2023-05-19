@@ -7,7 +7,7 @@ import {
   inject,
   signal,
 } from '@angular/core';
-import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 
 import { Observable } from 'rxjs';
 
@@ -32,7 +32,7 @@ const GLOBAL_USER = new InjectionToken<Observable<GlobalUser>>('GLOBAL_USER');
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
   standalone: true,
-  imports: [NgForOf, CommonModule, RouterModule, MatMenuModule, ButtonComponent],
+  imports: [NgForOf, CommonModule, RouterLink, MatMenuModule, ButtonComponent],
   providers: [
     {
       provide: GLOBAL_USER,
@@ -46,10 +46,11 @@ export class HeaderComponent {
 
   protected readonly user$ = inject(GLOBAL_USER);
   protected readonly translate = inject(TranslocoService);
+  protected readonly languages = this.translate.getAvailableLangs() as string[];
   private readonly router = inject(Router);
   private readonly route = inject(ActivatedRoute);
   private readonly localStorage = inject(LocalStorageService);
-  protected readonly languages = this.translate.getAvailableLangs() as string[];
+  private readonly store = inject(GlobalStore);
 
   selectedLanguage = signal<string>(this.translate.getActiveLang());
 
@@ -57,5 +58,14 @@ export class HeaderComponent {
     this.localStorage.set(environment.favLangKey, lang);
     this.selectedLanguage.set(lang);
     this.router.navigate([lang, ...this.route.snapshot.url.map((u) => u.path)]);
+  }
+
+  onProfileClick(): void {
+    this.router.navigate([this.translate.getActiveLang(), 'profile']);
+  }
+
+  onLogout(): void {
+    this.logout.emit();
+    this.store.logout();
   }
 }

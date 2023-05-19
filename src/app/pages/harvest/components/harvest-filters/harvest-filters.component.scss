@@ -1,4 +1,4 @@
-@use "colors" as colors;
+@use 'colors' as colors;
 
 :host {
   display: block;
@@ -8,7 +8,7 @@
     grid-template-columns: repeat(4, 1fr);
     grid-gap: 3rem;
     max-width: 900px;
-    margin: 0 auto;
+    margin: 2rem auto 0;
   }
 
   .search-box {

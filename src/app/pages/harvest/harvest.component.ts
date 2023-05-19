@@ -44,8 +44,8 @@ export const EDITABLE = new InjectionToken<Observable<boolean>>('EDITABLE');
     },
   ],
   template: `
-    <app-header (logout)="onLogout()"></app-header>
-    <app-harvest-filters (changed)="onSearchChange($event)"></app-harvest-filters>
+    <app-header (logout)="onLogout()" />
+    <app-harvest-filters (changed)="onSearchChange($event)" />
     <app-harvest-table
       [data]="data$ | async"
       (scrolled)="handleInfiniteScroll()"
@@ -55,18 +55,17 @@ export const EDITABLE = new InjectionToken<Observable<boolean>>('EDITABLE');
     `
       :host {
         display: block;
-        max-width: 95vw;
         margin: auto;
       }
     `,
   ],
 })
 export class HarvestComponent implements OnInit {
+  protected readonly data$ = inject(HARVEST_DATA);
+  protected readonly editable = inject(EDITABLE);
   private readonly route = inject(ActivatedRoute);
   private readonly globalStore = inject(GlobalStore);
   private readonly harvestStore = inject(HarvestStore);
-  protected readonly data$ = inject(HARVEST_DATA);
-  protected readonly editable = inject(EDITABLE);
 
   ngOnInit(): void {
     this.harvestStore.getData(this.route.snapshot.params['id']);
@@ -82,7 +81,6 @@ export class HarvestComponent implements OnInit {
   }
 
   handleInfiniteScroll(): void {
-    console.log();
     this.harvestStore.handleInfiniteScroll();
   }
 }

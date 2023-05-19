@@ -1,10 +1,13 @@
 <header *ngIf="user$ | async as user">
-  <a [routerLink]="['/']"><img class="logo" src="./assets/img/logo.png" alt="Logo" /></a>
-  <h3>Cosecha</h3>
+  <div [routerLink]="['/']" style="display: flex; align-items: center; cursor: pointer">
+    <img class="logo" src="./assets/img/logo.png" alt="Logo" />
+    <h3>Cosecha</h3>
+  </div>
 
   <nav>
     <ng-container *ngIf="user.email">
       <img
+        [mat-menu-trigger-for]="profile"
         class="avatar"
         [title]="user.email"
         *ngIf="user.picture; else emailAvatar"
@@ -12,20 +15,33 @@
         alt="User Picture"
       />
       <ng-template #emailAvatar>
-        <div class="email-avatar">{{ user.email.at(0) }}</div>
+        <div class="email-avatar" [mat-menu-trigger-for]="profile">
+          {{ user.email.at(0) }}
+        </div>
       </ng-template>
     </ng-container>
+    <mat-menu #profile="matMenu">
+      <button mat-menu-item (click)="onLogout()">
+        <div class="language-flag">
+          <span class="material-symbols-outlined">logout</span>
+          Log Out
+        </div>
+      </button>
+      <button mat-menu-item (click)="onProfileClick()">
+        <div class="language-flag">
+          <span class="material-symbols-outlined">settings</span>
+          Profile
+        </div>
+      </button>
+    </mat-menu>
 
     <app-button
-      *ngIf="!user.isLoggedIn; else logoutbutton"
+      *ngIf="!user.isLoggedIn"
       [routerLink]="['/login']"
       [queryParams]="{ from: 'harvest' }"
     >
       Log In
     </app-button>
-    <ng-template #logoutbutton>
-      <app-button (click)="logout.emit()">Log Out</app-button>
-    </ng-template>
 
     <app-button [matMenuTriggerFor]="menu">
       <div class="language-flag">
@@ -39,8 +55,12 @@
       </div>
     </app-button>
     <mat-menu #menu="matMenu">
-      <button *ngFor="let language of languages" mat-menu-item>
-        <div class="language-flag" (click)="onLangChange(language)">
+      <button
+        *ngFor="let language of languages"
+        mat-menu-item
+        (click)="onLangChange(language)"
+      >
+        <div class="language-flag">
           <img
             src="./assets/flags/{{ language }}.png"
             alt="Language Flag"
@@ -51,5 +71,8 @@
         </div>
       </button>
     </mat-menu>
+    <a href="https://www.buymeacoffee.com/abelfubu" target="_blank" class="bmc-link">
+      <img src="./assets/img/bmc-button.png" alt="Buy me a coffee button" />
+    </a>
   </nav>
 </header>

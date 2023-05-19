@@ -49,6 +49,8 @@ body {
   accent-color: map-get($map: c.$primary, $key: 500);
   background-color: map-get($map: c.$dark, $key: 400);
   color: #ffffffaa;
+  max-width: 95vw;
+  margin: auto;
 
   ::-moz-selection {
     /* Code for Firefox */
