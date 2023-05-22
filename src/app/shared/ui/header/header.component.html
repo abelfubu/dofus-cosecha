@@ -1,22 +1,28 @@
-<header *ngIf="user$ | async as user">
-  <div [routerLink]="['/']" style="display: flex; align-items: center; cursor: pointer">
-    <img class="logo" src="./assets/img/logo.png" alt="Logo" />
-    <h3>Cosecha</h3>
-  </div>
-
+<header *ngIf="vm$ | async as vm">
   <nav>
-    <ng-container *ngIf="user.email">
+    <div [routerLink]="['/']" class="logo-container">
+      <img class="logo" src="./assets/img/logo.png" alt="Logo" />
+      <h3>Cosecha</h3>
+    </div>
+
+    <a [routerLink]="['/', vm.lang]">Home</a>
+    <a [routerLink]="['/', vm.lang, 'exchange']" *transloco="let t">{{
+      t('header.exchange')
+    }}</a>
+  </nav>
+  <nav>
+    <ng-container *ngIf="vm.email">
       <img
         [mat-menu-trigger-for]="profile"
         class="avatar"
-        [title]="user.email"
-        *ngIf="user.picture; else emailAvatar"
-        [src]="user.picture"
+        [title]="vm.email"
+        *ngIf="vm.picture; else emailAvatar"
+        [src]="vm.picture"
         alt="User Picture"
       />
       <ng-template #emailAvatar>
         <div class="email-avatar" [mat-menu-trigger-for]="profile">
-          {{ user.email.at(0) }}
+          {{ vm.email.at(0) }}
         </div>
       </ng-template>
     </ng-container>
@@ -27,8 +33,8 @@
           Log Out
         </div>
       </button>
-      <button mat-menu-item (click)="onProfileClick()">
-        <div class="language-flag">
+      <button mat-menu-item>
+        <div class="language-flag" [routerLink]="['/', vm.lang, 'profile']">
           <span class="material-symbols-outlined">settings</span>
           Profile
         </div>
@@ -36,7 +42,7 @@
     </mat-menu>
 
     <app-button
-      *ngIf="!user.isLoggedIn"
+      *ngIf="!vm.isLoggedIn"
       [routerLink]="['/login']"
       [queryParams]="{ from: 'harvest' }"
     >
@@ -56,7 +62,7 @@
     </app-button>
     <mat-menu #menu="matMenu">
       <button
-        *ngFor="let language of languages"
+        *ngFor="let language of vm.languages"
         mat-menu-item
         (click)="onLangChange(language)"
       >
@@ -76,3 +82,9 @@
     </a>
   </nav>
 </header>
+<mat-progress-bar
+  style="position: fixed; top: 0; left: 0"
+  *ngIf="store.loading$ | async"
+  mode="indeterminate"
+  [color]="'accent'"
+></mat-progress-bar>

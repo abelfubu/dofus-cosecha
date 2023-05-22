@@ -16,12 +16,14 @@ export interface GlobalState {
   currentHarvestId: string;
   isLoggedIn: boolean;
   user: User | null;
+  loading: boolean;
 }
 
 const DEFAULT_STATE: GlobalState = {
   currentHarvestId: '',
   isLoggedIn: false,
   user: null,
+  loading: false,
 };
 
 @Injectable({
@@ -40,6 +42,7 @@ export class GlobalStore extends ComponentStore<GlobalState> {
   }
 
   readonly isLoggedIn$ = this.select(({ isLoggedIn }) => isLoggedIn);
+  readonly loading$ = this.select(({ loading }) => loading);
   readonly user$ = this.select(({ isLoggedIn, user }) => ({
     ...user,
     isLoggedIn,
@@ -77,4 +80,9 @@ export class GlobalStore extends ComponentStore<GlobalState> {
 
     return { ...state, isLoggedIn: !!accessToken, user };
   });
+
+  readonly setLoading = this.updater((state, loading: boolean) => ({
+    ...state,
+    loading,
+  }));
 }

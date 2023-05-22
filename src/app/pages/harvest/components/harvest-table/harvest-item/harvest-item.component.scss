@@ -9,8 +9,8 @@
   }
 
   .green {
+    color: #fff;
     background-color: colors.$green;
-    color: map-get(colors.$dark, 400);
   }
 
   .red {

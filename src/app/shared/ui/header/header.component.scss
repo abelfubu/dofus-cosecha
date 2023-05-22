@@ -1,9 +1,8 @@
-@use 'colors' as colors;
+@use 'colors' as c;
 
 header {
   display: flex;
   padding: 1rem 0;
-  // max-width: 95%;
   margin: auto;
   justify-content: space-between;
   align-items: center;
@@ -23,6 +22,23 @@ header {
     align-items: center;
     gap: 1rem;
 
+    .logo-container {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      margin-right: 0.5rem;
+    }
+
+    a {
+      text-decoration: none;
+      color: c.$light;
+      transition: color 200ms;
+
+      &:hover {
+        color: map-get($map: c.$primary, $key: 700);
+      }
+    }
+
     .avatar {
       border-radius: 50%;
       width: 2rem;
@@ -33,11 +49,13 @@ header {
     .email-avatar {
       display: grid;
       text-transform: uppercase;
-      background-color: map-get($map: colors.$primary, $key: 500);
+      background-color: map-get($map: c.$primary, $key: 500);
       width: 2.5rem;
       height: 2.5rem;
       border-radius: 50%;
       place-content: center;
+      color: map-get($map: c.$dark, $key: 400);
+      cursor: pointer;
     }
   }
 

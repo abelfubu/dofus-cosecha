@@ -15,6 +15,7 @@ import { HotToastModule } from '@ngneat/hot-toast';
 import { GoogleAuthDirective } from '@shared/google-auth.directive';
 import { authInterceptor } from '@shared/interceptors/auth.interceptor';
 import { FooterComponent } from '@shared/ui/footer/footer.component';
+import { loadingInterceptor } from './app/shared/interceptors/loading.interceptor';
 
 @Component({
   standalone: true,
@@ -32,7 +33,7 @@ bootstrapApplication(AppComponent, {
   providers: [
     provideRouter(appRoutes),
     provideAnimations(),
-    provideHttpClient(withInterceptors([authInterceptor])),
+    provideHttpClient(withInterceptors([authInterceptor, loadingInterceptor])),
     provideLanguages({ supportedLanguages: ['en', 'es'] }),
     importProvidersFrom([
       TranslocoRootModule,

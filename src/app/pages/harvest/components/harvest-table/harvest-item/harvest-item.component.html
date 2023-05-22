@@ -22,7 +22,9 @@
   class="cell center pointer not-selectable"
   (click)="onCapturedChange(item)"
 >
-  <p>{{ item.captured ? 'Si' : 'No' }}</p>
+  <span class="material-symbols-outlined">
+    {{ item.captured ? 'check' : 'close' }}
+  </span>
 </div>
 
 <div
