@@ -1,4 +1,7 @@
 {
+  "header": {
+    "exchange": "Exchange"
+  },
   "home": {
     "monsters": "Monsters",
     "bosses": "Bosses",
@@ -26,5 +29,12 @@
     "server": "Server",
     "back": "Back",
     "submit": "Submit"
+  },
+  "exchange": {
+    "monsters": "Monstruos",
+    "bosses": "Jefes",
+    "archis": "Archis",
+    "name": "Nombre",
+    "title": "Players in {{ server }}"
   }
 }

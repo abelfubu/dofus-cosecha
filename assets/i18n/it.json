@@ -1,4 +1,7 @@
 {
+  "header": {
+    "exchange": "Scambio"
+  },
   "home": {
     "monsters": "Mostri",
     "bosses": "Boss",
@@ -26,5 +29,12 @@
     "server": "Server",
     "back": "Indietro",
     "submit": "Invia"
+  },
+  "exchange": {
+    "monsters": "Monstruos",
+    "bosses": "Jefes",
+    "archis": "Archis",
+    "name": "Nombre",
+    "title": "Giocatori in {{ server }}"
   }
 }
