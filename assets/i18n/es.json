@@ -1,6 +1,7 @@
 {
   "header": {
-    "exchange": "Intercambiar"
+    "exchange": "Intercambiar",
+    "harvest": "Mi cosecha"
   },
   "home": {
     "monsters": "Monstruos",
@@ -35,6 +36,12 @@
     "bosses": "Jefes",
     "archis": "Archis",
     "name": "Nombre",
-    "title": "Jugadores en {{ server }}"
+    "title": "Jugadores en {{ server }}",
+    "error": {
+      "title": "Actualiza tu perfil primero",
+      "message": "Para poder intercambiar con otros usuarios, primero debes actualizar tu perfil con la información del juego y servidor.",
+      "button": "Editar perfil",
+      "back": "Volver"
+    }
   }
 }

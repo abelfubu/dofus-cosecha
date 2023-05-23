@@ -1,6 +1,7 @@
 {
   "header": {
-    "exchange": "Scambio"
+    "exchange": "Scambio",
+    "harvest": "Il mio raccolto"
   },
   "home": {
     "monsters": "Mostri",
@@ -31,10 +32,16 @@
     "submit": "Invia"
   },
   "exchange": {
-    "monsters": "Monstruos",
-    "bosses": "Jefes",
+    "monsters": "Mostri",
+    "bosses": "Boss",
     "archis": "Archis",
-    "name": "Nombre",
-    "title": "Giocatori in {{ server }}"
+    "name": "Nome",
+    "title": "Giocatori in {{ server }}",
+    "error": {
+      "title": "Aggiorna il tuo profilo prima",
+      "message": "Per poter scambiare con altri utenti, devi prima aggiornare il tuo profilo con le informazioni del tuo gioco e del server.",
+      "button": "Modifica profilo",
+      "back": "Indietro"
+    }
   }
 }
