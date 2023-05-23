@@ -58,7 +58,7 @@ import { InputComponent } from '@shared/ui/input/input.component';
 
       input {
         color: c.$light;
-        padding: 0.5rem 0.7rem;
+        padding: 0.33rem 0.7rem;
         border-radius: 0.4rem;
         border: none;
         box-shadow: 0 0 0 1px $primary;

@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ComponentStore, tapResponse } from '@ngrx/component-store';
 import { switchMap } from 'rxjs/operators';
@@ -6,10 +7,12 @@ import { ExchangeDataService } from './services/exchange-data.service';
 
 export interface ExchangeState {
   users: ExchangeResponse[];
+  error: boolean;
 }
 
 const DEFAULT_STATE: ExchangeState = {
   users: [],
+  error: false,
 };
 
 @Injectable()
@@ -18,7 +21,7 @@ export class ExchangeStore extends ComponentStore<ExchangeState> {
     super(DEFAULT_STATE);
   }
 
-  readonly vm$ = this.select(({ users }) => users);
+  readonly vm$ = this.select((state) => state);
 
   readonly getUsers = this.effect((trigger$) =>
     trigger$.pipe(
@@ -26,7 +29,10 @@ export class ExchangeStore extends ComponentStore<ExchangeState> {
         this.service.get().pipe(
           tapResponse(
             (users) => this.addUsers(users),
-            (error) => console.log(error),
+            (error) => {
+              if (error instanceof HttpErrorResponse && error.status === 400)
+                this.setError(true);
+            },
           ),
         ),
       ),
@@ -36,6 +42,11 @@ export class ExchangeStore extends ComponentStore<ExchangeState> {
   readonly addUsers = this.updater((state, users: ExchangeResponse[]) => ({
     ...state,
     users,
+  }));
+
+  readonly setError = this.updater((state, error: boolean) => ({
+    ...state,
+    error,
   }));
 }
 

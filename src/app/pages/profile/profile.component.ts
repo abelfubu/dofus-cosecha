@@ -39,8 +39,8 @@ import { map } from 'rxjs';
       <label>{{ t('profile.server') }}</label>
       <app-select [control]="form.controls.server" [options]="vm()?.servers || []" />
       <div class="actions">
-        <app-button [routerLink]="['/']">{{ t('profile.back') }}</app-button>
         <app-button [disabled]="form.invalid">{{ t('profile.submit') }}</app-button>
+        <app-button [routerLink]="['/']">{{ t('profile.back') }}</app-button>
       </div>
     </form>
   `,
@@ -58,7 +58,7 @@ import { map } from 'rxjs';
 
       .actions {
         display: flex;
-        justify-content: flex-end;
+        justify-content: flex-start;
         gap: 1rem;
         padding: 1rem 0;
       }
@@ -79,7 +79,7 @@ export class ProfileComponent implements OnInit {
 
   protected form = this.formBuilder.group({
     email: ['', [Validators.required, Validators.email]],
-    discord: ['', Validators.required],
+    discord: [''],
     server: [new Server(), Validators.required],
     nickname: ['', Validators.required],
   });
@@ -103,7 +103,9 @@ export class ProfileComponent implements OnInit {
   }
 
   onSubmit(): void {
-    this.store.put({
+    if (this.form.invalid) return;
+
+    this.store.update({
       ...this.vm()?.profile,
       discord: String(this.form.value.discord),
       nickname: String(this.form.value.nickname),

@@ -14,7 +14,8 @@ header {
   h3 {
     flex: 1 0 0;
     margin-left: 0.3rem;
-    text-transform: uppercase;
+    font-family: 'Delicious Handrawn', cursive;
+    font-size: 2rem;
   }
 
   nav {
@@ -61,8 +62,8 @@ header {
 
   .bmc-link {
     img {
-      height: 2.6rem;
-      transform: translateY(2px);
+      height: 2.25rem;
+      transform: translateY(3px);
     }
   }
 }

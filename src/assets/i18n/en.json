@@ -1,6 +1,7 @@
 {
   "header": {
-    "exchange": "Exchange"
+    "exchange": "Exchange",
+    "harvest": "My harvest"
   },
   "home": {
     "monsters": "Monsters",
@@ -31,10 +32,16 @@
     "submit": "Submit"
   },
   "exchange": {
-    "monsters": "Monstruos",
-    "bosses": "Jefes",
+    "monsters": "Monsters",
+    "bosses": "Bosses",
     "archis": "Archis",
-    "name": "Nombre",
-    "title": "Players in {{ server }}"
+    "name": "Name",
+    "title": "Players in {{ server }}",
+    "error": {
+      "title": "Update your profile first",
+      "message": "In order to be able to exchange with other users you need first to update your profile with your game and server info.",
+      "button": "Edit Profile",
+      "back": "Back"
+    }
   }
 }

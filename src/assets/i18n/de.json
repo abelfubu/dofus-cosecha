@@ -1,6 +1,7 @@
 {
   "header": {
-    "exchange": "Austausch"
+    "exchange": "Austausch",
+    "my harvest": "Meine Ernte"
   },
   "home": {
     "monsters": "Scheusale",
@@ -31,10 +32,16 @@
     "submit": "Senden"
   },
   "exchange": {
-    "monsters": "Monstruos",
-    "bosses": "Jefes",
+    "monsters": "Scheusale",
+    "bosses": "Köpfe",
     "archis": "Archis",
-    "name": "Nombre",
-    "title": "Spieler in {{ server }}"
+    "name": "Name",
+    "title": "Spieler in {{ server }}",
+    "error": {
+      "title": "Aktualisieren Sie zuerst Ihr Profil",
+      "message": "Um mit anderen Benutzern kommunizieren zu können, müssen Sie zuerst Ihr Profil mit Ihren Spiel- und Serverinformationen aktualisieren.",
+      "button": "Profil bearbeiten",
+      "back": "Zurück"
+    }
   }
 }

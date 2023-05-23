@@ -1,6 +1,7 @@
 {
   "header": {
-    "exchange": "Échanger"
+    "exchange": "Échanger",
+    "harvest": "Ma récolte"
   },
   "home": {
     "monsters": "Monstres",
@@ -31,10 +32,16 @@
     "submit": "Envoyer"
   },
   "exchange": {
-    "monsters": "Monstruos",
-    "bosses": "Jefes",
+    "monsters": "Monstres",
+    "bosses": "Face",
     "archis": "Archis",
-    "name": "Nombre",
-    "title": "Joueurs en {{ serveur }}"
+    "name": "Nom",
+    "title": "Joueurs en {{ server }}",
+    "error": {
+      "title": "Mettez à jour votre profil d'abord",
+      "message": "Pour pouvoir échanger avec d'autres utilisateurs, vous devez d'abord mettre à jour votre profil avec vos informations de jeu et de serveur.",
+      "button": "Modifier le profil",
+      "back": "Retour"
+    }
   }
 }

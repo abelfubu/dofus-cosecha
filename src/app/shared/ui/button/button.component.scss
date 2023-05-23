@@ -4,14 +4,15 @@ $primary: map-get(
   $map: c.$dark,
   $key: 300,
 );
+
 $accent: map-get(
   $map: c.$primary,
   $key: 400,
 );
 
 button {
-  color: $primary;
-  padding: 0.6rem 0.7rem;
+  color: map-get($map: c.$dark, $key: 100);
+  padding: 0.4rem 0.7rem;
   border: none;
   font-size: 1.1rem;
   outline: none;

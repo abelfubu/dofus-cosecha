@@ -1,5 +1,7 @@
 import { Injectable, inject } from '@angular/core';
+import { Router } from '@angular/router';
 import { HotToastService } from '@ngneat/hot-toast';
+import { TranslocoService } from '@ngneat/transloco';
 import { ComponentStore, tapResponse } from '@ngrx/component-store';
 import { ProfileDataResponse } from '@pages/profile/models/profile-data-response.model';
 import { ProfileDataService } from '@pages/profile/services/profile-data.service';
@@ -28,6 +30,8 @@ const DEFAULT_STATE: ProfileState = {
 export class ProfileStore extends ComponentStore<ProfileState> {
   private readonly toast = inject(HotToastService);
   private readonly dataService = inject(ProfileDataService);
+  private readonly router = inject(Router);
+  private readonly translate = inject(TranslocoService);
 
   constructor() {
     super(DEFAULT_STATE);
@@ -48,12 +52,15 @@ export class ProfileStore extends ComponentStore<ProfileState> {
     ),
   );
 
-  readonly put = this.effect((profile$: Observable<Partial<User>>) =>
+  readonly update = this.effect((profile$: Observable<Partial<User>>) =>
     profile$.pipe(
       switchMap((profile) =>
         this.dataService.put(profile).pipe(
           tapResponse(
-            () => this.toast.success('Profile updated'),
+            () => {
+              this.router.navigate(['/', this.translate.getActiveLang()]);
+              this.toast.success('Profile updated');
+            },
             (error) => console.log(error),
           ),
         ),
