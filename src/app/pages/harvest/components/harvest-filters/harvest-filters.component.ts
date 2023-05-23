@@ -6,14 +6,21 @@ import { ActivatedRoute, Router, RouterLinkWithHref } from '@angular/router';
 import { HotToastService } from '@ngneat/hot-toast';
 import { TranslocoModule, TranslocoService } from '@ngneat/transloco';
 import { HarvestStepModalComponent } from '@pages/harvest/components/harvest-filters/harvest-step-modal/harvest-step-modal.component';
+import { ChartComponent } from '@shared/chart/chart.component';
 import { ChartSlice } from '@shared/chart/chart.model';
+import { ButtonComponent } from '@shared/ui/button/button.component';
+import { InputComponent } from '@shared/ui/input/input.component';
 import { combineLatest, debounceTime, filter, from, map, Observable } from 'rxjs';
-import { ChartComponent } from 'src/app/shared/chart/chart.component';
-import { ButtonComponent } from 'src/app/shared/ui/button/button.component';
-import { InputComponent } from 'src/app/shared/ui/input/input.component';
 import { environment } from '../../../../../environments/environment';
 import { HarvestStore } from '../../harvest.store';
+import { HarvestUser } from '../../models/harvest-data.response';
 import { DEFAULT_FILTERS } from './filters-data';
+
+export const enum HarvestSelection {
+  MONSTERS = 'monsters',
+  BOSSES = 'bosses',
+  ARCHIS = 'archis',
+}
 
 export const HARVEST_FILTERS_VM = new InjectionToken<Observable<HarvestFiltersVM>>(
   'HARVEST_FILTERS_VM',
@@ -23,6 +30,7 @@ interface HarvestFiltersVM {
   statistics: ChartSlice[][];
   harvestId: string;
   steps: boolean[];
+  user: HarvestUser;
 }
 
 @Component({
@@ -45,11 +53,17 @@ interface HarvestFiltersVM {
       provide: HARVEST_FILTERS_VM,
       useFactory: () => {
         const store = inject(HarvestStore);
-        return combineLatest([store.statistics$, store.harvestId$, store.steps$]).pipe(
-          map(([statistics, harvestId, steps]) => ({
+        return combineLatest([
+          store.statistics$,
+          store.harvestId$,
+          store.steps$,
+          store.harvestUser$,
+        ]).pipe(
+          map(([statistics, harvestId, steps, user]) => ({
             statistics,
             harvestId,
             steps,
+            user,
           })),
         );
       },
@@ -65,10 +79,11 @@ export class HarvestFiltersComponent {
   private readonly router = inject(Router);
   private readonly formBuilder = inject(FormBuilder);
   private readonly harvestStore = inject(HarvestStore);
-  protected readonly vm$ = inject(HARVEST_FILTERS_VM);
   private readonly matDialog = inject(MatDialog);
   private readonly translate = inject(TranslocoService);
-  protected readonly isShared = inject(ActivatedRoute).snapshot.params['id'];
+  private readonly route = inject(ActivatedRoute);
+  protected readonly vm$ = inject(HARVEST_FILTERS_VM);
+  protected readonly isShared = this.route.snapshot.params['id'];
 
   form = this.formBuilder.nonNullable.group({
     showCaptured: [true],
@@ -80,6 +95,18 @@ export class HarvestFiltersComponent {
 
   ngOnInit(): void {
     this.harvestStore.filter(this.form.valueChanges);
+
+    if (!this.route.snapshot.queryParamMap.has('selection')) return;
+
+    const selection = this.route.snapshot.queryParamMap.get('selection');
+
+    this.form.setValue({
+      showCaptured: true,
+      showRepeatedOnly: true,
+      monsters: selection === HarvestSelection.MONSTERS,
+      bosses: selection === HarvestSelection.BOSSES,
+      archis: selection === HarvestSelection.ARCHIS,
+    });
   }
 
   onClearFilters(): void {
@@ -114,5 +141,17 @@ export class HarvestFiltersComponent {
         .afterClosed()
         .pipe(filter(Boolean)),
     );
+  }
+
+  copyToClipboard(nickname: string): void {
+    from(navigator.clipboard.writeText(`/w ${nickname} `))
+      .pipe(
+        this.toast.observe({
+          loading: 'Copiando url en el portapapeles',
+          success: 'Comando copiado en el portapapeles',
+          error: 'Algo ha ido mal, intentalo más tarde',
+        }),
+      )
+      .subscribe();
   }
 }

@@ -14,7 +14,7 @@ import { ChartSlice } from '@shared/chart/chart.model';
 import { GlobalStore } from '@shared/store/global.store';
 import { EMPTY, Observable } from 'rxjs';
 import { Harvest } from './models/harvest';
-import { HarvestDataResponse } from './models/harvest-data.response';
+import { HarvestDataResponse, HarvestUser } from './models/harvest-data.response';
 import { HarvestFilter } from './services/harvest-filter';
 import { CHART_TYPE_DATA } from './tokens/chart-type-data.token';
 import { Filters } from './tokens/harvest-filter.token';
@@ -32,6 +32,7 @@ export interface HarvestData {
   page: number;
   next: number | null;
   previous: number | null;
+  harvestUser: HarvestUser | null;
 }
 
 const DEFAULT_STATE = {
@@ -43,6 +44,7 @@ const DEFAULT_STATE = {
   page: 0,
   next: null,
   previous: null,
+  harvestUser: null,
 };
 
 @Injectable()
@@ -71,6 +73,7 @@ export class HarvestStore extends ComponentStore<HarvestData> {
   readonly harvestId$ = this.select(({ harvestId }) => harvestId);
   readonly steps$ = this.select(({ filters }) => filters?.steps);
   readonly statistics$ = this.select(({ statistics }) => statistics);
+  readonly harvestUser$ = this.select(({ harvestUser }) => harvestUser);
 
   readonly getData = this.effect<string>((id$) =>
     id$.pipe(
@@ -134,7 +137,7 @@ export class HarvestStore extends ComponentStore<HarvestData> {
   );
 
   readonly setData = this.updater(
-    (state, { harvest, harvestId }: HarvestDataResponse) => {
+    (state, { harvest, harvestId, user }: HarvestDataResponse) => {
       const lang = this.translate.getActiveLang() as 'en' | 'es' | 'fr';
 
       const translatedHarvest = harvest.map((item) => ({
@@ -156,6 +159,7 @@ export class HarvestStore extends ComponentStore<HarvestData> {
         previous,
         harvestId,
         originalData: translatedHarvest,
+        harvestUser: user,
         statistics: this.calculateStatistics(translatedHarvest),
       };
     },

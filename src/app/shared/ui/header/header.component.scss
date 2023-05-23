@@ -30,13 +30,17 @@ header {
       margin-right: 0.5rem;
     }
 
+    .active {
+      color: map-get($map: c.$primary, $key: 400);
+    }
+
     a {
       text-decoration: none;
       color: c.$light;
       transition: color 200ms;
 
       &:hover {
-        color: map-get($map: c.$primary, $key: 700);
+        color: map-get($map: c.$primary, $key: 400);
       }
     }
 

@@ -6,8 +6,15 @@
         <h3>Dofaddicts</h3>
       </div>
 
-      <a [routerLink]="['/', vm.lang]">{{ t('header.harvest') }}</a>
-      <a [routerLink]="['/', vm.lang, 'exchange']">{{ t('header.exchange') }}</a>
+      <a
+        [routerLink]="['/', vm.lang]"
+        [routerLinkActive]="'active'"
+        [routerLinkActiveOptions]="{ exact: true }"
+        >{{ t('header.harvest') }}</a
+      >
+      <a [routerLink]="['/', vm.lang, 'exchange']" [routerLinkActive]="'active'">{{
+        t('header.exchange')
+      }}</a>
     </nav>
     <nav>
       <ng-container *ngIf="vm.email">

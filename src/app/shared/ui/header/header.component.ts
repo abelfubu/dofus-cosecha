@@ -8,7 +8,7 @@ import {
   signal,
 } from '@angular/core';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
-import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink, RouterLinkActive } from '@angular/router';
 
 import { Observable, map, switchMap } from 'rxjs';
 
@@ -42,6 +42,7 @@ const HEADER_VM = new InjectionToken<Observable<HeaderViewModel>>('HEADER_VM');
     MatMenuModule,
     ButtonComponent,
     TranslocoModule,
+    RouterLinkActive,
     MatProgressBarModule,
   ],
   providers: [

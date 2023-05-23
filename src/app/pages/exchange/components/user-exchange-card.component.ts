@@ -12,11 +12,7 @@ import { ExchangeResponse } from '../models/exchange.response';
   standalone: true,
   imports: [RouterLink, NgOptimizedImage, ButtonComponent, TranslocoModule],
   template: `
-    <div
-      class="card"
-      [routerLink]="['/es', 'share', user.userHarvestId]"
-      *transloco="let t"
-    >
+    <div class="card" *transloco="let t">
       <div class="cell">
         <div class="title">
           <small>{{ t('exchange.name') }}</small>
@@ -34,21 +30,33 @@ import { ExchangeResponse } from '../models/exchange.response';
       </div>
 
       <div class="harvest-info">
-        <div class="cell amount purple">
+        <div
+          class="cell amount purple"
+          [routerLink]="['/es', 'share', user.userHarvestId]"
+          [queryParams]="{ selection: 'monsters' }"
+        >
           <div class="title">
             <small>Monsters</small>
           </div>
           <h3>{{ user.harvest[0].length }}</h3>
         </div>
 
-        <div class="cell amount blue">
+        <div
+          class="cell amount blue"
+          [routerLink]="['/es', 'share', user.userHarvestId]"
+          [queryParams]="{ selection: 'bosses' }"
+        >
           <div class="title">
             <small>Bosses</small>
           </div>
           <h3>{{ user.harvest[1].length }}</h3>
         </div>
 
-        <div class="cell amount yellow">
+        <div
+          class="cell amount yellow"
+          [routerLink]="['/es', 'share', user.userHarvestId]"
+          [queryParams]="{ selection: 'archis' }"
+        >
           <div class="title">
             <small>Archis</small>
           </div>
@@ -71,7 +79,6 @@ import { ExchangeResponse } from '../models/exchange.response';
         border-radius: 0.4rem;
         padding: 1rem 1rem 0;
         margin: 0 0 1rem;
-        cursor: pointer;
         transition: box-shadow 0.2s ease-in-out;
 
         &:hover {
@@ -92,6 +99,7 @@ import { ExchangeResponse } from '../models/exchange.response';
         padding: 0.5rem;
         border-radius: 0.4rem;
         width: 10rem;
+        cursor: pointer;
 
         h3 {
           font-size: 2rem;
