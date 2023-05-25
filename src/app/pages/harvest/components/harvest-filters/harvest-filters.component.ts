@@ -10,8 +10,18 @@ import { ChartComponent } from '@shared/chart/chart.component';
 import { ChartSlice } from '@shared/chart/chart.model';
 import { ButtonComponent } from '@shared/ui/button/button.component';
 import { InputComponent } from '@shared/ui/input/input.component';
-import { combineLatest, debounceTime, filter, from, map, Observable } from 'rxjs';
+import {
+  combineLatest,
+  debounceTime,
+  filter,
+  first,
+  from,
+  map,
+  Observable,
+  switchMap,
+} from 'rxjs';
 import { environment } from '../../../../../environments/environment';
+import { GlobalStore } from '../../../../shared/store/global.store';
 import { HarvestStore } from '../../harvest.store';
 import { HarvestUser } from '../../models/harvest-data.response';
 import { DEFAULT_FILTERS } from './filters-data';
@@ -82,6 +92,8 @@ export class HarvestFiltersComponent {
   private readonly matDialog = inject(MatDialog);
   private readonly translate = inject(TranslocoService);
   private readonly route = inject(ActivatedRoute);
+  private readonly globalStore = inject(GlobalStore);
+
   protected readonly vm$ = inject(HARVEST_FILTERS_VM);
   protected readonly isShared = this.route.snapshot.params['id'];
 
@@ -119,11 +131,19 @@ export class HarvestFiltersComponent {
   }
 
   onShareHarvest(id: string) {
-    from(
-      navigator.clipboard.writeText(
-        `${environment.baseUrl}/${this.translate.getActiveLang()}/share/${id}`,
-      ),
-    )
+    this.globalStore.user$
+      .pipe(
+        first(),
+        switchMap((user) =>
+          from(
+            navigator.clipboard.writeText(
+              `${environment.baseUrl}/${this.translate.getActiveLang()}/share/${
+                user.nickname?.toLowerCase() ?? id
+              }`,
+            ),
+          ),
+        ),
+      )
       .pipe(
         this.toast.observe({
           loading: 'Copiando url en el portapapeles',

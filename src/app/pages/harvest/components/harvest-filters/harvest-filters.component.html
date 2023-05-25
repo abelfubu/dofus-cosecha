@@ -1,37 +1,35 @@
 <ng-container *ngIf="vm$ | async as vm">
   <ng-container *transloco="let t">
-    <div class="chart-container" *ngIf="!isShared; else userInfo">
+    <div class="chart-container" *ngIf="!isShared">
       <app-chart *ngFor="let item of vm.statistics" [data]="item"></app-chart>
     </div>
 
-    <ng-template #userInfo>
-      <div class="user-info">
-        <div class="grid">
-          <div class="cell">
-            <span class="material-symbols-outlined" style="font-size: 4rem">
-              sports_esports
-            </span>
-          </div>
-
-          <div class="cell cursor" (click)="copyToClipboard(vm.user.nickname)">
-            <small>Name</small>
-            <h3>{{ vm.user.nickname }}</h3>
-          </div>
-
-          <div class="cell">
-            <small>Discord Id</small>
-            <h3>{{ vm.user.discord || '' }}</h3>
-          </div>
-
-          <div class="cell">
-            <small>Server</small>
-            <h3>{{ vm.user.server }}</h3>
-          </div>
-
-          <app-button (click)="onBack()">{{ t('home.back') }}</app-button>
+    <div class="user-info" *ngIf="isShared && vm.user">
+      <div class="grid">
+        <div class="cell">
+          <span class="material-symbols-outlined" style="font-size: 4rem">
+            sports_esports
+          </span>
         </div>
+
+        <div class="cell cursor" (click)="copyToClipboard(vm.user.nickname)">
+          <small>Name</small>
+          <h3>{{ vm.user.nickname }}</h3>
+        </div>
+
+        <div class="cell">
+          <small>Discord Id</small>
+          <h3>{{ vm.user.discord || '' }}</h3>
+        </div>
+
+        <div class="cell">
+          <small>Server</small>
+          <h3>{{ vm.user.server }}</h3>
+        </div>
+
+        <app-button (click)="onBack()">{{ t('home.back') }}</app-button>
       </div>
-    </ng-template>
+    </div>
 
     <form [formGroup]="form">
       <div class="search-box">

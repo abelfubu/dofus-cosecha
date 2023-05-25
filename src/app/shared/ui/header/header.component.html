@@ -12,9 +12,12 @@
         [routerLinkActiveOptions]="{ exact: true }"
         >{{ t('header.harvest') }}</a
       >
-      <a [routerLink]="['/', vm.lang, 'exchange']" [routerLinkActive]="'active'">{{
-        t('header.exchange')
-      }}</a>
+      <a
+        *ngIf="vm.isLoggedIn"
+        [routerLink]="['/', vm.lang, 'exchange']"
+        [routerLinkActive]="'active'"
+        >{{ t('header.exchange') }}</a
+      >
     </nav>
     <nav>
       <ng-container *ngIf="vm.email">
